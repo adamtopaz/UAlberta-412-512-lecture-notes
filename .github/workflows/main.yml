@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Copy file to S3
+        shell: bash
+        env:
+          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY_ID }}
+          aws_s3_bucket: ${{ secrets.AWS_S3BUCKET_NAME }}
+        run: |
+          sudo apt-get update && sudo apt-get -y install awscli
+          aws configure set aws_access_key_id $aws_key_id
+          aws configure set aws_secret_access_key $aws_secret_access_key
+          aws configure set default.region us-east-1
+          sudo apt-get install texlive texlive-latex-recommended texlive-latex-extra --no-install-recommends -qq > /dev/null
+          sudo apt-get install texlive-bibtex-extra texlive-pictures latexmk --no-install-recommends -qq > /dev/null
+          latexmk --pdf main.tex
+          cp main.pdf ualberta-fall-2022-math-328.pdf
+          aws s3 cp ./ualberta-fall-2022-math-328.pdf s3://$aws_s3_bucket/
