@@ -22,5 +22,5 @@ jobs:
           sudo apt-get install texlive texlive-latex-recommended texlive-latex-extra --no-install-recommends -qq > /dev/null
           sudo apt-get install texlive-bibtex-extra texlive-pictures latexmk --no-install-recommends -qq > /dev/null
           latexmk --pdf main.tex
-          cp main.pdf ualberta-fall-2022-math-328.pdf
-          aws s3 cp ./ualberta-fall-2022-math-328.pdf s3://$aws_s3_bucket/
+          cp main.pdf ualberta-math-412-512.pdf
+          aws s3 cp ./ualberta-math-412-512.pdf s3://$aws_s3_bucket/
