@@ -1,0 +1,107 @@
+\section{Lecture 1}
+
+This lecture is mostly an introduction and overview.
+The we will revisit most of the concepts mentioned in this lecture at some point later on in the term.
+
+As with all of mathematics, number theory starts with the \emph{natural numbers}
+\[ \Nbb = \{0,1,2,\ldots\}. \]
+This is a commutative \emph{semiring}, which is similar to a ring, except for the fact that addition gives us a (commutative) monoid as opposed to a group (all this means is that we cannot negate elements).
+
+There is a general process by which we can turn a semiring into a ring in a ``free way.''
+In more pedantic terms, the forgetful functor from the category of rings to the category of semirings has a left adjoint.
+If we apply this construction to $\Nbb$, we obtain the \emph{integers}
+\[ \Zbb = \{\ldots,-2,-1,0,1,2,\ldots\}, \]
+which forms a commutative ring in the usual way.
+
+In fact, $\Zbb$ is an \emph{integeral domain}, which means that it has no zero divisors.
+The collection of all nonzero elements is then a multiplicative submonoid of $\Zbb$.
+If we localize $\Zbb$ with respect to this submonoid, we obtain the \emph{rational numbers}
+\[ \Qbb = \left\{\frac{a}{b} \ \Big| \ a,b \in \Zbb, \ b \neq 0 \right\}, \]
+which is the \emph{fraction field} of $\Zbb$.
+
+Now that we have the field of rational numbers, we would like to go further.
+One way to do this is to take completions with respect to absolute values.
+\begin{definition}
+  Let $K$ be a field.
+  An \emph{absolute value} on $K$ is a function
+  \[ | - | : K \to \Rbb_{\geq 0} \]
+  satisfying the following conditions:
+  \begin{enumerate}
+    \item One has $|0| = 0$ and if $x \in K$ satisfies $|x| = 0$ then $x = 0$.
+    \item One has $|x \cdot y| = |x| \cdot |y|$ for all $x,y \in K$.
+    \item One has $|x + y| \le |x| + |y|$ for all $x,y \in K$.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  An absolute value $|-|$ on a field $K$ is called \emph{nonarchemedean} provided that the image of the map
+  \[ \Nbb \xrightarrow{n \mapsto n} K \xrightarrow{|-|} \Rbb_{\geq 0} \]
+  is a bounded subsset of $\Rbb_{\geq 0}$.
+  An absolute value which is not nonarchemedean is, of course, called archemedean.
+\end{definition}
+
+\begin{example}
+  If $K$ is any field, then the \emph{trivial absolute value} on $K$ is given by the following formula:
+  \[ |x| = \begin{cases}
+             0 & x = 0 \\
+             1 & x \neq 0.
+           \end{cases} \]
+\end{example}
+
+\begin{example}
+  The \emph{standard absolute value} on $\Cbb$ is given by
+  \[ |a + i \cdot b| = \sqrt{a^{2} + b^{2}}, \ a,b \in \Rbb. \]
+\end{example}
+
+\begin{example}
+  If $\sigma : K \to L$ is an embedding of fields and $|-|_{L}$ is an absolute value on $L$, then its restriction along $\sigma$ is an absolute value on $K$.
+  The restriction of the standard absolute value on $\Cbb$ to $\Qbb$ is denoted by $|-|_{\infty}$, and is the unique \emph{archemedean} absolute value on $\Qbb$.
+\end{example}
+
+\begin{example}\label{example:pi-adic_absolute_value}
+  Let $A$ be a UFD and $\pi$ a prime element of $A$.
+  Let $K$ denote the fraction field of $A$.
+  Recall that any nonzero element $x$ of $K$ can be written (in an essentially unique way) in the form
+  \[ x = u \cdot \pi^{e} \cdot \pi_{1}^{e_{1}} \cdots \pi_{k}^{e_{k}}, \]
+  where $u \in A^{\times}$, $e, e_{i} \in \Zbb$, $\pi,\pi_{1},\ldots,\pi_{k}$ are distinct prime elements of $A$, $k \in \Nbb$, and $e_{i} \neq 0$.
+  The map sending such an $x$ to $e \in \Zbb$ is a well-defined function
+  \[ v_{\pi} : K^{\times} \to \Zbb. \]
+  If $c$ is some positive real number, then the formula
+  \[ |x| = \begin{cases}
+             c^{-v_{\pi}(x)} & x \neq 0 \\
+             0 & x = 0
+           \end{cases} \]
+  yields an absolute value on $K$ which is nonarchemedean.
+
+  If $A = \Zbb$, $\pi = p$ and $c = p$, then the absolute value constructed above will be denoted by $|-|_{p}$, and will be called the \emph{$p$-adic absolute value} on $\Qbb$.
+\end{example}
+
+Note that an absolute value on a field $K$ induces a metric topology on $K$ via the formula $d(x,y) = |x-y|$.
+Two absolute values are said to be \emph{equivalent} provided that they induce the same topology.
+\begin{proposition}
+  Two absolute values $|-|_{1}$ and $|-|_{2}$ on a field $K$ are equivalent if and only if there exists some $r \in \Rbb_{> 0}$ such that $|-|_{1} = |-|_{2}^{r}$.
+\end{proposition}
+In particular, the \emph{equivalence class} of the absolute value described in Example~\ref{example:pi-adic_absolute_value} only depends on $(A,\pi \cdot A^{\times})$, and not on the choice of $c$.
+
+Now that we are equipped with the notion of an absolute value, we can try to classify all absolute values on $\Qbb$.
+This is the content of Ostrowski's theorem.
+\begin{theorem}[Ostrowski]
+  Let $|-|$ be a nontrivial absolute value on $\Qbb$.
+  Then $|-|$ is equivalent to $|-|_{p}$ for some prime number $p$, or to $|-|_{\infty}$.
+\end{theorem}
+
+If we complete $\Qbb$ with respect to $|-|_{\infty}$, then we obtain $\Rbb$, as usual.
+However, if we complete with respect to $|-|_{p}$, we obtain the field of \emph{$p$-adic numbers}, denoted $\Qbb_{p}$.
+
+There is another way to go beyond $\Qbb$ as one does in Galois theory, by adjoining roots of polynomials.
+If we adjoin all roots of all polynomials, and iterate the process, we obtain an algebraically closed field containing $\Qbb$, say $\bar \Qbb$.
+We can then try to understand how absolute values on $\Qbb$ \emph{extend} to absolute values on $\bar\Qbb$. We will later see that they always do extend, in various (interesting) ways, and study the structure of such extensions via Galois theory.
+For now, let's just fix some choice of extension of $|-|_{p}$ and $|-|_{\infty}$, and use the same notation for the extension.
+If we complete $\bar\Qbb$ with respect to $|-|_{\infty}$, we will obtain $\Cbb$, the algebraic closure of $\Rbb$.
+On the other hand, if we complete $\bar\Qbb$ with respect to $|-|_{p}$, we obtain $\Cbb_{p}$, which is \emph{larger} than the algebraic closure of $\Qbb_{p}$, but is nevertheless still algebraically closed (we will see this later as a consequence of Krasner's Lemma).
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
