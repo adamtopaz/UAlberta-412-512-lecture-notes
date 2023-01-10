@@ -1,3 +1,5 @@
+name: Upload PDF to AWS
+
 on:
   push:
     branches:
