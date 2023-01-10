@@ -16,15 +16,17 @@
 
 \renewcommand{\bar}{\overline}
 
-\newtheorem{proposition}{Proposition}
 \newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
-\newtheorem{example}{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
+\newtheorem{definition}[theorem]{Definition}
 
+\numberwithin{theorem}{section}
+\numberwithin{equation}{section}
 
 %%% Local Variables:
 %%% mode: latex
