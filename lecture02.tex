@@ -53,6 +53,18 @@ A stronger notion of finiteness is being a \emph{finite} algebra, which means th
 In particular, this proposition shows that if $b_{1},b_{2} \in B$ are integral over $A$, then so is every other element $b$ of $A[b_{1},b_{2}]$, since $A[b_{1},b_{2}] = A[b,b_{1},b_{2}]$.
 It follows that the sums and products of any integral elements are again integral, and thus the collection of all elements of $B$ which are integral over $A$ forms a subalgebra of $B$.
 
+Another consequence is the following useful proposition.
+\begin{proposition}
+  Suppose that $B$ is an $A$-algebra and $C$ is a $B$-algebra.
+  If $B$ is integral over $A$ and $C$ is integral over $B$ then $C$ is integral over $A$.
+\end{proposition}
+\begin{proof}
+  Let $c \in C$ be given, and find an equation of the form
+  \[ c^{n} + b_{1} c^{n-1} + \cdots + b_{n} = 0, \ \ b_{i} \in B. \]
+  Put $T := A[b_{1},\ldots,b_{n}]$ and note that $c$ is integral over $T$, while $T$ is finite over $A$.
+  Since $T[c]$ is finite over $T$, transitivity of finiteness implies that $T[c]$ is finite over $A$ hence $c$ is integral over $A$.
+\end{proof}
+
 \begin{definition}
   Let $B$ be an $A$-algebra.
   The set
@@ -61,6 +73,76 @@ It follows that the sums and products of any integral elements are again integra
   Note that the structure map $f : A \to B$ factors as
   \[ A \to \image(f) \subset \bar A \subset B. \]
 \end{definition}
+
+A few things to note:
+\begin{enumerate}
+  \item First, the integral closure is an idempotent operation, meaning that the integral closure of the integral closure is the integral closure.
+  \item The integral closure of $A$ is integral over $A$.
+\end{enumerate}
+
+\begin{definition}
+  Suppose that $A \subset B$ is an extension of rings.
+  We say that $A$ is \emph{integrally closed} in $B$ provided that $\bar A = A$, as subrings of $B$, where $\bar A$ denotes the integral closure of $A$ in $B$.
+\end{definition}
+
+\begin{definition}
+  Let $A$ be a domain with fraction field $K$.
+  We say that $A$ is \emph{normal} provided that $A$ is integrally closed in $K$.
+  If $L$ is an extension of $K$, then the \emph{normalization of $A$ in $L$} is the integral closure of $A$ in $L$.
+  When $L = K$, we simply say ``the normalization of $A$'' instead of ``the normalization of $A$ in $K$.''
+\end{definition}
+
+\begin{example}
+  Any UFD is normal.
+  Suppose that $A$ is a UDF and that $a,b \in A$ are two elements with $b \neq 0$.
+  Suppose that $a/b$ is integral over $A$, so it satisfies some equation of the form
+  \[ (a/b)^{n} + c_{1} (a/b)^{n-1} + \cdots + c_{n} = 0, \ \ c_{i} \in A. \]
+  Multiply by $b^{n}$ to obtain
+  \[ a^{n} + c_{1} b a^{n-1} + \cdots + c_{n} b^{n} = 0. \]
+  If $\pi$ is a prime element which divides $b$, this shows that $\pi$ also divides $a^{n}$ hence it divides $a$ as well.
+  In particular, this shows that $b$ divides $a$, and thus $a/b \in A$, as required.
+\end{example}
+
+For the rest of this lecture, we focus on the following special situation.
+We are given a normal domain $A$ with fraction field $K$, and a finite extension $L|K$.
+Write $B$ for the normalization of $A$ in $L$.
+
+\begin{lemma}
+  One has $B \cap K = A$.
+\end{lemma}
+\begin{proof}
+  Use the normality of $A$.
+\end{proof}
+
+\begin{lemma}
+  Any element of $L$ has the form $x/y$ with $x \in B$ and $y \in A$.
+\end{lemma}
+\begin{proof}
+  Let $t \in L$ be given.
+  As $L|K$ is finite, hence algebraic, there is a monic equation of the form
+  \[ t^{n} + w_{1} t^{n-1} + \cdots + w_{n} = 0, \ \ w_{i} \in K. \]
+  Use the fact that $K$ is the fraction field of $A$ and clear denominators to obtain an equation of the form
+  \[ a_{n} t^{n} + \cdots + a_{1} t + a_{0} = 0, \ \ a_{i} \in A. \]
+  Multiply again by $a_{n}^{n-1}$ to obtain an integral equation for $a_{n} t$, which implies that $a_{n} t \in B$.
+  The claim follows.
+\end{proof}
+
+\begin{proposition}
+  Let $x \in L$ be given, and let $p$ denote the minimal polynomial of $x$ over $K$.
+  Then $x$ is integral over $A$ if and only if the coefficients of $p$ are elements of $A$.
+\end{proposition}
+\begin{proof}
+  Since minimal polynomials are by definition monic, the reverse implication is trivial by definition.
+  Conversely, suppose that $x \in L$ is indeed integral over $A$, and let $q$ be a monic polynomial with coefficients in $A$ such that $q(x) = 0$.
+  Let $B$ denote the normalization of $A$ in $L$, and observe that $B \cap K = A$.
+  Since $p$ is the minimal polynomial, it follows that $p | q$ in $K[X]$, and thus every root of $p$ (in some algebraic closure) is also integral.
+  Letting $y_{1},\ldots,y_{n}$ denote such roots (with multiplicity) of $p$, we have
+  \[ p(X) = \prod_{i} (X - y_{i}) \]
+  while all $y_{i}$ are contained in the normalization of $A$ in $L$.
+  But the coefficients of $p$ are (integral) polynomial functions of its roots, so it follows that the coefficients of $p$ are all in $B$.
+  On the other hand, the coefficients of $p$ are elements of $K$.
+  Since $A = K \cap B$, it follows that $p$ indeed has coefficients in $A$.
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex
