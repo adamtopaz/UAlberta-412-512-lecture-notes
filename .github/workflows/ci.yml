@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Check that PDF compiles properly.
+        shell: bash
+        run: |
+          sudo apt-get install texlive texlive-latex-recommended texlive-latex-extra --no-install-recommends -qq > /dev/null
+          sudo apt-get install texlive-bibtex-extra texlive-pictures latexmk --no-install-recommends -qq > /dev/null
+          latexmk --pdf main.tex
