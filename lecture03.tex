@@ -85,6 +85,22 @@ However, the \emph{uniqueness of such factorizations} fails in general, so $\Oca
 \end{example}
 
 This ``issue'' of nonuniqueness of factorizations will be soon resolved by replacing elements of $\Ocal_{K}$ by ideals of $\Ocal_{K}$.
+We will first try to pinpoint exactly the ring-theoretic properties of rings such as $\Ocal_{K}$ that makes the theory of ideals well-behaved in this respect.
+
+\begin{proposition}
+  Suppose that $A$ is Noetherian and that $L|K$ is separable.
+  Then $B$ is finite over $A$.
+\end{proposition}
+\begin{proof}
+  Since $A$ is Noetherian, we only need to show that $B$ is contained in a finitely-generated submodule of $L$.
+  Let $x_{1},\ldots,x_{n}$ be a basis of $L|K$, \todo{which we can assume are all integral over $A$.}{Explain.}
+  Since $L|K$ is separable, the pairing $(x,y) \mapsto \Trace_{L|K}(x \cdot y)$ is a \todo{nondegenerate pairing}{Add this fact as a separate lemma. Proof discussed in lecture.}, hence it induces an isomorphism between $L$ and its $K$-linear dual.
+  Let $y_{1},\ldots,y_{n}$ denote the dual basis.
+  Suppose now that $c$ is some nonzero element of $A$, such that $c \cdot y_{i}$ is integral (\todo{this exists}{Explain!}), and let $z \in B$ be given.
+  Write $z = a_{1}x_{1} + \cdots + a_{n} x_{n}$, $a_{i} \in K$.
+  Then $\Trace_{L|K}(czy_{i}) = ca_{i} \in A$.
+  It follows that $z \in c^{-1}x_{1} A + \cdots + c^{-1} x_{n} A$.
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex
