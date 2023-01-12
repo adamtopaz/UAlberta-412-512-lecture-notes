@@ -1,0 +1,92 @@
+\section{Lecture 3}
+
+\begin{definition}
+  A \emph{number field} is a finite field extension of $\Qbb$, and a \emph{global function field} is a finite extension of $\Fbb_{p}(t)$ for some prime $p$.
+  A \emph{global field} is either a number field or a global function field.
+\end{definition}
+
+\begin{definition}
+  Let $K$ be a number field.
+  The \emph{ring of integers of $K$}, denoted $\Ocal_{K}$, is the integral closure of $\Zbb$ in $\Ocal_{K}$.
+\end{definition}
+
+Any element of $\Ocal_{K}$ can be written as a product of irreducible elements.
+To see this, we will need to use the norm, which we now discuss in the appropriate generality for this course.
+The general context involves a finite field extension $L|K$, and a normal domain $A$ whose fraction field is $K$.
+We write $B$ for the integral closure of $A$ in $L$.
+
+Let $x \in L$ be given, and write $M_{x}$ for the $K$-linear map $L \to L$ given by $t \mapsto x \cdot t$.
+\begin{definition}
+  The trace of $x$, denoted $\Trace_{L|K}(x)$ is the trace of $M_{x}$, and the norm of $x$, denoted $\Norm_{L|K}(x)$ is the determinant of $M_{x}$.
+  These are both maps $L \to K$.
+\end{definition}
+
+\begin{lemma}
+  The map $\Trace_{L|K}$ is additive and the map $\Norm_{L|K}$ is multiplicative.
+\end{lemma}
+\begin{proof}
+  \todo{Clear!}{Add proof.}
+\end{proof}
+
+The trace and norm can be described using Galois theory.
+Fix an algebraic closure $\bar K$ of $K$.
+Recall that separable degree $[L:K]_{s}$ is the degree of the maximal separable subextension of $L|K$, say $L_{s}|K$, and the inseparable degree $[L:K]_{i}$ is the degree of $L|L_{s}$.
+Thus $[L:K] = [L:K]_{i} \cdot [L:K]_{s}$.
+The separable degree $[L:K]_{s}$ is the number of $K$-embeddings of $L$ (or of $L_{s}$) into $\bar K$.
+If $L|K$ is separable, then $L_{s} = L$, $[L:K]_{i} = 1$ hence $[L:K] = [L:K]_{s}$ agrees with the number of $K$-embeddings of $L$ into $\bar K$.
+
+\begin{proposition}\label{proposition:norm_trace_formula_embeddings}
+  Suppose that $L|K$ is separable.
+  Then the characteristic polynomial of $M_{x}$ is the product $\prod_{\sigma} (X - \sigma x)$, as $\sigma \in \Hom_{K}(L,\bar K)$ varies.
+  Thus $\Trace_{L|K}(x) = \sum_{\sigma} \sigma x$ and $\Norm_{L|K}(x) = \prod_{\sigma} \sigma x$, as $\sigma \in \Hom_{K}(L,\bar K)$ varies.
+\end{proposition}
+\begin{proof}
+  \todo{Split up $L|K$ into $L|K(x)|K$, etc.}{Add the proof discussed in class.}
+\end{proof}
+
+\begin{lemma}
+  The norm and trace are transitive in towers.
+  Namely, suppose that $M|L|K$ is a tower of finite extensions.
+  Then $\Norm_{M|K} = \Norm_{L|K} \circ \Norm_{M|L}$ and $\Trace_{M|K} = \Trace_{L|K} \circ \Trace_{M|L}$.
+\end{lemma}
+\begin{proof}
+  \todo{Reduce to the separable case, which follows from Proposition~\ref{proposition:norm_trace_formula_embeddings}.}{Add details.}
+\end{proof}
+
+\begin{lemma}
+  Suppose that $L|K$ is separable and that $b \in B$ is given.
+  Then $\Trace_{L|K}(b) \in A$ and $\Norm_{L|K}(b) \in A$.
+  Furthermore, $\Norm_{L|K}(b) \in A^{\times}$ if and only if $b \in B^{\times}$.
+\end{lemma}
+\begin{proof}
+  \todo{Use the formula for the trace and norm involving embeddings (and the multiplicativity of the norm for one direction of the second part).}{Add details.}
+\end{proof}
+
+We can now prove the claim about irreducible factorization mentioned above.
+\begin{lemma}
+  Let $K$ be a number field and let $a \in \Ocal_{K}$ be given.
+  Then $a$ can be factored as a product of irreducibles.
+\end{lemma}
+\begin{proof}
+  If $a$ is irreducible or a unit, then we are done.
+  Otherwise, we can write $a = x \cdot y$ with $x,y$ nonunits.
+  Thus both $x$ and $y$ have norm (in $\Qbb$) which are nonunits of $\Zbb$, hence
+  \[ 1 < |\Norm_{K|\Qbb}(t)| < |\Norm_{K|\Qbb}(a)| \]
+  for both $t = x,y$.
+  Proceed by induction.
+\end{proof}
+
+However, the \emph{uniqueness of such factorizations} fails in general, so $\Ocal_{K}$ is not, in general, a UFD.
+\begin{example}
+  Let $K$ be the quadratic number field $\Qbb(\sqrt{-5})$.
+  In this case, we have $\Ocal_{K} = \Zbb[\sqrt{-5}]$.
+  Express $21$ as $3 \cdot 7$ and as $(1 + 2 \cdot \sqrt{-5}) \cdot (1 - 2 \cdot \sqrt{-5})$.
+  Note that both are factorizations in $\Ocal_{K}$ into products of irreducibles, which are not equivalent (in the sense of factorizations).
+\end{example}
+
+This ``issue'' of nonuniqueness of factorizations will be soon resolved by replacing elements of $\Ocal_{K}$ by ideals of $\Ocal_{K}$.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
