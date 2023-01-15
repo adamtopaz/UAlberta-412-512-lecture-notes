@@ -125,9 +125,9 @@ Write $B$ for the normalization of $A$ in $L$.
   Let $t \in L$ be given.
   As $L|K$ is finite, hence algebraic, there is a monic equation of the form
   \[ t^{n} + w_{1} t^{n-1} + \cdots + w_{n} = 0, \ \ w_{i} \in K. \]
-  Use the fact that $K$ is the fraction field of $A$ and clear denominators \todo{to obtain}{Give a more detailed proof.} an equation of the form
+  Write $w_i = b_i/c_i$ for all $i$ where $b_i, c_i\in A$. We have $t^n + \sum_{i=1}^n t^{n-i}b_i/c_i = 0$. Multiply both sides by $\prod_i c_i$, we obtain an equation of the form
   \[ a_{n} t^{n} + \cdots + a_{1} t + a_{0} = 0, \ \ a_{i} \in A. \]
-  Multiply again by $a_{n}^{n-1}$ to obtain an integral equation for $a_{n} t$, which implies that $a_{n} t \in B$.
+  Multiply again by $a_{n}^{n-1}$ to obtain an integral equation for $a_{n} t$, namely \[(a_n t)^n + a_{n-1}(a_nt)^{n-1} +\cdots + a_1a_n^{n-2}(a_nt) + a_n^{n-1}a_0 = 0,\] which implies that $a_{n} t \in B$. 
   The claim follows.
 \end{proof}
 
