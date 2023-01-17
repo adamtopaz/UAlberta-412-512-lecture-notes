@@ -2,20 +2,130 @@
 
 The ``issue'' of nonuniqueness of factorizations, discussed in the last lecture, will be soon resolved by replacing elements of $\Ocal_{K}$ by ideals of $\Ocal_{K}$.
 We will first try to pinpoint exactly the ring-theoretic properties of rings such as $\Ocal_{K}$ that makes the theory of ideals well-behaved in this respect.
+The main definition here is the following.
+\begin{definition}
+  A Noetherian, normal domain in which every nonzero prime ideal is maximal is called a \emph{Dedekind domain}.
+\end{definition}
+Our goal for this lecture is to show that $\Ocal_{K}$, where $K$ is a number field, is a Dedekind domain.
+
+We continue with the context from the last lecture: $L|K$ is a finite extension, $A$ is a normal domain with fraction field $K$ and $B$ is the normalization of $A$ in $L$.
+
+Recall that a ring $A$ is called \emph{Noetherian} if it satisfies one of the following (equivalent) conditions:
+\begin{enumerate}
+  \item The ascending chain condition is satisfied for ideals.
+  \item Every ideal is finitely-generated.
+  \item Every nonempty set of ideals has a maximal element.
+  \item Every submodule of a finitely-generated module is finitely-generated.
+  \item Submodules of every finitely-generated module satisfy the ascending chain condition.
+\end{enumerate}
+
+We will need to revisit the trace.
+Let $x_{1},\ldots,x_{n}$ be a basis for $L|K$ and assume that $L|K$ is separable.
+Define the \emph{discriminant} of $(x_{1},\ldots,x_{n})$ as follows:
+\[ d(x_{1},\ldots,x_{n}) = \det((\sigma_{i}x_{j})_{i,j})^{2}, \]
+where $\sigma_{i}$ varies over the $K$-embeddings of $L$ into $\bar K$.
+Using the formula for the trace in terms of the $\sigma_{i}$, we have
+\[ d(x_{1},\ldots,x_{n}) = \det(\Trace_{L|K}(x_{i}x_{j})_{i,j}). \]
+
+In the special case where the basis is $1,\theta,\ldots,\theta^{n-1}$ with $\theta$ a primitive element of $L|K$, then one has
+\[ d(1,\theta,\ldots,\theta^{n-1}) = \prod_{i<j} (\sigma_{i} \theta - \sigma_{j}\theta)^{2}. \]
+To see this, use \todo{Vandermonde matrices.}{Add details.}
+
+\begin{lemma}
+  If $L|K$ is separable, then the discriminant $d(x_{1},\ldots,x_{n})$ is nonzero, and the map
+  \[ (x,y) \mapsto \Trace_{L|K}(x \cdot y) \]
+  is a nondegenerate $K$-bilinear form on $L$.
+\end{lemma}
+\begin{proof}
+  Choose a primitive element $\theta$ and use the description of the discriminant in terms of conjugates to see that the determinant is nonzero.
+\end{proof}
+
+\begin{lemma}
+  Suppose $L|K$ is separable and that $x_{1},\ldots,x_{n}$ is a basis of $L|K$ which is contained in $B$.
+  Let $d = d(x_{1},\ldots,x_{n})$.
+  Then $d \cdot B \subset A x_{1} + \cdots + A x_{n}$.
+\end{lemma}
+\begin{proof}
+  Let $b \in B$ be given and write $b = a_{1} x_{1} + \cdots + a_{n} x_{n}$, $a_{j} \in K$.
+  The $a_{j}$ are solutions of the system
+  \[ \Trace_{L|K}(x_{i} b) = \sum_{j} \Trace_{L|K}(x_{i}x_{j}) a_{j}. \]
+  Since $\Trace_{L|K}(x_{i} b) \in A$, the $a_{j}$ are all elements of $(1/d) \cdot A$.
+  The claim follows.
+\end{proof}
 
 \begin{proposition}
-  Suppose that $A$ is Noetherian and that $L|K$ is separable.
-  Then $B$ is finite over $A$.
+  Suppose that $A$ is a PID and $M$ is a nonzero $B$-submodule of $L$.
+  Then $M$ is free over $A$ of rank $[L:K]$.
 \end{proposition}
 \begin{proof}
-  Since $A$ is Noetherian, we only need to show that $B$ is contained in a finitely-generated submodule of $L$.
-  Let $x_{1},\ldots,x_{n}$ be a basis of $L|K$, \todo{which we can assume are all integral over $A$.}{Explain.}
-  Since $L|K$ is separable, the pairing $(x,y) \mapsto \Trace_{L|K}(x \cdot y)$ is a \todo{nondegenerate pairing}{Add this fact as a separate lemma. Proof discussed in lecture.}, hence it induces an isomorphism between $L$ and its $K$-linear dual.
-  Let $y_{1},\ldots,y_{n}$ denote the dual basis.
-  Suppose now that $c$ is some nonzero element of $A$, such that $c \cdot y_{i}$ is integral (\todo{this exists}{Explain!}), and let $z \in B$ be given.
-  Write $z = a_{1}x_{1} + \cdots + a_{n} x_{n}$, $a_{i} \in K$.
-  Then $\Trace_{L|K}(czy_{i}) = ca_{i} \in A$.
-  It follows that $z \in c^{-1}x_{1} A + \cdots + c^{-1} x_{n} A$.
+  Let $x_{1},\ldots,x_{n}$ be a basis of $L|K$ contained in $B$.
+  Let $m_{1},\ldots,m_{k} \in M$ be generators over $B$.
+  We can find $a \in A$ such that $a \cdot m_{i} \in B$, hence
+  \[ a \cdot d \cdot M \subset d \cdot B \subset A x_{1} + \cdots + A x_{n} =: N. \]
+  Since generators of $B$ over $A$ also generate $K$, we see that $B$ has rank $[L:K]$, and the first inclusion also shows that $M$ has rank $[L:K]$.
+  The structure theorem for modules over PIDs gives the freeness assertion.
+\end{proof}
+
+This shows that $B$ is Noetherian if $A$ is a PID.
+In fact, a \todo{similar assertion holds only under the assumption that $A$ is Noetherian.}{Add proof from Lang.} but we will not need it.
+Now let's turn to studying prime ideals.
+It will be useful to use \emph{localizations} in this context, which we now review.
+
+Let $A$ be a domain, and $S$ a multiplicative submonoid of $A$ which does not contain $0$.
+The \emph{localization} $S^{-1}A$ is the subset of $K$ of elements of the form $a/s$ for $a \in A$ and $s \in S$.
+If $M$ is a submodule contained in some field extension $L|K$, we define $S^{-1}M$ in a similar way as elements of the form $m/s$, $m \in M$ and $s \in S$.
+If $\pfrak$ is a prime ideal of $A$ and $S = A \smin \pfrak$, then $A_{\pfrak} := S^{-1}A$.
+
+We say that $A$ is \emph{local} provided that it has a unique maximal ideal.
+The ring $A_{\pfrak}$ is such a ring.
+If $\Afrak$ is an ideal of $S^{-1}A$, \todo{then $\Afrak = S^{-1}(\Afrak \cap A)$.}{Prove this.}
+
+\begin{proposition}
+  The localizatsion $S^{-1}A$ is normal.
+  The algebra $S^{-1}B$ is integral closure of $S^{-1}A$.
+\end{proposition}
+\begin{proof}
+  If $x \in K$ is integral over $S^{-1}A$, say
+  \[ x^{n} + \frac{a_{1}}{s_{1}} x^{n-1} + \cdots + \frac{a_{n}}{s_{n}} = 0, \]
+  then we can multiply by elements of $S$ to obtain an integral equation of $s \cdot x$ for some $s \in S$, with coefficients in $A$.
+  This shows that $s \cdot x \in A$ hence $x \in S^{-1} A$.
+  \todo{The rest is similar and left to the reader.}{Add proof.}
+\end{proof}
+
+Suppose that $\Pfrak$ is a prime ideal of $B$ annd $\pfrak$ is a prime of $A$.
+Note that $\Pfrak \cap A$ is a prime ideal in $A$.
+We say that $\Pfrak$ \emph{lies over} $\pfrak$, and write $\Pfrak | \pfrak$, provided that $\Pfrak \cap A = \pfrak$.
+In this case, we have an inclusion
+\[ A/\pfrak \to B/\Pfrak. \]
+
+\begin{proposition}
+  Let $\pfrak$ be a prime of $A$.
+  Then $\pfrak \cdot B \neq B$ and there exists a prime ideal $\Pfrak$ of $B$ lying above $\pfrak$.
+\end{proposition}
+\begin{proof}
+  Recall that $B_{\pfrak}$ is integral over $A_{\pfrak}$ and that $A_{\pfrak}$ is local with maximal ideal $\pfrak_{\pfrak}$.
+  This reduces the question to the case where $A$ is local and $\pfrak$ is the unique maximal ideal.
+
+  If $\pfrak B = B$, then $1$ can be expressed as a finite linear combination of the form
+  \[ 1 = a_{1} b_{1} + \cdots + a_{n} b_{n}, \]
+  with $a_{i} \in \pfrak$ and $b_{i} \in $.
+  Write $B_{0} = A[b_{1},\ldots,b_{n}]$ hence $\pfrak B_{0} = B_{0}$ and $B_{0}$ is finite over $A$.
+  By \todo{\emph{Nakayama's Lemma}}{Add statement and proof.} we have $B_{0} = 0$, which is impossible.
+
+  Now, choose some maximal ideal $\Mfrak$ of $B_{\pfrak}$ containing $\pfrak \cdot B_{\pfrak}$.
+  Since $\pfrak$ is maximal, we have $\pfrak = \Mfrak \cap A$.
+  Take $\Pfrak = \Mfrak \cap B$ to find $\Pfrak$ such that $\Pfrak \cap A = \pfrak$.
+\end{proof}
+
+\begin{proposition}
+  Let $\Pfrak$ be a prime of $B$ lying above a prime $\pfrak$ of $A$.
+  Then $\Pfrak$ is maximal if and only if $\pfrak$ is maximal.
+\end{proposition}
+\begin{proof}
+  Assume $\pfrak$ is maximal.
+  Then $A/\pfrak$ is a field while every element of $B/\Pfrak$ is algebraic over $A/\pfrak$ so that $B/\Pfrak$ is a field, hence $\Pfrak$ is maximal.
+  Conversely, suppose $\Pfrak$ is maximal.
+  If $A/\pfrak$ is not a field, then it has a nonzero maximal ideal $\mfrak$, and by the above there exists a maximal ideal $\Mfrak$ of $B/\Pfrak$ above $\mfrak$, which is impossible.
 \end{proof}
 
 %%% Local Variables:
