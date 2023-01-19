@@ -1,0 +1,23 @@
+\section{Lecture 5}
+
+Let's start with a quick addendum to the last lecture, specficially regarding ideals in localizations.
+Let $A$ be a domain and $S$ a multiplicative submonoid of $A$ not containing zero, and view $S^{-1}A$ as an $A$-algebra via the inclusion $A \hookrightarrow S^{-1}A$.
+
+Let $\afrak$ be an ideal of $A$.
+Then $S^{-1}\afrak := \afrak \cdot S^{-1}A$ is an ideal of $S^{-1}A$.
+If $\Afrak$ is an ideal of $S^{-1}A$ then $\Afrak \cap A$ is an ideal of $A$.
+It turns out that $\Afrak = S^{-1}(\Afrak \cap A)$.
+On the other hand, in general we have $\afrak \subset S^{-1}\afrak \cap A$, but equality does not always hold.
+Instead, $S^{-1}\afrak \cap A$ is the \emph{saturation} of $\afrak$ with respect to $S$, i.e.~the ideal $\tilde \afrak$ consisting of all $a \in A$ such that $s \cdot a \in \afrak$ for some $s \in S$.
+
+For prime ideals $\pfrak$ of $A$, the inflation $S^{-1}\pfrak$ is again prime, and if $\pfrak \cap S = \varnothing$, then $\pfrak$ is saturated.
+Conversely, if $\Pfrak$ is a prime of $S^{-1}A$, then $\Pfrak \cap A$ is a saturated prime of $A$.
+
+This discussion shows that inflation/intersection induce an order-preserving bijection between the set of prime ideals of $A$ which are disjoint from $S$, and the prime ideals of $S^{-1}A$.
+In particular, for a prime $\pfrak$ of $A$, the prime ideals of the localization $A_{\pfrak}$ are in bijection with the prime ideals $\qfrak$ of $A$ such that $\qfrak \cap (A \smin \pfrak) = \varnothing$, which is equivalent to the condition that $\qfrak \subset \pfrak$.
+The ring $A_{\pfrak}$ thus has a unique maximal ideal, which is the inflation of $\pfrak$ itself.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
