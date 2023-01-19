@@ -17,6 +17,86 @@ This discussion shows that inflation/intersection induce an order-preserving bij
 In particular, for a prime $\pfrak$ of $A$, the prime ideals of the localization $A_{\pfrak}$ are in bijection with the prime ideals $\qfrak$ of $A$ such that $\qfrak \cap (A \smin \pfrak) = \varnothing$, which is equivalent to the condition that $\qfrak \subset \pfrak$.
 The ring $A_{\pfrak}$ thus has a unique maximal ideal, which is the inflation of $\pfrak$ itself.
 
+Let's now go back to the context of the last lecture, where $L|K$ is a finite separable extension, $A$ is a normal domain whose fraction field is $K$ and $B$ is the normalization of $A$ in $L$.
+\begin{proposition}
+  Let $\Pfrak$ be a prime of $B$ lying above a prime $\pfrak$ of $A$.
+  Then $\Pfrak$ is maximal if and only if $\pfrak$ is maximal.
+\end{proposition}
+\begin{proof}
+  The extension $A/\pfrak \to B/\Pfrak$ is integral.
+  Assume $\pfrak$ is maximal.
+  Then $A/\pfrak$ is a field while every element of $B/\Pfrak$ is algebraic over $A/\pfrak$ so that $B/\Pfrak$ is a field, hence $\Pfrak$ is maximal.
+  Conversely, suppose $\Pfrak$ is maximal.
+  If $A/\pfrak$ is not a field, then it has a nonzero maximal ideal $\mfrak$, and by Proposition~\ref{proposition:exists_prime_above},  there exists a prime ideal $\Mfrak$ of $B/\Pfrak$ above $\mfrak$, which must be zero, but this is impossible since $\mfrak$ was assumed to be nonzero.
+\end{proof}
+
+As a corollary, we now know that $\Ocal_{K}$ is Dedekind whenever $K$ is a number field.
+A similar argument can be used to show the following theorem.
+\begin{theorem}
+  Let $k$ be a field, and $L$ a finite separable extension of $k(t)$.
+  Then the integral closure of $k[t]$ in $L$ is a Dedekind domain.
+\end{theorem}
+\begin{proof}
+  See homework 1.
+\end{proof}
+
+We wish to stress that the discussion above lends itself to computations.
+In this case, suppose that $B = A[\alpha]$ where $\alpha$ is a primitive element of $L|K$, and let $f$ be the minimal polynomial of $\alpha$ over $K$.
+Let $\mfrak$ be a maximal ideal of $A$, and write $k$ for the quotient $A/\mfrak$.
+Write $\bar f$ for the image of $f$ in $k[X]$.
+
+\begin{theorem}
+  There is a bijection betweent the prime (hence maximal) ideals $\Mfrak$ of $B$ lying above $\mfrak$ and the irreducible factors of $\bar f$.
+\end{theorem}
+\begin{proof}
+  Exercise.
+\end{proof}
+
+In general, we will not be able to find an $\alpha$ such that $B = A[\alpha]$, but this can always be done locally (i.e.~after a suitable localization).
+Similarly, we can get a similar result for prime ideals by localizing to reduce to the maximal case.
+
+Let's now turn to the issue of factorization of ideals in a Dedekind domain.
+To hint at the main case of interest which is the ring of integers of a number field, we switch notations and use $\Ocal$ to denote some Dedekind domain with fraction field $K$.
+
+Given two ideals $\afrak$ and $\bfrak$ in any ring, we write $\afrak | \bfrak$ provided that $\bfrak \subset \afrak$.
+We also write $\afrak \cdot \bfrak$ for the smallest ideal containing $a \cdot b$ for any $a \in A$ and $b \in B$.
+Explicitly, elements of $\afrak \cdot \bfrak$ are finite sums of the form
+\[ \sum_{i} a_{i} b_{i}, \ \ a_{i} \in \afrak, \ \ b_{i} \in \bfrak. \]
+
+Our goal is now to prove the following theorem.
+\begin{theorem}
+  Every nonzero ideal $\afrak$ of $\Ocal$ admits an essentially unique factorization
+  \[ \afrak = \pfrak_{1} \cdots \pfrak_{k}, \]
+  where $\pfrak_{i}$ are nonzero prime ideals.
+\end{theorem}
+
+We will actually prove more.
+\begin{definition}
+  A \emph{fractional ideal} of $K$ is a finitely-generated nonzero $\Ocal$-submodule of $K$.
+\end{definition}
+
+\begin{theorem}
+  Every fractional ideal $\afrak$ admits a unique representation of the form
+  \[ \afrak = \prod_{\pfrak} \pfrak^{v_{\pfrak}}, \]
+  where $v_{\pfrak} \in \Zbb$, $\pfrak$ varies over the nonzero primes of $\Ocal$, and all but finitely many of the $v_{\pfrak}$ are zero.
+\end{theorem}
+
+Thus, the collection $J_{K}$ of all fractional ideals is the free abelian group on the nonzero prime ideals of $\Ocal$.
+We will also see that a fractional ideal $\afrak$ is integral (i.e.~it is an ideal of $\Ocal$) if and only if all of the $v_{\pfrak}$ are nonnegative.
+The unit of $J_{K}$ is the unit ideal $(1)$ and the inverse $\afrak^{-1}$ is given by
+\[ \afrak^{-1} = \{x \in K \ | \ x \cdot \afrak \subset \Ocal \}. \]
+
+Any element $x$ of $K^{\times}$ defines a \emph{principal} fractional ideal $(x)$, and the map
+\[ K^{\times} \to J_{K}, \ \ x \mapsto (x) \]
+is a homomorphism of abelian groups whose kernel is $\Ocal^{\times}$.
+The group of principal fractional ideals is denoted by $P_{K}$.
+\begin{definition}
+  The cokernel of $K^{\times} \to J_{K}$ is called the \emph{class group of $\Ocal$}, and is denoted $Cl_{K}$.
+\end{definition}
+In particular, we have an exact sequence of the form
+\[ 1 \to \Ocal^{\times} \to K^{\times} \to J_{K} \to Cl_{K} \to 1. \]
+
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "main"

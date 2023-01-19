@@ -98,7 +98,7 @@ We say that $\Pfrak$ \emph{lies over} $\pfrak$, and write $\Pfrak | \pfrak$, pro
 In this case, we have an inclusion
 \[ A/\pfrak \to B/\Pfrak. \]
 
-\begin{proposition}
+\begin{proposition}\label{proposition:exists_prime_above}
   Let $\pfrak$ be a prime of $A$.
   Then $\pfrak \cdot B \neq B$ and there exists a prime ideal $\Pfrak$ of $B$ lying above $\pfrak$.
 \end{proposition}
@@ -115,17 +115,6 @@ In this case, we have an inclusion
   Now, choose some maximal ideal $\Mfrak$ of $B_{\pfrak}$ containing $\pfrak \cdot B_{\pfrak}$.
   Since $\pfrak$ is maximal, we have $\pfrak = \Mfrak \cap A$.
   Take $\Pfrak = \Mfrak \cap B$ to find $\Pfrak$ such that $\Pfrak \cap A = \pfrak$.
-\end{proof}
-
-\begin{proposition}
-  Let $\Pfrak$ be a prime of $B$ lying above a prime $\pfrak$ of $A$.
-  Then $\Pfrak$ is maximal if and only if $\pfrak$ is maximal.
-\end{proposition}
-\begin{proof}
-  Assume $\pfrak$ is maximal.
-  Then $A/\pfrak$ is a field while every element of $B/\Pfrak$ is algebraic over $A/\pfrak$ so that $B/\Pfrak$ is a field, hence $\Pfrak$ is maximal.
-  Conversely, suppose $\Pfrak$ is maximal.
-  If $A/\pfrak$ is not a field, then it has a nonzero maximal ideal $\mfrak$, and by the above there exists a maximal ideal $\Mfrak$ of $B/\Pfrak$ above $\mfrak$, which is impossible.
 \end{proof}
 
 %%% Local Variables:
