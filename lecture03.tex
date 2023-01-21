@@ -41,7 +41,35 @@ If $L|K$ is separable, then $L_{s} = L$, $[L:K]_{i} = 1$ hence $[L:K] = [L:K]_{s
   Thus $\Trace_{L|K}(x) = \sum_{\sigma} \sigma x$ and $\Norm_{L|K}(x) = \prod_{\sigma} \sigma x$, as $\sigma \in \Hom_{K}(L,\bar K)$ varies.
 \end{proposition}
 \begin{proof}
-  \todo{Split up $L|K$ into $L|K(x)|K$, etc.}{Add the proof discussed in class.}
+  Consider the tower of separable extensions $L|K(x)|K$. Suppose the minimal polynomial of $x$ is
+  \[p(X) = X^m + c_1X^{m-1} + \cdots + c_m.\]
+  Then $[K(x): K] = m$ and $\{1, x, \cdots, x^{m-1}\}$ is a basis of $K(x)$ as a $K$-vector space.
+  Let $\{\alpha_1, \cdots, \alpha_n\}$ be a basis of $L$ as a $K(x)$-vector space.
+  By the tower theorem, $\{\alpha_{1}, \alpha_{1} x, \cdots, \alpha_{1} x^{m-1} , \cdots , \alpha_{n}, \alpha_{n} x, \cdots, \alpha_{n} x^{m-1}\}$ is a basis of $L$ as a $K$-vector space.
+  The matrix of $M_x$ under this basis is
+  \begin{equation*}
+    \begin{bmatrix}
+      D_1 & & \\
+      & \ddots & \\
+      & & D_n
+    \end{bmatrix}, \text{ where } D_i = 
+    \begin{bmatrix}
+      0 & 1 & 0 &\cdots& 0 \\
+      0 & 0 & 1 &\cdots& 0 \\
+       &  & \vdots & & \\
+      0 & 0 & 0 &\cdots& 1 \\
+      -c_m & -c_{m-1} & \cdots & -c_2 &-c_1
+    \end{bmatrix}, \forall i.
+  \end{equation*}
+  Every $D_i$ is the companion matrix of $p(X)$ and has the characteristic polynomial
+  \[\det(X\cdot \operatorname{id} - D) = p(X) = X^m + c_1X^{m-1} + \cdots + c_m,\]
+  hence the characteristic polynomial of $M_{x}$ is $p(X)^n$.
+  
+  Next, recall that every $K$-embedding of $K(x)$ into $\bar K$ extends to exactly $[L:K(x)] = n$ embeddings of $L$ into $\bar K$.
+  Suppose $x_1, \cdots, x_m$ are distinct conjugates of $x$, i.e., the roots of $p(X)$ in $\bar K$.
+  Then
+  \[\prod_{\sigma\in \Hom_{K}(L,\bar K)} (X - \sigma x) = \prod_{i=1}^m(X - x_i)^n = p(X)^n.\]
+  The second assertion follows immediately.
 \end{proof}
 
 \begin{lemma}
