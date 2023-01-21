@@ -7,7 +7,7 @@
 
 \begin{definition}
   Let $K$ be a number field.
-  The \emph{ring of integers of $K$}, denoted $\Ocal_{K}$, is the integral closure of $\Zbb$ in $\Ocal_{K}$.
+  The \emph{ring of integers of $K$}, denoted $\Ocal_{K}$, is the integral closure of $\Zbb$ in $K$.
 \end{definition}
 
 Any element of $\Ocal_{K}$ can be written as a product of irreducible elements.
@@ -25,7 +25,7 @@ Let $x \in L$ be given, and write $M_{x}$ for the $K$-linear map $L \to L$ given
   The map $\Trace_{L|K}$ is additive and the map $\Norm_{L|K}$ is multiplicative.
 \end{lemma}
 \begin{proof}
-  \todo{Clear!}{Add proof.}
+  For any $x_1, x_2\in L$, we have $\Trace_{L|K}(x_1 + x_2) = \Trace(M_{x_1 + x_2}) = \Trace(M_{x_1} + M_{x_2}) = \Trace(M_{x_1}) + \Trace(M_{x_2}) = \Trace_{L|K}(x_1) + \Trace_{L|K}(x_2)$ and $\Norm_{L|K}(x_1x_2) = \det(M_{x_1x_2}) = \det(M_{x_1} M_{x_2}) = \det(M_{x_1})\cdot \det(M_{x_2}) = \Norm_{L|K}(x_1)\cdot \Norm_{L|K}(x_2)$.
 \end{proof}
 
 The trace and norm can be described using Galois theory.
