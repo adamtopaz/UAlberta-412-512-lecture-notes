@@ -15,8 +15,8 @@ Recall that a ring $A$ is called \emph{Noetherian} if it satisfies one of the fo
   \item The ascending chain condition is satisfied for ideals.
   \item Every ideal is finitely-generated.
   \item Every nonempty set of ideals has a maximal element.
-  \item Every submodule of a finitely-generated module is finitely-generated.
-  \item Submodules of every finitely-generated module satisfy the ascending chain condition.
+  \item Every submodule of a finitely-generated $A$-module is finitely-generated.
+  \item Submodules of every finitely-generated $A$-module satisfy the ascending chain condition.
 \end{enumerate}
 
 We will need to revisit the trace.
@@ -62,12 +62,12 @@ To see this, use \todo{Vandermonde matrices.}{Add details.}
   Let $m_{1},\ldots,m_{k} \in M$ be generators over $B$.
   We can find $a \in A$ such that $a \cdot m_{i} \in B$, hence
   \[ a \cdot d \cdot M \subset d \cdot B \subset A x_{1} + \cdots + A x_{n} =: N. \]
-  Since generators of $B$ over $A$ also generate $K$, we see that $B$ has rank $[L:K]$, and the first inclusion also shows that $M$ has rank $[L:K]$.
+  Since generators of $B$ over $A$ also generate $L$ over $K$, we see that $B$ has rank $[L:K]$, and the first inclusion also shows that $M$ has rank $[L:K]$.
   The structure theorem for modules over PIDs gives the freeness assertion.
 \end{proof}
 
 This shows that $B$ is Noetherian if $A$ is a PID.
-In fact, a \todo{similar assertion holds only under the assumption that $A$ is Noetherian.}{Add proof from Lang.} but we will not need it.
+In fact, a \todo{similar assertion holds only under the assumption that $A$ is Noetherian.}{Add proof from Lang.} But we will not need it.
 Now let's turn to studying prime ideals.
 It will be useful to use \emph{localizations} in this context, which we now review.
 
@@ -108,7 +108,7 @@ In this case, we have an inclusion
 
   If $\pfrak B = B$, then $1$ can be expressed as a finite linear combination of the form
   \[ 1 = a_{1} b_{1} + \cdots + a_{n} b_{n}, \]
-  with $a_{i} \in \pfrak$ and $b_{i} \in $.
+  with $a_{i} \in \pfrak$ and $b_{i} \in B$.
   Write $B_{0} = A[b_{1},\ldots,b_{n}]$ hence $\pfrak B_{0} = B_{0}$ and $B_{0}$ is finite over $A$.
   By \todo{\emph{Nakayama's Lemma}}{Add statement and proof.} we have $B_{0} = 0$, which is impossible.
 
