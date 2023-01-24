@@ -1,0 +1,130 @@
+\section{Lecture 6}
+
+The goal of this lecture is to prove Theorems~\ref{theorem:ideal_factorization} and~\ref{theorem:fractional_ideal_factorization}.
+Throughout, $\Ocal$ will denote a Dedekind domain with fraction field $K$.
+We start with some preliminary lemmas.
+
+\begin{lemma}
+  Let $\afrak$ be a nonzero ideal of $\Ocal$.
+  Then there exist nonzero prime ideals $\pfrak_{1},\ldots,\pfrak_{k}$ of $\Ocal$ such that
+  \[ \pfrak_{1} \cdots \pfrak_{k} \subset \afrak. \]
+\end{lemma}
+\begin{proof}
+  Suppose not.
+  Since $\Ocal$ is Noetherian, there exists a maximal witness $\afrak$ contradicting the assertion.
+  Note that $\afrak$ is not prime, and thus we may find $x,y \in \Ocal$ such that $x \cdot y \in \afrak$ but $x,y \notin \afrak$.
+  The ideals $\afrak + (x)$ and $\afrak + (y)$ are strictly larger than $\afrak$, so the maximality of $\afrak$ ensures that we can find a product of primes $\pfrak_{1} \cdots \pfrak_{k}$ contained in $\afrak + (x)$ and a product of primes $\qfrak_{1} \cdots \qfrak_{s}$ contained in $\afrak + (y)$.
+  The product $\pfrak_{1} \cdots \pfrak_{k} \cdot \qfrak_{1} \cdots \qfrak_{s}$ is then \todo{contained}{Add details.} in $\afrak$.
+\end{proof}
+
+\begin{definition}
+  For a fractional ideal $\afrak$ of $\Ocal$, we write
+  \[ \afrak^{-1} := \{x \in K \ | \ x \cdot \afrak \subset \Ocal\}. \]
+  \todo{This is again a fractional ideal.}{Why?}
+\end{definition}
+
+\begin{lemma}
+  Let $\pfrak$ be a prime ideal of $\Ocal$.
+  then $\afrak \cdot \pfrak^{-1} \neq \afrak$ for every nonzero ideal $\afrak$ of $\Ocal$.
+\end{lemma}
+\begin{proof}
+  We \todo{may}{Why?} assume that $\pfrak$ is nonzero.
+  Let $a \in \pfrak$ be a nonzero element.
+  Find a product of nonzero primes $\pfrak_{1} \cdots \pfrak_{k}$ contained in $(a)$, with $k$ minimal.
+  \todo{One of the $\pfrak_{i}$ is contained in $\pfrak$, since $\pfrak$ is prime.}{Exercise.}
+  Rearranging, we can assume $i = 1$, and thus $\pfrak = \pfrak_{1}$ since $\pfrak_{1}$ is maximal.
+  Since $k$ is minimal, we can find $b \in \pfrak_{2} \cdots \pfrak_{k}$ with $b \notin (a)$, hence $a^{-1}b \notin \Ocal$.
+  But we do have $b \cdot \pfrak \subset (a)$ hence $a^{-1} b \pfrak \subset \Ocal$ hence $a^{-1}b \in \pfrak^{-1}$.
+  It follows that $\pfrak^{-1} \neq \Ocal$.
+
+  Let $\afrak$ be an ideal, and $x_{1},\ldots,x_{n}$ generators of $\afrak$.
+  Assumet hat $\afrak \pfrak^{-1} = \afrak$.
+  Then for every $x \in \pfrak^{-1}$, we have
+  \[ x x_{i} = \sum_{j} a_{ij} x_{j}, \ \ a_{ij} \in \Ocal. \]
+  Consider the matrix $M := xI - (a_{ij})$ and observe that
+  \[ M (x_{1},\ldots,x_{n})^{t} = 0.  \]
+  Thus $\det(M)$ annihilates $\afrak$, and since $\afrak$ is nonzero, we have $\det(M) = 0$.
+  Thus $x$ is integral over $\Ocal$, hence $x \in \Ocal$.
+  It follows that $\pfrak^{-1} = \Ocal$, contradicting what we did above.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{theorem:ideal_factorization}]
+  First we show the existence of a factorization.
+  Suppose that $\afrak$ is a maximal counterexample to this existence assertion.
+  This $\afrak$ is not the unit ideal, since the unit ideal is the empty product of primes.
+  Thus $\afrak$ is contained in a maximal ideal, say $\pfrak$.
+  The inclusion $\Ocal \subset \pfrak^{-1}$ gives
+  \[ \afrak \subset \afrak \pfrak^{-1} \subset \pfrak \pfrak^{-1} \subset \Ocal. \]
+  By the above, we have $\afrak \neq \afrak \pfrak^{-1}$, and $\pfrak \neq \pfrak \pfrak^{-1} \subset \Ocal$.
+  Since $\pfrak$ is maximal, we find $\pfrak \pfrak^{-1} = \Ocal$.
+
+  The maximality of $\afrak$ shows that the \todo{ideal}{Why is this an ideal?} $\afrak \pfrak^{-1}$ admits a factorization as $\pfrak_{1} \cdots \pfrak_{k}$.
+  Multiplying by $\pfrak$ gives
+  \[ \afrak = \pfrak \pfrak_{1} \cdots \pfrak_{k}, \]
+  which contradicts the assumption on $\afrak$.
+
+  Now for uniqueness.
+  Suppose that
+  \[ \afrak = \pfrak_{1} \cdots \pfrak_{k} = \qfrak_{1} \cdots \qfrak_{s}. \]
+  Then $\pfrak_{1}$ divides one of the $\qfrak_{i}$, say $\qfrak_{1}$.
+  Since both are maximal, they are equal.
+  Multiply by the inverse of $\pfrak_{1} = \qfrak_{1}$ to decrease $k$ and $s$ by $1$, and repeat.
+\end{proof}
+
+Next, we start our discussion for Theorem~\ref{theorem:fractional_ideal_factorization}.
+
+\begin{proposition}
+  The set $J_{K} = J_{K}(\Ocal)$ of fractional $\Ocal$ ideals is an abelian group with respect to the product of fractional ideals and inverses as defined above.
+\end{proposition}
+\begin{proof}
+  The operation is easily seen to be associative, commutative, and $(1)$ acts as a unit.
+
+  If $\afrak$ is an integral ideal, we have
+  \[ \afrak = \pfrak_{1} \cdots \pfrak_{k} \]
+  where $\pfrak_{i}$ are primes, and we saw before that $\pfrak_{i} \cdot \pfrak_{i}^{-1} = \Ocal = (1)$.
+  It follows that
+  \[ \bfrak = \pfrak_{1}^{-1} \cdots \pfrak_{k}^{-1} \]
+  is an inverse of $\afrak$.
+  Noting that $\bfrak \afrak = \Ocal$ implies that $\bfrak \subset \afrak^{-1}$.
+  Also, if $x \in \afrak^{-1}$, then $x \afrak \bfrak \subset \bfrak$ so $x \in \bfrak$, hence $\bfrak = \afrak^{-1}$.
+
+  Finally, if $\afrak$ is a fractional ideal, we can find some $c \in \Ocal$ such that $c \cdot \afrak \subset \Ocal$ is integral, hence $(c \afrak)^{-1} = c^{-1} \afrak^{-1}$ is the inverse of $c \afrak$, hence $\afrak \afrak^{-1} = \Ocal$, as requried.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{theorem:fractional_ideal_factorization}]
+  We can write any fractional ideal as a quotient $\afrak / \bfrak$ of two integral ideals (in fact, we can arrange for $\bfrak$ to be principal!).
+  The claim thus reduces to that of Theorem~\ref{theorem:ideal_factorization}.
+\end{proof}
+
+Let us now discuss the behaviour of these groups with respect to localization.
+
+\begin{proposition}
+  Let $S$ be a multiplicative subset of $\Ocal$, not containing zero.
+  The map $J_{K}(\Ocal) \to \J_{K}(S^{-1}\Ocal)$ given by
+  \[ \afrak \mapsto S^{-1} \afrak \]
+  is a surjective morphism of groups whose kernel is the collection of fractional ideals which meet $S$.
+\end{proposition}
+\begin{proof}
+  If $\pfrak$ is a prime which meets $S$, then $S^{-1}\pfrak = (1)$, while the product is compatible with localization:
+  \[ S^{-1}(\afrak \bfrak) = S^{-1}\afrak \cdot S^{-1} \bfrak. \]
+  If $S^{-1}\afrak = (1)$, then $1 = a/s$ for some $a \in \afrak$ and $s \in S$.
+  Thus $s = a$ hence $\afrak$ meets $S$.
+
+  For surjectivity, simply write a fractional ideal as a quotient of two integral ideals to reduce to the integral case, and use the fact that the inflation of the contraction of an ideal is the ideal itself.
+\end{proof}
+
+\begin{proposition}[Killing the class group]
+  Suppose that $Cl_{K}(\Ocal)$ is finite, and let $\afrak_{1},\ldots,\afrak_{k}$ be representatives fractinoal ideals of the ideal classes.
+  Suppose that $S$ is a multiplicative set not containing zero.
+  Assume that there exists some $b \in S$ such that $b \in \cap_{i} \afrak_{i}$.
+  Then the class group of $S^{-1}\Ocal$ is trivial, hence $S^{-1}\Ocal$ is a PID.
+\end{proposition}
+\begin{proof}
+  \todo{The vanishing of the class group follows from the previous proposition.}{Add proof.}
+  Also, if the class group of $\Ocal$ is trivial, then every (integral) ideal is principal, and since $\Ocal$ is a domain, it follows that $\Ocal$ is a PID.
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
