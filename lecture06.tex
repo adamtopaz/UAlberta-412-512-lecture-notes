@@ -111,18 +111,15 @@ Let us now discuss the behaviour of these groups with respect to localization.
 
   Now concerning the kernel, recall that the primes of $S^{-1}\Ocal$ correspond, via the map in question, to primes of $\Ocal$ which do not meet $S$.
   Also, if $\pfrak$ is a prime which does meet $S$, then its inflation in $S^{-1}\Ocal$ is the unit ideal, and is thus contained in the kernel of the map above.
-  The assertion concerning the kernel follows from this, along with Theorem~\ref{theorem:fractional_ideal_factorization}.
-  Indeed, if $\afrak$ is any fractional ideal contained in the kernel, then we may write
-  \[ \afrak = \afrak_{1} \cdot \afrak_{2} \]
-  where the support of $\afrak_{1}$ involves only primes which do not meet $S$, and $\afrak_{2}$ only primes which meet $S$.
-  Then $\afrak_{2}$ maps trivially in $J_{K}(S^{-1}\Ocal)$.
-  Thus $\afrak$ is in the kernel if and only if $\afrak_{1}$ is in the kernel.
-  We have thus reduced to the case where the support of $\afrak$ only contained primes which do not meet $S$.
-  If such an $\afrak$ is contained in the kernel, and
-  \[ \afrak = \prod_{\pfrak} \pfrak^{v_{\pfrak}} \]
-  is its factorization (so $v_{\pfrak} \neq 0$ only for $\pfrak$ such that $\pfrak \cap S = \empty$), then the factorization of $S^{-1}\afrak$ is
-  \[ \prod_{\pfrak} S^{-1}\pfrak^{v_{\pfrak}}.\]
-  The uniqueness of the factorizations shows $v_{\pfrak} = 0$ for all such $\pfrak$, so that $\afrak = (1)$.
+  The assertion concerning the kernel follows from this, along with Theorem~\ref{theorem:fractional_ideal_factorization}, as follows.
+  Suppose that $\afrak$ is in the kernel.
+  Write
+  \[ \afrak = \prod_{\pfrak} \pfrak^{v_{\pfrak}}. \]
+  Then $S^{-1}\afrak$ has a factorization
+  \[ S^{-1}\afrak = \prod_{\pfrak, \ \pfrak \cap S = \varnothing} S^{-1}\pfrak^{v_{\pfrak}}. \]
+  This is the unit ideal trivial by assumption, and uniqueness of factorizations shows that $v_{\pfrak} = 0$ for all $\pfrak$ such that $\pfrak \cap S = \varnothing$.
+  This shows that the support of $\afrak$ (i.e.~the primes $\pfrak$ for which $v_{\pfrak} \neq 0$), is concentraded in the set of primes which meet $S$.
+  The claim follows.
 \end{proof}
 
 \begin{proposition}[Killing the class group]
