@@ -1,0 +1,141 @@
+\section{Lecture 7}
+
+Our goal for the next few lectures is to discuss the finiteness of class groups of number fields, via Minkowski theory.
+
+\begin{definition}
+  Let $V$ be a finite-dimensional real vector space.
+  A \emph{lattice} $L$ in $V$ is a subgroup of the form
+  \[ \Zbb \cdot v_{1} + \cdots + \Zbb \cdot v_{n}, \]
+  where $v_{1},\ldots,v_{n}$ are linearly independent.
+\end{definition}
+
+The span, say $W$, of $L$ is the span of $v_{1},\ldots,v_{n}$, and so a fundamental system of representatives for $W/L$ is given by
+\[ \{ x_{1}v_{1} + \cdots + x_{n} v_{n} \ | \ x_{i} \in [0,1)\}. \]
+We call this set \emph{the fundamental mesh} of $L$.
+If $W = V$, then $L$ is called a \emph{complete lattice}.
+
+\begin{proposition}
+  A subgroup $L$ of $V$ is a lattice if and only if it is discrete.
+\end{proposition}
+\begin{proof}
+  If $L$ is a lattice, then we leave it as an exercise to see that $L$ is discrete.
+
+  Conversely, assume that $L$ is discrete.
+  Let $W$ denote the span of $L$, and choose a basis $v_{1},\ldots,v_{n}$ of $W$ which is contained in $L$.
+  Let $L_{0}$ be the $\Zbb$-span of $v_{1},\ldots,v_{n}$, so that $L_{0} \subset L$.
+
+  It turns out that $L/L_{0}$ is finite.
+  Indeed, let $S \subset L$ be a system of representatives of $L/L_{0}$.
+  Consider the fundamental mesh $F_{0}$ associated to $v_{1},\ldots,v_{n}$.
+  For each $t \in S$, we can thus write $t = x + y$, where $x \in F_{0}$ and $y \in L_{0}$.
+  The elements $x \in F_{0}$ are contained in $F_{0}$ and in $L$.
+  Since $L$ is discrete and $F_{0}$ is bounded, there are only finitely many such $x$.
+
+  From this it follows that
+  \[ L \subset \frac{1}{[L:L_{0}]} \cdot L_{0}, \]
+  and since $L_{0}$ is of finite rank free as a $\Zbb$-module, the same holds for $L$.
+\end{proof}
+
+\begin{lemma}
+  A lattice $L$ in $V$ is complete if and only if there exists a bounded subset $M$ such that $M + L = V$.
+\end{lemma}
+\begin{proof}
+  The forward direction is clear.
+  Conversely, suppose we have such an $M$.
+  Write $W$ for the span of $L$, and let $v \in V$ be given.
+  Consider the multiples $n \cdot v$ for $n \in \Nbb$.
+  Each one can be expressed as
+  \[ n \cdot v = l_{n} + m_{n}, \ \ l_{n} \in L, \ \ m_{n} \in M. \]
+  \todo{Since $M$ is bounded, the $1/n \cdot m_{n}$ converge to zero.}{Why?}
+  Now we can write $v = 1/n \cdot l_{n} + 1/n \cdot m_{n}$, and take the limit in $n$ (along with the fact that $W$ is closed in $V$) to see that indeed $v \in W$.
+\end{proof}
+
+We will be particularly interested in the \emph{covolume} of a complete lattice.
+In this case, we are considering real vector spaces $V$ endowed with an inner product $(-,-)$.
+This allows us to discuss \emph{volumes} in $V$.
+Indeed, if $e_{1},\ldots,e_{n}$ is an orthonormal basis, then the cube
+\[ [0,1] \cdot e_{1} + \cdots + [0,1] \cdot e_{n} \]
+has volume $1$.
+More generally, if $v_{1},\ldots,v_{n}$ are a basis, then the cube spanned by the $v$s has volume $|\det M|$ where $M$ is the change-of-basis matrix from $e_{1},\ldots,e_{n}$ to $v_{1},\ldots,v_{n}$.
+
+\begin{lemma}
+  Let $L$ be a complete lattice spanned by $v_{1},\ldots,v_{n}$ in an inner product space $V$.
+  Then the volume of the fundamental mesh of $L$ does not depend on the choice of $v_{1},\ldots,v_{n}$.
+  We call this volume the \emph{covolume of $L$}.
+\end{lemma}
+\begin{proof}
+  \todo{If $w_{1},\ldots,w_{n}$ is another basis of $L$, then the change of basis matrix from $v$ to $w$ has determinant $\pm 1$.}{Explain further.}
+\end{proof}
+
+Let us now come back to number theory.
+Let $K$ be a number field with ring of integers $\Ocal_{K}$.
+Consider the base-change
+\[ K_{\Cbb} := K \otimes_{\Qbb} \Cbb. \]
+Explicitly, suppose that $n = [K:\Qbb]$, and $\tau_{1},\ldots,\tau_{n}$ are the \todo{$n$}{Explain why there are $n$ such embeddings.} embeddings of $K$ into $\Cbb$.
+Then one has
+\[ K_{\Cbb} = \prod_{i = 1}^{n} \Cbb \]
+and the canonical map $K \to K_{\Cbb}$ is induced by the $n$ embeddings $\tau_{1},\ldots,\tau_{n}$, so that for $x \in K$, its image in $K_{\Cbb} = \prod_{i} \Cbb$ is $(\tau_{i}(x))_{i}$.
+Endow $K_{\Cbb} = \Cbb^{n}$ with the standard (Hermitian) inner product.
+
+The Galois group $\Gal(\Cbb|\Rbb)$ acts on $K_{\Cbb}$ via \todo{the second component.}{Explain how this action behaves when we identify $K_{\Cbb}$ with $\Cbb^{n}$ as above.}
+Complex conjugation generates this Galois group, so the invariants,
+\[ K_{\Rbb} := K_{\Cbb}^{\Gal(\Cbb|\Rbb)} \]
+are exactly $K_{\Cbb}^{\sigma}$, where $\sigma$ is complex conjugation.
+Clearly, we have $K_{\Rbb} = K \otimes_{\Qbb} \Rbb$, and the map $K \to K_{\Cbb}$ factors through $K_{\Rbb}$.
+
+We can describe $K_{\Rbb}$ explicitly as follows.
+Let $\rho_{1},\ldots,\rho_{r}$ denote the \emph{real} embeddings of $K$, and $\sigma_{1},\bar\sigma_{1},\ldots,\sigma_{s},\bar\sigma_{s}$ the complex-conjugate pairs of the strictly complex embeddings of $K$.
+We thus have $n = r + 2s$.
+We then have
+\[ K_{\Rbb} = \prod_{i = 1}^{r} \Rbb \times \prod_{i = 1}^{s} \Cbb \]
+and the map $K \to K_{\Rbb}$ acts via $(\rho_{1},\ldots,\rho_{r},\sigma_{1},\ldots,\sigma_{s})$.
+
+Next, observe that the inner product on $K_{\Cbb}$ induces an inner product on $K_{\Rbb}$.
+We describe it explicitly as follows.
+\begin{lemma}
+  Identify $K_{\Rbb}$ with $\Rbb^{r + 2s}$ as real vector spaces.
+  The inner product on $K_{\Rbb}$ corresponds to
+  \[ ((x_{1},\ldots,x_{r},x'_{1},\ldots,x'_{2s}),(y_{1},\ldots,y_{r},y'_{1},\ldots,y'_{2s})) = \sum_{i = 1}^{r} x_{i} y_{i} + 2 \cdot \sum_{j = 1}^{2s} x'_{j} y'_{i}. \]
+\end{lemma}
+\begin{proof}
+  \todo{Omitted.}{Add proof from class.}
+\end{proof}
+
+The difference between the inner product on $K_{\Rbb}$ and the standard inner product on $\Rbb^{r + 2s}$ is thus a factor of $2^{s}$.
+We will have to keep this factor in mind later on.
+
+Let us recall some facts about discriminants.
+First, recall that any nonzero (fractional) ideal of $\Ocal_{K}$ is a free $\Zbb$-module of rank $n = [K:\Qbb]$.
+If $x_{1},\ldots,x_{n}$ is a basis, then the discriminant of this basis is defined as
+\[ \det((\tau_{i}x_{j})_{i,j})^{2}. \]
+If $x'_{1},\ldots,x'_{n}$ is another basis, then the change of basis matrix from $x$ to $x'$, say $M$, has determinant $\pm 1$, while
+\[ d(x'_{1},\ldots,x'_{n}) = \det(M)^{2} d(x_{1},\ldots,x_{n}). \]
+It follows that this discriminant does not depend on the choice of basis, and so we simply write $d(\afrak)$ when $\afrak$ is a fractional ideal.
+We also write $d_{K} = d(\Ocal_{K})$.
+
+The relationship between these discriminants is summarized as follows.
+\begin{lemma}
+  Suppose that $\afrak \subset \bfrak$ are fractional ideals.
+  then $[\bfrak:\afrak]$ is finite and one has $d(\afrak) = [\bfrak : \afrak]^{2} \cdot d(\bfrak)$.
+\end{lemma}
+\begin{proof}
+  Exercise.
+\end{proof}
+
+\begin{proposition}
+  Let $\afrak$ be a nonzero ideal of $\Ocal_{K}$, and let $L$ denote its image in $K_{\Rbb}$.
+  Then $L$ is a complete lattice whose covolume is $\sqrt{|d_{K}|} \cdot [\Ocal_{K}:\afrak]$.
+\end{proposition}
+\begin{proof}
+  Let $x_{1},\ldots,x_{n}$ be a $\Zbb$-basis for $\afrak$, hence $L$ is spanned by the images of $x_{1},\ldots,x_{n}$ in $K_{\Rbb}$.
+  We have
+  \[ d(\afrak) = [\Ocal_{K}:\afrak]^{2} d_{K}. \]
+  Let $\tau_{1},\ldots,\tau_{n}$ denote all the (complex) embeddings, and put $M = (\tau_{i} x_{j})_{i,j}$.
+  The covolume of $L$ is thus
+  \[ \sqrt{|d_{K}|} \cdot [\Ocal_{K}:\afrak] = |\det(A)| = |\det(A \bar A^{t})|^{1/2} = |\det((\tau_{i}x_{j},\tau_{i}x_{k})_{j,j}))|^{1/2}. \]
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
