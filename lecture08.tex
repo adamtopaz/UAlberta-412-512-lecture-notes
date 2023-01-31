@@ -1,0 +1,147 @@
+\section{Lecture 8}
+
+Our primary goal for this lecture is to discuss the proof of the following theorem, and its applciations to finiteness of the class group.
+Throughout today's lecture, $K$ will denote a number field.
+Let $\tau_{1},\ldots,\tau_{n}$ denote the collection of complex embeddings of $K$.
+As before, $\rho_{1},\ldots,\rho_{r}$ will be the real embeddings and $\sigma_{1},\bar\sigma_{1},\ldots,\sigma_{s},\bar\sigma_{s}$ the (conjugate pairs) of complex embeddings, so that $n = r + 2s$.
+
+\begin{definition}
+  Let $\afrak$ be an (integral) ideal of $\Ocal_{K}$.
+  Then the \emph{absolute norm} of $\afrak$, denoted $\Norm(\afrak)$, is the index (as abelian groups) $[\Ocal_{K}:\afrak]$.
+\end{definition}
+
+\begin{theorem}
+  Let $\afrak$ be a nonzero ideal of $\Ocal_{K}$.
+  For each complex embedding $\tau$, let $c_{\tau}$ be a positive real, and assume that $c_{\tau} = c_{\bar\tau}$ for all $\tau$.
+  Assume also that
+  \[ \prod_{\tau} c_{\tau} > \left(\frac{2}{\pi}\right)^{s} \cdot \sqrt{|d_{K}|} \cdot \Norm(\afrak). \]
+  Then there exists a nonzero element $a \in \afrak$ such that $|\tau a|<c_{\tau}$ for all complex embeddings $\tau$.
+\end{theorem}
+\begin{proof}
+  Consider the set
+  \[ S := \{(z_{\tau}) \in K_{\Rbb} \ | \ |z_{\tau}| < c_{\tau} \}. \]
+  Here the $z_{\tau}$ are the coordinates of $K_{\Rbb}$ via the embedding
+  \[ K_{\Rbb} \subset K_{\Cbb} = \prod_{\tau} \Cbb. \]
+  This set is symmetric about the origin, meaning that $-x \in S$ for all $x \in S$, and \emph{convex}.
+
+  Let's compute its volume.
+  Identify
+  \[ K_{\Rbb} \cong \prod_{\tau} \Rbb \]
+  as in the last lecture, \todo{so that $z_{\rho}$ maps to itself while $z_{\sigma}$ maps to its real and imaginary parts.}{Add details.}
+
+  We can compute the usual volume in $\prod_{\tau}\Rbb$ fairly easily.
+  Namely, its image in $\prod_{\tau} \Rbb$ is the set whose real coordinates satisfy $|x_{\rho}| < c_{\rho}$ and whose complex coordinates satisfy $x_{\sigma}^{2} + x_{\bar\sigma}^{2} < c_{\sigma}^{2}$.
+  The usual volume is thus
+  \[ \prod_{i = 1}^{r} (2 c_{\rho_{i}}) \cdot \prod_{i = 1}^{s} (\pi \cdot c_{\sigma}^{2}) = 2^{r} \pi^{s} \prod_{\tau} c_{\tau}. \]
+  Taking into account the factor of $2^{s}$ discussed in the last lecture, the volume of $S$ in $K_{\Rbb}$ is precisely
+  \[ 2^{r+s} \pi^{s} \prod_{\tau} c_{\tau}. \]
+  By assumption along with Proposition~\ref{proposition:covolume_ideal_computation}, we have
+  \[ vol(S) = 2^{r+s} \pi^{s} \prod_{\tau} c_{\tau} > 2^{r+s} \pi^{s} \left( \frac{2}{\pi} \right)^{s} \sqrt{|d_{K}|} \cdot N(\afrak) = 2^{n} covol(\afrak), \]
+  where the covolume of $\afrak$ is computed via the embedding $K \to K_{\Rbb}$ (the image of $\afrak$ with respect to this map is a complete lattice).
+  Minkowski's lattice point theorem (see below) gives the result.
+\end{proof}
+
+\begin{theorem}[Minkowski's lattice point theorem]
+  Let $\Lambda$ be complete lattice in a finite-dimensional real inner product space $V$.
+  Let $S$ be a subset of $V$ which is symmetric about the origin and which is convex.
+  Assume that $vol(S) > 2^{n} covol(\Lambda)$.
+  Then $S$ contains a nonzero element of $\Lambda$.
+\end{theorem}
+\begin{proof}
+  Consider sets of the form $S + \lambda$ for $\lambda \in \Lambda$.
+  Assume that these sets are pairwise disjoint, and let $M$ be a fundamental mesh of $\Lambda$.
+  Then the intersections $M \cap (S + \lambda)$ are \todo{also pairwise disjoint}{why?} and thus the volume of $M$ (which is the covolume of $\Lambda$) would satisfy
+  \[ covol(\Lambda) \geq \sum_{\lambda} vol(M \cap (S + \lambda)). \]
+  But if we translate $M \cap (S + \lambda)$ by $-\lambda$, we obtain $(M - \lambda) \cap S$, which has equal volume, while $M - \lambda$ cover all of $V$ and thus $(M - \lambda) \cap S$ cover all of $S$.
+  Thus, we have
+  \[ covol(\Lambda) \geq \sum_{\gamma} vol((M - \lambda) \cap S) = vol(S). \]
+
+  Now if we replace $S$ with $(1/2) \cdot S$, the same argument goes through, except that $vol(S)$ gets scaled by $1/2^{n}$, where $n$ is the dimension of $V$, hence
+  \[ covol(\Lambda) \geq (1/2^{n}) \cdot vol(S). \]
+  But this contradicts the assumption of the theorem.
+
+  It follows that there exist distinct $\lambda_{1},\lambda_{2} \in \Lambda$ such that $(1/2) \cdot S + \lambda_{1}$ and $(1/2) \cdot S) + \lambda_{2}$ contain a common element, say $t$.
+  Writing
+  \[ t = (1/2) s_{1} + \lambda_{1} = (1/2) s_{2} + \lambda_{2} \]
+  and solving for $\lambda_{1} - \lambda_{2} \in \Lambda$ gives $(1/2) \cdot (s_{2} - s_{1})$ which is an element of $S$ since $S$ is symmetric about the origin and convex.
+  This element is nonzero since $\lambda_{1} \neq \lambda_{2}$.
+\end{proof}
+
+\begin{theorem}[A variant]
+  In the context of the previous theorem, assume furthermore that $S$ is compact.
+\end{theorem}
+\begin{proof}
+  Replace $S$ with $(1 + \epsilon) \cdot S$ for $\epsilon > 0$ to see that this has nonzero points of $\Lambda$.
+  By compactness, there can only be finitely many such points.
+  Also, $S = \bigcap_{\epsilon} (1 + \epsilon) \cdot S$.
+  If this intersection contains only the origin, then (using the discreteness of $\Lambda$) shows that the same must hold for a single $\epsilon$.
+\end{proof}
+
+Let's now discuss some variants and applications of the above results.
+\begin{theorem}
+  Let $\afrak$ be an ideal of $\Ocal_{K}$.
+  Then there exists a nonzero element $a \in \afrak$ such that
+  \[ |N_{K|\Qbb}(a)| \leq \frac{n!}{n^{n}}\left(\frac{4}{\pi}\right)^{s} \sqrt{|d_{K}|} \cdot N(\afrak). \]
+\end{theorem}
+\begin{proof}
+  We proceed as in the proof of the theorem above, considering the set
+  \[ S_{t} = \{ (z_{\tau}) \in K_{\Rbb} \ | \  \sum_{\tau} | z_{\tau}| < t \}. \]
+  As $t$ goes to $\infty$, so does the volume of this set.
+  By the variant of Minkowski's lattice point theorem, this set will contain a nonzero element of $\afrak$ as soon as the volume of $S_{t}$ is at least as large as that of $2^{n} \cdot covol(\afrak)$.
+  If we have such an element, say $x$, then its norm satisfies
+  \[ |\Norm_{K|\Qbb}(x) = \prod_{i = 1}^{r}|\rho_{i}(x)| \cdot \prod_{i = 1}^{s}|\sigma_{i}(x)|^{2}. \]
+  By the comparison of arithmetric and geometric means, we have
+  \[ |\Norm_{K|\Qbb}(x)| \leq (\sum_{\tau}|\tau x|)^{n}/n^{n} \leq t^{n}/n^{n}. \]
+
+  We leave it as an exercise to show that the volume of $S_{t}$ is $2^{r}\pi^{s}t^{n}/n!$.
+  The inequality above then becomes
+  \[ 2^{r}\pi^{s}t^{n}/n! \geq 2^{n} covol(\afrak) = 2^{n} \sqrt{|d_{K}|} N(\afrak). \]
+  Solving for $t^{n}$, we have
+  \[ t^{n} \geq n! 2^{n-r} (1/\pi^{s}) \Norm(\afrak) \sqrt{|d_{K}|}. \]
+  Taking $t$ so that this is an equality, we the norm computation above would result in
+  \[ |\Norm_{K|\Qbb}(x)| \leq (\sum_{\tau}|\tau x|)^{n}/n^{n} \leq (n!/n^{n}) 2^{n-r} (1/\pi^{s}) \Norm(\afrak) \sqrt{|d_{K}|}. \]
+  Noting that $n - r = 2s$, the claim follows.
+\end{proof}
+
+Let us now discuss some general facts about norms of ideals.
+Recall that we have
+\[ \Norm(\afrak) := [\Ocal_{K}:\afrak]. \]
+This is \emph{multiplicative}.
+\begin{lemma}
+  Let $\afrak$ and $\bfrak$ be two integral ideals.
+  Then $\Norm(\afrak\cdot\bfrak) = \Norm(\afrak) \cdot \Norm(\bfrak)$.
+\end{lemma}
+\begin{proof}
+  Use the \todo{Chinese Remainder Theorem}{Add statement and proof.} to reduce to the case where $\afrak$ is a power of a prime ideal $\pfrak$.
+  Noting that $[\pfrak^{n}:\pfrak^{n+1}]$ is a one-dimensional vector space over $\Ocal_{K}/\pfrak$, the assertion follows.
+\end{proof}
+
+\begin{theorem}
+  Every ideal class of $K$ has an integral representative $\afrak$ satisfying
+  \[ \Norm(\afrak) \leq \frac{n!}{n^{n}}\left(\frac{4}{\pi}\right)^{2} \sqrt{|d_{K}|}. \]
+\end{theorem}
+\begin{proof}
+  Let $\bfrak$ be a fractional ideal.
+  Choose some $x \in K^{\times}$ such that $x \cdot \bfrak^{-1}$ is integral, say $\afrak = x \cdot \bfrak^{-1}$.
+  There exists a nonzero element $a \in \afrak$ satisfying
+  \[ |\Norm_{K|\Qbb}(a)| \leq \frac{n!}{n^{n}}\left(\frac{4}{\pi}\right)^{2} \sqrt{|d_{K}|} \cdot \Norm(\afrak). \]
+  We have $(a) \subset \afrak$, so we may write $(a) = \afrak \cdot \afrak'$ with \todo{$\afrak'$ integral}{Why?}.
+  Thus $\afrak$ and $\afrak'^{-1}$ are equal in the class group, while $\afrak^{-1}$ and $\bfrak$ are equal in the class group.
+
+  On the other hand, we have
+  \[ \Norm(\afrak) \cdot \Norm(\afrak') = |\Norm_{K|\Qbb}(a)| \leq \frac{n!}{n^{n}}\left(\frac{4}{\pi}\right)^{2} \sqrt{|d_{K}|} \cdot \Norm(\afrak). \]
+  Thus $\afrak'$ is an integral representative of $\bfrak$ satisfying the assertion of the theorem.
+\end{proof}
+
+\begin{corollary}
+  The class group of $K$ is finite.
+\end{corollary}
+\begin{proof}
+  It suffices to show that there are only finitely many integral ideals whose absolute norm is less than the Minkowski bound.
+  In fact, if $M$ is any fixed positive real number, there are only finite many integral ideals $\afrak$ whose absolute norm is bounded above by $M$, as can be easily seen from the multiplicativity of the absolute norm.
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
