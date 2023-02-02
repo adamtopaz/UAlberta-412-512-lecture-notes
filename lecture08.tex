@@ -84,23 +84,7 @@ Let's now discuss some variants and applications of the above results.
   \[ |N_{K|\Qbb}(a)| \leq \frac{n!}{n^{n}}\left(\frac{4}{\pi}\right)^{s} \sqrt{|d_{K}|} \cdot N(\afrak). \]
 \end{theorem}
 \begin{proof}
-  We proceed as in the proof of the theorem above, considering the set
-  \[ S_{t} = \{ (z_{\tau}) \in K_{\Rbb} \ | \  \sum_{\tau} | z_{\tau}| < t \}. \]
-  As $t$ goes to $\infty$, so does the volume of this set.
-  By the variant of Minkowski's lattice point theorem, this set will contain a nonzero element of $\afrak$ as soon as the volume of $S_{t}$ is at least as large as that of $2^{n} \cdot covol(\afrak)$.
-  If we have such an element, say $x$, then its norm satisfies
-  \[ |\Norm_{K|\Qbb}(x) = \prod_{i = 1}^{r}|\rho_{i}(x)| \cdot \prod_{i = 1}^{s}|\sigma_{i}(x)|^{2}. \]
-  By the comparison of arithmetric and geometric means, we have
-  \[ |\Norm_{K|\Qbb}(x)| \leq (\sum_{\tau}|\tau x|)^{n}/n^{n} \leq t^{n}/n^{n}. \]
-
-  We leave it as an exercise to show that the volume of $S_{t}$ is $2^{r}\pi^{s}t^{n}/n!$.
-  The inequality above then becomes
-  \[ 2^{r}\pi^{s}t^{n}/n! \geq 2^{n} covol(\afrak) = 2^{n} \sqrt{|d_{K}|} N(\afrak). \]
-  Solving for $t^{n}$, we have
-  \[ t^{n} \geq n! 2^{n-r} (1/\pi^{s}) \Norm(\afrak) \sqrt{|d_{K}|}. \]
-  Taking $t$ so that this is an equality, we the norm computation above would result in
-  \[ |\Norm_{K|\Qbb}(x)| \leq (\sum_{\tau}|\tau x|)^{n}/n^{n} \leq (n!/n^{n}) 2^{n-r} (1/\pi^{s}) \Norm(\afrak) \sqrt{|d_{K}|}. \]
-  Noting that $n - r = 2s$, the claim follows.
+  Discussed in the next lecture.
 \end{proof}
 
 Let us now discuss some general facts about norms of ideals.
@@ -110,16 +94,16 @@ This is \emph{multiplicative}.
 \begin{lemma}
   Let $\afrak$ and $\bfrak$ be two integral ideals.
   Then $\Norm(\afrak\cdot\bfrak) = \Norm(\afrak) \cdot \Norm(\bfrak)$.
+  Furthermore, if $a \in \Ocal_{K}$ is a nonzero element, then $\Norm(a) = |\Norm_{K|\Qbb}(a)|$.
 \end{lemma}
 \begin{proof}
-  Use the \todo{Chinese Remainder Theorem}{Add statement and proof.} to reduce to the case where $\afrak$ is a power of a prime ideal $\pfrak$.
-  Noting that $[\pfrak^{n}:\pfrak^{n+1}]$ is a one-dimensional vector space over $\Ocal_{K}/\pfrak$, the assertion follows.
+  Discussed in the next lecture.
 \end{proof}
 
-\begin{theorem}
+\begin{corollary}
   Every ideal class of $K$ has an integral representative $\afrak$ satisfying
   \[ \Norm(\afrak) \leq \frac{n!}{n^{n}}\left(\frac{4}{\pi}\right)^{2} \sqrt{|d_{K}|}. \]
-\end{theorem}
+\end{corollary}
 \begin{proof}
   Let $\bfrak$ be a fractional ideal.
   Choose some $x \in K^{\times}$ such that $x \cdot \bfrak^{-1}$ is integral, say $\afrak = x \cdot \bfrak^{-1}$.

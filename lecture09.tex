@@ -1,0 +1,118 @@
+\section{Lecture 9}
+
+Let's start today with the proof of the theorem that we mentioned last time.
+Let's now discuss some variants and applications of the above results.
+\begin{theorem}
+  Let $\afrak$ be an ideal of $\Ocal_{K}$.
+  Then there exists a nonzero element $a \in \afrak$ such that
+  \[ |N_{K|\Qbb}(a)| \leq \frac{n!}{n^{n}}\left(\frac{4}{\pi}\right)^{s} \sqrt{|d_{K}|} \cdot N(\afrak). \]
+\end{theorem}
+\begin{proof}
+  We proceed as in the proof of the theorem above, considering the set
+  \[ S_{t} = \{ (z_{\tau}) \in K_{\Rbb} \ | \  \sum_{\tau} | z_{\tau}| < t \}. \]
+  As $t$ goes to $\infty$, so does the volume of this set.
+  By the variant of Minkowski's lattice point theorem, this set will contain a nonzero element of $\afrak$ as soon as the volume of $S_{t}$ is at least as large as that of $2^{n} \cdot covol(\afrak)$.
+  If we have such an element, say $x$, then its norm satisfies
+  \[ |\Norm_{K|\Qbb}(x) = \prod_{i = 1}^{r}|\rho_{i}(x)| \cdot \prod_{i = 1}^{s}|\sigma_{i}(x)|^{2}. \]
+  By the comparison of arithmetric and geometric means, we have
+  \[ |\Norm_{K|\Qbb}(x)| \leq (\sum_{\tau}|\tau x|)^{n}/n^{n} \leq t^{n}/n^{n}. \]
+
+  We leave it as an exercise to show that the volume of $S_{t}$ is $2^{r}\pi^{s}t^{n}/n!$.
+  The inequality above then becomes
+  \[ 2^{r}\pi^{s}t^{n}/n! \geq 2^{n} covol(\afrak) = 2^{n} \sqrt{|d_{K}|} N(\afrak). \]
+  Solving for $t^{n}$, we have
+  \[ t^{n} \geq n! 2^{n-r} (1/\pi^{s}) \Norm(\afrak) \sqrt{|d_{K}|}. \]
+  Taking $t$ so that this is an equality, we the norm computation above would result in
+  \[ |\Norm_{K|\Qbb}(x)| \leq (\sum_{\tau}|\tau x|)^{n}/n^{n} \leq (n!/n^{n}) 2^{n-r} (1/\pi^{s}) \Norm(\afrak) \sqrt{|d_{K}|}. \]
+  Noting that $n - r = 2s$, the claim follows.
+\end{proof}
+
+We will also need the propoerties about ideal norms that we mentioned last time.
+Let's actually develop the theory properly.
+Let $A$ be a Dedekind domain with fraction field $K$, $L$ a finite separable extension of $K$ and $B$ the normalization of $A$ in $L$.
+
+Let $\Pfrak$ be a nonzero prime ideal of $A$ and put $\pfrak = \Pfrak \cap A$.
+The extension of residue fields $A/\pfrak \to B/\Pfrak$ is finite, and we write $f(\Pfrak|\pfrak) := [B/\Pfrak : A/\pfrak]$.
+We \emph{define}
+\[ \Norm_{L|K}(\Pfrak) := \pfrak^{f(\Pfrak|\pfrak)}, \]
+and extend it to a homomorphism of abelian groups on $J_{L}(B)$ in the unique way.
+This norm map is clearly multiplicative, and \todo{transitive in towers.}{Add a precise assertion.}
+
+We will need the following fundamental result.
+\begin{lemma}\label{lemma:fundamental_equality}
+  Let $\pfrak$ be a prime ideal of $A$ and let $\Pfrak_{1},\ldots,\Pfrak_{k}$ be all the primes of $B$ lying above $\pfrak$.
+  Then
+  \[ [L:K] = \sum_{i} e(\Pfrak_{i}|\pfrak) \cdot f(\Pfrak_{i}|\pfrak). \]
+  If furthermore $L|K$ is Galois, then $e := e(\Pfrak_{i}|\pfrak)$ and $f := f(\Pfrak_{i}|\pfrak)$ doesn't depend on $i$, so the sum above becomes $k \cdot e \cdot f$.
+\end{lemma}
+\begin{proof}
+  Put $e_{i} := e(\Pfrak_{i}|\pfrak)$ and $f_{i} := f(\Pfrak_{i}|\pfrak)$.
+  By the \todo{Chinese remainder theorem}{Add statement and proof.} we have
+  \[ B/\pfrak \cdot B \cong \prod_{i} B/\Pfrak_{i}^{e_{i}}, \]
+  and it is \todo{easy to see}{Add proof.} that $B/\Pfrak_{i}^{e_{i}}$ has dimension $e_{i} f_{i}$ over $A/\pfrak$.
+  Thus $B/\pfrak B$ has dimension $\sum_{i} e_{i} f_{i}$ over $A/\pfrak$.
+
+  If $A$ is a PID, then we \todo{easily see}{Add details.} that $[L:K]$ is also the dimension of $B/\pfrak B$ over $A/\pfrak$, since $B$ is a free $A$-module of rank $[L:K]$.
+  In general, replace $A$ with $A_{\pfrak}$ and use the fact that local Dedekind domains are DVRs (hence PIDs) to reduce to the previous case.
+
+  Now in the case where $L|K$ is Galois, there is an action of $\Gal(L|K)$ on $\{\Pfrak_{1},\ldots,\Pfrak_{k}\}$ and if $\sigma \in \Gal(L|K)$ is given, then clearly $e(\Pfrak|\pfrak) = e(\sigma\Pfrak|\pfrak)$ and similarly for $f(\Pfrak|\pfrak)$.
+  It thus suffices to show that $\Gal(L|K)$ acts transitively on the set of primes above $\pfrak$.
+
+  If not, then we find $\Pfrak$ and $\Qfrak$ lying above $\pfrak$ such that $\sigma\Pfrak \neq \Qfrak$ for any $\sigma$.
+  By the Chinese remainder theorem, we can find some element $x \in \Qfrak$ which is not contained in $\sigma\Pfrak$ for any $\sigma$.
+  The norm of this element $x$ has the form
+  \[ t := \Norm_{L|K}(x) = \prod_{\sigma \in \Gal(L|K)} \sigma x \]
+  which is an element of $\pfrak$, but
+  \[ t = \prod_{\sigma} \sigma x \in \pfrak \subset \Pfrak \]
+  while $x \notin \sigma \Pfrak$ for any $\sigma$.
+  This contradicts the primality of $\Pfrak$.
+\end{proof}
+
+\begin{lemma}
+  The following hold.
+  \begin{enumerate}
+    \item If $\afrak$ is an integral ideal of $A$, then $\Norm_{L|K}(\afrak) = \afrak^n$ where $n = [L:K]$.
+    \item Suppose $L|K$ is Galois, and let $\Pfrak$ be a prime of $B$ lying over $\pfrak$.
+          Write $\pfrak = (\Pfrak_{1} \cdots \Pfrak_{k})^{e}$.
+          Then
+          \[ \Norm_{L|K}(\Pfrak) \cdot B = (\Pfrak_{1} \cdots \Pfrak_{k})^{ef} = \prod_{\sigma \in \Gal(L|K)} \sigma \Pfrak. \]
+    \item Supose $b \in B$ is a nonzero element.
+          Then $\Norm_{L|K}((b)) = (\Norm_{L|K}(b))$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  For (1), \todo{deduce to the case where $\afrak$ is prime, say $\pfrak$.}{Explain.}
+  In this case, write
+  \[ \pfrak \cdot B = \prod_{\Pfrak}\Pfrak^{e_{\Pfrak}}, \]
+  so that
+  \[ \Norm_{L|K}(\pfrak \cdot B) = \prod_{\Pfrak} \pfrak^{\sum e_{\Pfrak} f_{\Pfrak}}\]
+  so that
+  \[ \Norm_{L|K}(\pfrak \cdot B) = \pfrak^{\sum e_{\Pfrak} f_{\Pfrak}},\]
+  where $f_{\Pfrak} := f(\Pfrak|\pfrak)$.
+  Lemma~\ref{lemma:fundamental_equality} gives the claim for (1).
+
+  For claim (2), the first equality follows from the definition, while the second \todo{follows from the transitivity of the Galois action.}{Add details.}
+
+  Now for (3), suppose first that $L|K$ is Galois and put $\bfrak := (b)$.
+  Then
+  \[ \Norm(\bfrak) \cdot B = \prod_{\sigma \in \Gal(L|K)} \sigma \bfrak = (\prod_{\sigma} \sigma b) \cdot B = \Norm(b) \cdot B. \]
+  The map $\afrak \mapsto \afrak \cdot B$ from $J_{K}(A) \to J_{L}(B)$ is \todo{injective}{why?} so the claim follows.
+
+  If $L|K$ is not Galois, let $E$ denote the Galois closure, and use the transitivity in the tower $E|L|K$ to deduce the claim.
+\end{proof}
+
+Now let's go back to the case where $K$ is a number field and the Dedekind domain in question is the ring of integers.
+\begin{lemma}
+  Let $\afrak$ be an ideal of $\Ocal_{K}$, and consider its norm $\Norm_{K|\Qbb}(\afrak)$.
+  Let $m \in \Nbb$ be the unique positive generator of $\Norm_{K|\Qbb}(\afrak)$.
+  Then $m = \Norm(\afrak) = [\Ocal_{K}:\afrak]$.
+\end{lemma}
+\begin{proof}
+  Exercise.
+  Hint: Use the Chinese remainder theorem to reduce to the case where $\afrak$ is a power of a prime, and argue similarly to the proof of Lemma~\ref{lemma:fundamental_equality}.
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
