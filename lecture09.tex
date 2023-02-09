@@ -38,7 +38,17 @@ We \emph{define}
 and extend it to a homomorphism of abelian groups on $J_{L}(B)$ in the unique way.
 This norm map is clearly multiplicative, and \todo{transitive in towers.}{Add a precise assertion.}
 
-We will need the following fundamental result.
+We will need the following fundamental result. First, we begin with some definitions:
+
+\begin{definition}
+  Let $\pfrak$ be a prime ideal of $A$. 
+  Then since $B$ is Dedekind, we may write $\pfrak \cdot B = \Pfrak_1^{e_1}\cdot\Pfrak_k^{e_k}$ for some prime ideals $\Pfrak_i$ of $B$ lying above $\pfrak$, and positive integers $e_i$.
+  Each $e_i$ is known as the ramification index of $\Pfrak_i$ above $\pfrak$, and will be denoted $e(\Pfrak_i|\pfrak)$. 
+\end{definition}
+\begin{definition}
+  Let $\pfrak$ be a prime ideal of $A$, and $\Pfrak$ a prime ideal of $B$ lying above $\pfrak$.
+  The inertial degree of $\Pfrak$ above $\pfrak$, denoted $f(\Pfrak|\pfrak)$ is defined to be the dimension of $B/\Pfrak$ over the field $A/\pfrak$.
+\end{definition}
 \begin{lemma}\label{lemma:fundamental_equality}
   Let $\pfrak$ be a prime ideal of $A$ and let $\Pfrak_{1},\ldots,\Pfrak_{k}$ be all the primes of $B$ lying above $\pfrak$.
   Then
