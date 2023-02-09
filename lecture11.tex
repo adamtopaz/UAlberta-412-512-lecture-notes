@@ -1,0 +1,132 @@
+\section{Lecture 11}
+
+We saw last time in some computations that we need a better understanding of the unit group $\Ocal_{K}^{\times}$ where $K$ is a number field.
+To obtain this, we will use a multiplicative version of Minkowski theory.
+
+Consider the map
+\[ j : K^{\times} \to K_{\Cbb}^{\times} = \prod_{\tau} \Cbb^{\times} \]
+induced by the (additive) map $j : K \to K_{\Cbb}$ from before.
+Taking products yields a map
+\[ N : K_{\Cbb}^{\times} \to \Cbb^{\times} \]
+which is the usual norm $N_{K|\Qbb}$ when composed with $j$ above.
+
+Since we would still like to obtain a lattice at the end of the day, we need to convert from a multiplicative back to an additive version, and we ddo this by taking logs.
+Namely, consider the map $\ell : z \mapsto \log|z|$.
+This induces a surjective map
+\[ \ell : K_{\Cbb}^{\times} \to \prod_{\tau} \Rbb. \]
+Note that $\ell(N(z_{\tau})_{\tau}) = \Trace(\ell(z_{\tau})_{\tau})$, where $\Trace : \Rbb^{n} \to \Rbb$ is the summation map.
+
+We have a natural action of complex conjugation on this whole situation.
+On $K$, $K_{\Cbb}$ it acts as before, and on $\prod_{\tau} \Rbb$ it acts by interchanging the $\tau$ coordinate with the $\bar\tau$ coordinate.
+The maps above are all compatible with this action, so we may take invariants to obtain maps
+\[ j : K^{\times} \to K_{\Rbb}^{\times}, \ \ell : K_{\Rbb}^{\times} \to (\prod_{\tau} \Rbb)^{\Gal(\Cbb|\Rbb)} \]
+and
+\[ N : K_{\Rbb}^{\times} \to \Rbb^{\times}, \ \Trace : (\prod_{\tau} \Rbb)^{\Gal} \to \Rbb. \]
+
+We can describe $(\prod_{\tau} \Rbb)^{\Gal}$ explicitly.
+It is
+\[ \prod_{i = 1}^{r} \Rbb \times \prod_{i = 1}^{s} \Delta \]
+where $\Delta \subset \Rbb \times \Rbb$ is the diagonal.
+Identify $\Delta$ with $\Rbb$ via $(x,x) \mapsto 2x$ (to preserve compatibility with the trace) to obtain that $(\prod_{\tau} \Rbb)^{\Gal} = \Rbb^{r + s}$.
+
+Next, consider the following:
+\begin{enumerate}
+  \item $S_{K} := \ker(z \mapsto |N(z)| : K_{\Rbb}^{\times} \to \Rbb^{\times})$.
+  \item $H_{K} := \ker(z \mapsto \Trace(z) : (\prod_{\tau} \Rbb)^{\Gal} \to \Rbb)$.
+\end{enumerate}
+Note that $\ell$ restricts to a map $S_{K} \to H_{K}$ and that $j$ \todo{restricts to a map}{Why?} $j : \Ocal_{K}^{\times} \to S_{K}$.
+Write $\Lambda_{K}$ for the image of $\Ocal_{K}^{\times}$ in $H$ and $\lambda : \Ocal_{K}^{\times} \to H_{K}$ the corresponding map (with image $\Lambda_{K}$).
+
+\begin{proposition}
+  The kernel of $\lambda$ is $\mu(K)$, the group of roots of unity in $K$.
+\end{proposition}
+\begin{proof}
+  It's clear that the kernel contains the roots of unity.
+  Conversely, an element $x$ of the kernel satisfies $|\tau x| = 1$ for all complex embeddings $\tau$, and by homework 1, it follows that $x$ is a root of unity.
+\end{proof}
+
+\begin{proposition}
+  The group $\mu(K)$ of roots of unity is finite.
+\end{proposition}
+\begin{proof}
+  Note that $\mu(K) \subset \Ocal_{K}$.
+  Embed this set into $K_{\Rbb}$ via $j$ and recall that the image of $\Ocal_{K}$ is a lattice.
+  The image of $\mu_{K}$ is contained in the set of elements $(z_{\tau})_{\tau}$ of $K_{\Rbb}^{\times}$ such that $|z_{\tau}| = 1$ for all $\tau$, and this set is bounded (in fact, it's compact), so its intersection with any lattice (such as $j(\Ocal_{K})$) is finite.
+\end{proof}
+
+\begin{theorem}
+  The group $\Lambda_{K}$ is a complete lattice in $H$.
+  In particular, $\Lambda_{K}$ is isomorphic to $\Zbb^{r + s - 1}$.
+\end{theorem}
+\begin{proof}
+  Note that $H_{K}$, being a hyperplane in a $r+s$-dimension real vector space, has dimension $r + s - 1$, so we only need to prove that $\Lambda_{K}$ is a lattice in this vector space.
+  For this, we show that $\Lambda_{K}$ is both discrete and cocompact.
+
+  For discreteness, let $c > 0$ be some real number, and consider the set
+  \[ U_{c} := \{(x_{\tau}) \in \prod_{\tau} \Rbb \ | \ |x_{\tau}| \le c\}. \]
+  The preimage of $U_{c}$ with respect to $\ell$ in $K_{\Cbb}^{\times}$ is the set
+  \[ \{(z_{\tau})_{\tau} \in K_{\Cbb}^{\times} \ | \ e^{-c} \le |z_{\tau}| \le e^{c} \}. \]
+  Since $j \Ocal_{K}$ is a lattice in $K_{\Cbb}$, this set (being bounded) contains only finitly many elements of $j \Ocal_{K}$ hence also of $j \Ocal_{K}^{\times}$.
+  It thus follows that $\Lambda_{K}$ is discrete.
+
+  To see that this lattice is a complete lattice, we must find a bounded set $M$ in $H_{K}$ such that $M + \Lambda_{K} = H_{K}$.
+  Consider the surjective map
+  \[ \ell : S_{K} \to H_{K}. \]
+  The goal is to construct a bounded set $M'$ of $S_{K}$ such that $S = M' \cdot j(\Ocal_{K}^{\times})$.
+  Since elements of $S_{K}$ have norm $1$, the elements of $M'$ will also be bounded away from $0$ in $K_{\Rbb}$ and thus $\ell(M') = M$ will be bounded and will satisfy the necessary conditions.
+
+  Choose real numbers $c_{\tau} > 0$ satisfying $c_{\tau} = c_{\bar \tau}$ and put
+  \[ C := \prod_{\tau} c_{\tau}. \]
+  Choose $c_{\tau}$ large enough so that $C > (2/\pi)^{s} \sqrt{|d_{K}|}$, and consider the set
+  \[ X := \{ (z_{\tau}) \in K_{\Rbb} \ | \ |z_{\tau}| < c_{\tau} \}. \]
+  If $y = (y_{\tau})_{\tau} \in S$, then
+  \[ X \cdot y = \{ (z_{\tau})_{\tau} \in K_{\Rbb} \ | \ |z_{\tau}| < c'_{\tau}\}, \]
+  where $c'_{\tau} = c_{\tau}|y_{\tau}|$, while also $c'_{\tau} = c'_{\bar\tau}$ and
+  \[ C' := \prod_{\tau} c'_{\tau} = C \]
+  since the product of the $|y_{\tau}|$ is $1$.
+  By Theorem~\ref{theorem:exists_norm_mult}, we can find a nonzero $a \in \Ocal_{K}$, such that $ja \in Xy$.
+
+  Next, let's note that there are only finitely many elements of $\Ocal_{K}$ with a given norm, up-to multiplication by $\Ocal_{K}^{\times}$.
+  Indeed, if $a$ is some positive integer, then \todo{there are at most}{Add proof. See Lemma 7.2 of Neukirch.} $[\Ocal_{K} : a \cdot \Ocal_{K}]$ elements of norm $\pm a$ up-to multiplication by units.
+  Thus, we may choose finitely many nonzero elements $\alpha_{1},\ldots,\alpha_{N} \in \Ocal_{K}$ such that for every $a \in \Ocal_{K}$ with $0 < |N(a)| \le C$, there exists some $i$ such that $a \in \alpha_{i} \cdot \Ocal_{K}^{\times}$.
+
+  The set $M' := S \cap \bigcup_{i} X \cdot (j \alpha_{i})^{-1}$ will satisfy the required properties.
+  Indeed, it is bounded since $X$ is bounded and this is a finite union of multiplicative translates of $X$.
+  Furthermore, we have
+  \[ S = M' \cdot j(\Ocal_{K}^{\times}).\]
+  Indeed, if $s \in S$ is given, then we may find some nonzero $a \in \Ocal_{K}$ such that $j a \in X \cdot s^{-1}$, say $ja = x \cdot s^{-1}$.
+  Computing norms, we find
+  \[ |N(a)| = |N(xs^{-1})| = |N(x)| \le C, \]
+  so that, $a \in \alpha_{i} \cdot \Ocal_{K}^{\times}$ for some $i$.
+  It follows that
+  \[ s = x ja^{-1} \in x j(\alpha_{i}^{-1} \cdot \Ocal_{K}^{\times}). \]
+  As both $s$ and $j(\Ocal_{K}^{\times})$ are contained in $S$, we see that indeed $s \in M' \cdot j(\Ocal_{K}^{\times})$, as required.
+\end{proof}
+
+We can now completely understand the structure of $\Ocal_{K}^{\times}$.
+As an abelian group, it is simply
+\[ \Ocal_{K}^{\times} \cong \mu(K) \times \Zbb^{r + s - 1}, \]
+while $\mu(K)$ is a finite subgroup of $K^{\times}$, hence $\mu_{K}$ \todo{is cyclic.}{Exercise.}
+
+We can also extract an important invariant of the number field $K$ from this discussion, called the \emph{regulator} of $K$.
+Indeed, as $H$ is a codimension $1$ subspace of $\Rbb^{r+s}$, it inherits an inner product (where $\Rbb^{r+s}$ is endowed with the usual dot product).
+
+We saw above that $\Lambda_{K}$ is a complete lattice in $H_{K}$, hence it has a well-defined covolume.
+To compute this covolume, we choose $\epsilon_{1},\ldots,\epsilon_{k} \in \Ocal_{K}^{\times}$, $k = r+s-1$, which are a basis for $\Ocal_{K}^{\times}/\mu(K)$.
+Such $\epsilon_{i}$ are called a system of \emph{fundamental units of $K$}.
+The images $\lambda(\epsilon_{i})$ form a basis for the complete lattice $\Lambda_{K}$.
+On the other hand, the vector
+\[ \lambda_{0} = \frac{1}{\sqrt{r+s}}(1,\ldots,1) \in \Rbb^{r+s} \]
+is orthogonal to $H_{K}$, and has length $1$.
+We can thus compute the covolume of $\Lambda_{K}$ in $H_{K}$ by computing the covolume of the (complete) lattice spanned by $\lambda_{0},\lambda(\epsilon_{1}),\ldots,\lambda(\epsilon_{k})$ in $\Rbb^{r+s}$, which amounts to a determinant calculation.
+More precisely, we take the absolute value of the determinant of the $(k+1)\times(k+1)$ matrix
+\[ M := [\lambda_{0}|\lambda(\epsilon_{1})|\cdots|\lambda(\epsilon_{k})]. \]
+If we add all the rows of this matrix to the $i$-th row, and use the fact that $\lambda(\epsilon_{j}) \in H_{K}$, we will see that the $i$-th row must contain all zeros, except for the leftmost entry which then \todo{becomes}{Add calculation.} $\sqrt{r+s}$.
+We thus see that the absolute value of the determinant of the matrix in question, hence the covolume of $\Ocal_{K}^{\times}$ in $H_{K}$, can be calculated as $\sqrt{r+s} \cdot R$ where $R$ is the absolute value of a full rank minor of the $(k+1) \times k$ matrix
+\[ M' := [\lambda(\epsilon_{1})|\cdots|\lambda(\epsilon_{k})]. \]
+This number $R = R_{K}$ is called the \emph{regulator} of $K$.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
