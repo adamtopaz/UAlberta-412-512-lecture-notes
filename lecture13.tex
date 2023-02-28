@@ -1,0 +1,166 @@
+\section{Lecture 13}
+
+Let us now consider the case where the field extension $L|K$ is Galois with Galois group $G$.
+We saw before that $G$ acts in a natural way on the set of primes lying above a fixed prime $\pfrak$ of $A$, and that this action is \emph{transitive}.
+Let $\Pfrak|\pfrak$ be an extension of primes in $B|A$.
+We define
+\[ Z_{\Pfrak|\pfrak} \subset G, \]
+the decomposition group of $\Pfrak|\pfrak$ (or just $\Pfrak$ when $A$, or equivalently $\pfrak$, is understood from context), to be the \emph{stabilizer} of $\Pfrak$ with respect to this action.
+The fixed field of $Z_{\Pfrak|\pfrak}$ in $L|K$ will be called the \emph{decomposition field} of $\Pfrak$ over $K$.
+
+By the orbit-stabilizer theorem, we see that $G/Z_{\Pfrak|\pfrak}$ is in a natural bijection with the primes lying above $\pfrak$ via the bijection $\sigma \mapsto \sigma\Pfrak$.
+It follows that $Z_{\Pfrak|\pfrak}$ is trivial if and only if $L$ is the decomposition field of $\Pfrak|\pfrak$, which is equivalent to saying that $\pfrak$ is totally split in $L$.
+Similarly, if $Z_{\Pfrak|\pfrak} = G$ if and only if $\pfrak$ is nonsplit.
+
+The decomposition groups are conjugate in $G$, as follows:
+\[ Z_{\sigma\Pfrak|\pfrak} = \sigma Z_{\Pfrak|\pfrak} \sigma^{-1}. \]
+\todo{This is a simple (purely group-theoretic exercise).}{Add argument.}
+
+Recall that in the Galois case which we are in, the inertia and ramification degrees do not depend on the choice of prime $\Pfrak$ above $\pfrak$.
+If $\Pfrak$ is a fixed prime above $\pfrak$, we have
+\[ \pfrak = (\prod_{\sigma \in G/Z_{\Pfrak|\pfrak}} \sigma\Pfrak)^{e} \]
+where $e = e(\Pfrak|\pfrak)$.
+
+\begin{proposition}
+  Let $M$ denote the decomposition field of $\Pfrak$ and let $\Pfrak_{Z} := \Pfrak \cap M$.
+  The following hold:
+  \begin{enumerate}
+    \item $\Pfrak_{Z}$ is nonsplit in $L$, meaning that $\Pfrak$ is the only prime of $L$ lying above $\Pfrak_{Z}$.
+    \item $\Pfrak|\Pfrak_{Z}$ has the same ramification and inertia degrees as $\Pfrak|\pfrak$.
+    \item The ramification and inertia degree of $\Pfrak_{Z}|\pfrak$ are both $1$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  These assertions all follow essentially from the fundamental identity and the fact that $\Gal(L|M) = Z_{\Pfrak|\pfrak}$, along with the observations above.
+  \todo{Details left as an exercise.}{Add argument.}
+\end{proof}
+
+The decomposition group as we see above ``understands'' how many primes are above $\pfrak$.
+In order to get information about the ramification degree, we will need another invariant, called the \emph{inertia group}.
+First, let's make some observations.
+Let $\sigma \in Z_{\Pfrak|\pfrak}$ be given.
+This implies that $\sigma \Pfrak = \Pfrak$, while $\sigma B = B$ as well.
+Thus $\sigma$ acts (by a field automorphism) on the residue field $B/\Pfrak$.
+This gives us a map
+\[ Z_{\Pfrak|\pfrak} \to \Aut(B/\Pfrak|A/\pfrak) \]
+(note that the residue extension might be unramified, so I write $\Aut$ instead of $\Gal$; we also don't know yet whether it's normal).
+We will write $\kappa(-)$ for the residue field of a prime.
+
+\begin{proposition}
+  The extension $\kappa\Pfrak|\kappa\pfrak$ is normal and the map
+  \[ Z_{\Pfrak|\pfrak} \to \Aut(\kappa\Pfrak|\kappa\pfrak) \]
+  is surjective.
+\end{proposition}
+\begin{proof}
+  Let again $\Pfrak_{Z}$ denote the prime associated to $\Pfrak$ in the decomposition field of $\Pfrak|\pfrak$.
+  The residue field $\kappa\Pfrak_{Z}$ is the same as that of $\pfrak$.
+  We may thus assume that $\pfrak$ is nonsplit in $L$ by replacing $K$ with the decomposition field.
+
+  Let $\theta$ be an integral element with image $\bar \theta$.
+  Let $f$ be the minimal polynomial over $K$ and $\bar g$ the minimal polynomial of the image in $\kappa\Pfrak$ over $\kappa\pfrak$.
+  Note that $\bar g$ divides $\bar f$.
+  As $L|K$ is normal, $f$ splits completely so $\bar f$ splits as well.
+  It follows that the residue extension is normal indeed.
+
+  Now suppose $\bar\theta$ is a primitive element for the maximal separable subextension of the residue extension.
+  Note that $\Aut(\kappa\Pfrak|\kappa\pfrak) = \Gal(\kappa\pfrak(\bar\theta)|\kappa\pfrak)$.
+  Let $\bar\sigma$ be in this group so $\bar\sigma\bar\theta$ is a root of $\bar g$ hence also of $\bar f$.
+  Thus there is a zero $\theta'$ of $f$ such that $\theta' = \bar\sigma\bar\theta$ modulo $\Pfrak$.
+  But $\theta'$ is conjugate to $\theta$ so $\theta' = \sigma\theta$ for some $\sigma \in G$, and this $\sigma$ maps to $\bar \sigma$.
+\end{proof}
+
+\begin{definition}
+  The kernel of the cnaonical map
+  \[ Z_{\Pfrak|\pfrak} \to \Aut(\kappa\Pfrak|\kappa\pfrak) \]
+  is called the \emph{inertia group} of $\Pfrak|\pfrak$, and will be denoted by $T_{\Pfrak|\pfrak}$.
+\end{definition}
+
+We have the groups $T_{\Pfrak|\pfrak} \subset Z_{\Pfrak|\pfrak} \subset \Gal(L|K)$.
+We consider the fixed fields
+\[ K \subset L^{Z} \subset L^{T} \subset L. \]
+The $L^{Z}$ is the decomposition field considered above while the $L^{T}$ is called the \emph{inertia field}.
+We also have an exact sequence
+\[ 1 \to T \to Z \to \Aut \to 1. \]
+
+\begin{proposition}
+  The extension $L^{T}|L^{Z}$ is Galois with Galois group $\Aut(\kappa\Pfrak|\kappa\pfrak)$.
+  If the residue extension is separable (\todo{this always holds if $K$ is a number field}{Why?}) then
+  \[ \# T_{\Pfrak|\pfrak} = e(\Pfrak|\pfrak), \ [Z_{\Pfrak|\pfrak}|T_{\Pfrak|\pfrak}] = f(\Pfrak|\pfrak). \]
+  Letting $\Pfrak_{Z}$ and $\Pfrak_{T}$ denote the primes below $\Pfrak$ assocaited to the inertia and decomposition fields, we have
+  \begin{enumerate}
+    \item $e(\Pfrak|\Pfrak_{T}) = e(\Pfrak|\pfrak)$ and $f(\Pfrak|\Pfrak_{T}) = 1$.
+    \item $\Pfrak_{T}|\Pfrak_{Z}$ is unramified and $f(\Pfrak_{T}|\Pfrak_{Z}) = f$.
+  \end{enumerate}
+\end{proposition}
+
+In particular, the prime $\pfrak$ is unramified in $L$ if and only if the inertia group is trivial, and otherwise the ramification degree (which is well-defined in the Galois case, depending only on $\pfrak$ and not on $\Pfrak$) is the size of the inertia group.
+
+Recall that any finite extension $\Fbb_{q^{n}}$ of a finite field $\Fbb_{q}$ is Galois, and the Galois group is generated by the $q$-Frobenius $\Frob_{q}$, which is the automorphism $x \mapsto x^{q}$.
+If $\pfrak$ is a prime of a number field $K$ and $L$ is a Galois extension of $K$ in which $\pfrak$ is unramified, then the decomposition group $Z_{\Pfrak|\pfrak}$ is isomorphic to $\Gal(\kappa\Pfrak|\kappa\pfrak)$, which is generated by $\Frob_{q}$ for $q = \#\kappa\pfrak$.
+We thus have a notion of a \emph{Frobenius element} $\Frob_{\pfrak}$ in $Z_{\Pfrak|\pfrak} \subset \Gal(L|K)$.
+This is well-defined up-to conjugation in $\Gal(L|K)$.
+We denote this Frobenius element as $(L|K/\Pfrak)$.
+
+\begin{remark}
+  If $\Gal(L|K)$ is abelian, then the Frobenius elements (and indeed all inertia and decomposition groups) only depend on the primes in the base, and not on the choice of primes in $L$.
+\end{remark}
+
+Let's finish this discussion with a more advanced topic (I hope to revisit this, with proofs, if we have time).
+Let $M$ be a set of prime ideals of a number field $K$.
+Consider
+\[ \delta(M) := \lim_{x \to \infty} \frac{\#\{\pfrak \in M \ | \ N(\pfrak) \le x\}}{\{\pfrak \ | \ N(\pfrak) \le x\}}. \]
+Assume that this limit exists, and in this case we call $\delta$ the \emph{natural density of $M$}.
+A more general concept, which is related to zeta functions is the so-called \emph{Dirichlet density}, defined as
+\[ d(M) := \lim_{s \to 1^{+}} \frac{\sum_{\pfrak \in M} N(\pfrak)^{-s}}{\sum_{\pfrak} N(\pfrak)^{-s}}.  \]
+provided the limit exists.
+One can show that if $\delta(M)$ exists, then so does $d(M)$, and both agree in this case.
+
+Suppose that $\sigma \in \Gal(L|K)$ is some element of the Galois group.
+Consider the set of all primes $\pfrak$ which are unramified in $L$ whose associated congugacy class of Frobenius elements contains $\sigma$.
+Call this set $P_{L|K}(\sigma)$.
+
+\begin{theorem}[Chebotarev Density Theorem]
+  Let $L|K$ be a Galois extension of number fields with Galois group $G$.
+  Then for any $\sigma \in G$, the set $P_{L|K}(\sigma)$ has a Dirichlet density given by $\# C / \# G$, where $C$ is the conjugacy class of $\sigma$.
+\end{theorem}
+
+Let's see one nice corollary of this fact.
+Suppose that $L|K$ is a finite extension of number fields.
+Write $P(L|K)$ for the set of unramified primes $\pfrak$ which admit some prolongation $\Pfrak$ in $L$ of degree $1$ over $K$.
+If $L|K$ is Galois, $P(L|K)$ is the set of primes which split completely in $L$.
+
+\begin{lemma}
+  Let $N|K$ be a Galois extension containing $L$, write $G = \Gal(N|K)$ and $H = \Gal(N|L)$.
+  Then $P(L|K)$ is the disjoint union of $P_{N|K}(\sigma)$ as $\sigma$ varies over representatives of conjugacy classes which meet $H$.
+\end{lemma}
+
+\begin{corollary}
+  Suppose that $L|K$ has degree $n$.
+  The set $P(L|K)$ has density $d(P(L|K)) \geq 1/n$.
+  Also, equality holds if and only if $L|K$ is Galois.
+\end{corollary}
+\begin{proof}
+  By Chebotarev, the density is
+  \[ \frac{1}{\#G} \cdot \#(\cup_{C_{\sigma} \cap H \neq \varnothing} C_{\sigma})\]
+  where $C_{\sigma}$ is the conjugacy class of $\sigma$.
+  Since $H$ is contained in the union mentioned above, we have that $d(P) \geq \#H/\#G = 1/n$.
+
+  Now $L|K$ is Galois if and only if $H$ is normal, and this is true if and only if $C_{\sigma} \subset H$ whenever $C_{\sigma} \cap H \neq \varnothing$.
+  Thus this is true if and only if $H$ is \emph{equal} to the union mentioned above, which implies the claim.
+\end{proof}
+
+\begin{corollary}
+  If almost all primes split completely in $L|K$ then $L = K$.
+\end{corollary}
+\begin{proof}
+  Let $N$ above be the Galois closue of $L|K$.
+  A prime $\pfrak$ splits completely in $L$ if and only if it seplits completely in $N$ (\todo{this is an exercise}{Do this exercise.}).
+  We have
+  \[ 1 = 1/[N:K] \]
+  so that $N = K$ hence $L = K$.
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
