@@ -36,18 +36,21 @@ The extension of residue fields $A/\pfrak \to B/\Pfrak$ is finite, and we write 
 We \emph{define}
 \[ \Norm_{L|K}(\Pfrak) := \pfrak^{f(\Pfrak|\pfrak)}, \]
 and extend it to a homomorphism of abelian groups on $J_{L}(B)$ in the unique way.
-This norm map is clearly multiplicative, and \todo{transitive in towers.}{Add a precise assertion.}
+This norm map is clearly multiplicative, and transitive in towers.
+Precisely, suppose $K \subset E \subset L$ is a tower of finite separable field extensions and $A \subset B \subset B$ the integral closure of $A$ in $E$ and $L$, respectively.
+Let $\mathfrak p$ be a prime of $A$, $\mathfrak q$ a prime of $B$ lying above $\mathfrak p$ and $\mathfrak P$ a prime of $C$ lying above $\mathfrak q$.
+Then $f(\mathfrak{P} / \mathfrak{p})=f(\mathfrak{P} / \mathfrak{q}) f(\mathfrak{q} / \mathfrak{p})$, which implies that $\Norm_{L|K}(\mathfrak P) = \Norm_{E|K}(\Norm_{L|E}(\mathfrak P))$.
 
 We will need the following fundamental result. First, we begin with some definitions:
 
 \begin{definition}
   Let $\pfrak$ be a prime ideal of $A$. 
   Then since $B$ is Dedekind, we may write $\pfrak \cdot B = \Pfrak_1^{e_1}\cdot\Pfrak_k^{e_k}$ for some prime ideals $\Pfrak_i$ of $B$ lying above $\pfrak$, and positive integers $e_i$.
-  Each $e_i$ is known as the ramification index of $\Pfrak_i$ above $\pfrak$, and will be denoted $e(\Pfrak_i|\pfrak)$. 
+  Each $e_i$ is known as the \emph{ramification index} of $\Pfrak_i$ above $\pfrak$, and will be denoted $e(\Pfrak_i|\pfrak)$. 
 \end{definition}
 \begin{definition}
   Let $\pfrak$ be a prime ideal of $A$, and $\Pfrak$ a prime ideal of $B$ lying above $\pfrak$.
-  The inertial degree of $\Pfrak$ above $\pfrak$, denoted $f(\Pfrak|\pfrak)$ is defined to be the dimension of $B/\Pfrak$ over the field $A/\pfrak$.
+  The \emph{inertial degree} of $\Pfrak$ above $\pfrak$, denoted $f(\Pfrak|\pfrak)$ is defined to be the dimension of $B/\Pfrak$ over the field $A/\pfrak$.
 \end{definition}
 \begin{lemma}\label{lemma:fundamental_equality}
   Let $\pfrak$ be a prime ideal of $A$ and let $\Pfrak_{1},\ldots,\Pfrak_{k}$ be all the primes of $B$ lying above $\pfrak$.
@@ -91,7 +94,7 @@ We will need the following fundamental result. First, we begin with some definit
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  For (1), \todo{deduce to the case where $\afrak$ is prime, say $\pfrak$.}{Explain.}
+  For (1), since $\Norm_{L|K}$ is multiplicative, it suffices to show the case where $\afrak$ is prime, say $\pfrak$.
   In this case, write
   \[ \pfrak \cdot B = \prod_{\Pfrak}\Pfrak^{e_{\Pfrak}}, \]
   so that
@@ -105,8 +108,11 @@ We will need the following fundamental result. First, we begin with some definit
 
   Now for (3), suppose first that $L|K$ is Galois and put $\bfrak := (b)$.
   Then
-  \[ \Norm(\bfrak) \cdot B = \prod_{\sigma \in \Gal(L|K)} \sigma \bfrak = (\prod_{\sigma} \sigma b) \cdot B = \Norm(b) \cdot B. \]
-  The map $\afrak \mapsto \afrak \cdot B$ from $J_{K}(A) \to J_{L}(B)$ is \todo{injective}{why?} so the claim follows.
+  \[ \Norm_{L|K}(\bfrak) \cdot B = \prod_{\sigma \in \Gal(L|K)} \sigma \bfrak = (\prod_{\sigma} \sigma b) \cdot B = \Norm_{L|K}(b) \cdot B. \]
+  The map $\afrak \mapsto \afrak \cdot B$ from $J_{K}(A) \to J_{L}(B)$ is injective.
+  Indeed, as this map is multiplicative, it suffices to show that the only the unit ideal is in the kernel.
+  If $\afrak \cdot B = B$, then $\afrak$ contains a unit of $B$ that is also a unit of $A$. 
+  so the claim follows.
 
   If $L|K$ is not Galois, let $E$ denote the Galois closure, and use the transitivity in the tower $E|L|K$ to deduce the claim.
 \end{proof}

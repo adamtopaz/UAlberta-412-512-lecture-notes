@@ -64,14 +64,16 @@ More generally, if $v_{1},\ldots,v_{n}$ are a basis, then the cube spanned by th
   We call this volume the \emph{covolume of $L$}.
 \end{lemma}
 \begin{proof}
-  \todo{If $w_{1},\ldots,w_{n}$ is another basis of $L$, then the change of basis matrix from $v$ to $w$ has determinant $\pm 1$.}{Explain further.}
+  By definition of lattice, the change of basis matrix lies in $\mathbb Z^{n\times n}$, the ring of $n\times n$ matrices with integral entries; hence its determinant is an integer.
+  This matrix is invertible, so the determinant is a unit in $\Zbb$, namely $\pm 1$.
 \end{proof}
 
 Let us now come back to number theory.
 Let $K$ be a number field with ring of integers $\Ocal_{K}$.
 Consider the base-change
 \[ K_{\Cbb} := K \otimes_{\Qbb} \Cbb. \]
-Explicitly, suppose that $n = [K:\Qbb]$, and $\tau_{1},\ldots,\tau_{n}$ are the \todo{$n$}{Explain why there are $n$ such embeddings.} embeddings of $K$ into $\Cbb$.
+Explicitly, suppose that $n = [K:\Qbb]$.
+Since $\Qbb$ is perfect, $K\mid \Qbb$ is separable, so by primitive element theorem, there are $n$ embeddings of $K$ into $\Cbb$, denoted by $\tau_{1},\ldots,\tau_{n}$.
 Then one has
 \[ K_{\Cbb} = \prod_{i = 1}^{n} \Cbb \]
 and the canonical map $K \to K_{\Cbb}$ is induced by the $n$ embeddings $\tau_{1},\ldots,\tau_{n}$, so that for $x \in K$, its image in $K_{\Cbb} = \prod_{i} \Cbb$ is $(\tau_{i}(x))_{i}$.
