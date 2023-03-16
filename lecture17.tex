@@ -63,11 +63,15 @@ where $u \in \Ocal^{\times}$ and $n \in \Zbb$.
 In this particular case, we \emph{normalize} the corresponding absolute value as follows.
 First, embed $\Zbb$ into $\Rbb$ in the usual way ($1 \mapsto 1$).
 We then take
-\[ |x|_{\pfrak} := N(\pfrak)^{-v_{\pfrak}(x)}, \]
+\[ \|x\|_{\pfrak} := N(\pfrak)^{-v_{\pfrak}(x)}, \]
 where $N$ is the absolute norm, so that $N(\pfrak)$ is the size of the residue field $\kappa(\pfrak)$.
 What this means explicitly is that
-\[ |u \cdot \pi^{n}|_{\pfrak} = N(\pfrak)^{-n}. \]
-We will see why we choose this particular normalization later on (the product formula).
+\[ \|u \cdot \pi^{n}\|_{\pfrak} = N(\pfrak)^{-n}. \]
+We also make the following choice of normalization (following Lang):
+\[ |p|_{\pfrak} = 1/p, \]
+where $p$ is the rational prime which is divisible by $\pfrak$.
+This amounts to $|\pi|_{\pfrak} = 1/(p^{1/e})$ where $e$ is the \emph{absolute} ramification degree ($e = e(\pfrak|p)$).
+We will see why we choose these particular normalizations later on (the product formula).
 
 Whenever we have an absolute value on a field $K$, say $|-|$, we can \emph{complete} $K$ with respect to the absolute value, in the usual way (Cauchy sequences modulo nullsequences).
 We obtain a resulting field $\hat K$.
@@ -76,6 +80,19 @@ The absolute value $|-|_{\pfrak}$ extends to $K_{\pfrak}$ in the \todo{natural w
 In this case, the absolute value $|-|_{\pfrak}$ on $K_{\pfrak}$ also comes from a discrete valuation of rank $1$ which we will also denote by $v_{\pfrak}$.
 The valuation ring $\Ocal_{\pfrak}$ of $K_{\pfrak}$ with respect to this valuation will be called the \emph{ring of integers} of $K_{\pfrak}$.
 One may check that $\Ocal_{\pfrak}$ is the completion (either adic, or in terms of Cauchy sequences) of $\Ocal_{K,\pfrak}$, and that $K_{\pfrak}$ is its fraction field.
+
+In general, a number field $K$ has many absolute values.
+We have the ones arising from (nonzero) prime ideals of $\Ocal_{K}$, as discussed above, but we also have absolute values of $K$ arising from any real or complex embedding.
+If $\sigma : K \to \Rbb$ is an embedding, then $|-|_{\sigma} := |\sigma(-)|$ is an absolute value, and similarly if we replace $\Rbb$ with $\Cbb$.
+We will write $M_{K}$ for the collection of absolute values of $K$ of the form $|-|_{\pfrak}$ or $|-|_{\sigma}$.
+
+If $L|K$ is a finite extension and $v \in M_{K}$ then any absolute value of $L$ extending $v$ lies in $M_{L}$ (this was the reason for our normalization of $|-|_{\pfrak}$ above).
+Note that for nonarchmedean primes $v$ of $M_{K}$, we have $v|p$ for some rational prime $p \in M_{\Qbb}$.
+Also,
+\[ M_{\Qbb} = \Spec \Z \cup \{\infty\} \]
+and the archemedean primes $v$ of $K$ satisfy $v|\infty$.
+
+One may check that any two elements of $M_{K}$ are \emph{independent} as absolute values, meaning that they induce distinct topologies on $K$.
 
 %%% Local Variables:
 %%% mode: latex
