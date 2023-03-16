@@ -37,9 +37,10 @@ We \emph{define}
 \[ \Norm_{L|K}(\Pfrak) := \pfrak^{f(\Pfrak|\pfrak)}, \]
 and extend it to a homomorphism of abelian groups on $J_{L}(B)$ in the unique way.
 This norm map is clearly multiplicative, and transitive in towers.
-Precisely, suppose $K \subset E \subset L$ is a tower of finite separable field extensions and $A \subset B \subset B$ the integral closure of $A$ in $E$ and $L$, respectively.
-Let $\mathfrak p$ be a prime of $A$, $\mathfrak q$ a prime of $B$ lying above $\mathfrak p$ and $\mathfrak P$ a prime of $C$ lying above $\mathfrak q$.
-Then $f(\mathfrak{P} / \mathfrak{p})=f(\mathfrak{P} / \mathfrak{q}) f(\mathfrak{q} / \mathfrak{p})$, which implies that $\Norm_{L|K}(\mathfrak P) = \Norm_{E|K}(\Norm_{L|E}(\mathfrak P))$.
+Precisely, suppose $K \subset E \subset L$ is a tower of finite separable field extensions and $A \subset B \subset C$ the integral closure of $A$ in $E$ and $L$, respectively.
+Let $\pfrak$ be a prime of $A$, $\qfrak$ a prime of $B$ lying above $\pfrak$ and $\Pfrak$ a prime of $C$ lying above $\qfrak$.
+Then $f(\Pfrak / \pfrak) = f(\Pfrak / \qfrak) f(\qfrak / \pfrak)$, which implies that
+\[\Norm_{E|K}(\Norm_{L|E}(\Pfrak)) = \Norm_{E|K}(\qfrak^{f(\Pfrak|\qfrak)}) = \Norm_{E|K}(\qfrak)^{f(\Pfrak|\qfrak)} = \pfrak^{f(\Pfrak / \qfrak) f(\qfrak / \pfrak)} = \Norm_{L|K}(\Pfrak).\]
 
 We will need the following fundamental result. First, we begin with some definitions:
 
