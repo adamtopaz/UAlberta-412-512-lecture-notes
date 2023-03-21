@@ -1,0 +1,86 @@
+\section{Lecture 18}
+
+Recall from the last lecture that any rank one valuation $v$ on a field $K$ induces an equivalence class of absolute values on $K$.
+
+\begin{theorem}
+  Suppose that $|-|$ is a nonarchmedean absolute value on $K$.
+  Then $|-|$ arises from a rank $1$ valuation on $K$.
+\end{theorem}
+\begin{proof}
+  We must check that the ultrametric inequality
+  \[ |x+y| \le max(|x|,|y|) \]
+  holds true.
+  To see this, take powers $|x+y|^{n}$, and use the fact that $|n| \le 1$ for any $n$ of the form $1 + \cdots + 1$.
+\end{proof}
+
+Suppose that $(K,|-|)$ is a valued field.
+We can take the completion of $K$, defined in terms of Cauchy sequences modulo nullsequences.
+The result $\hat K$ is again a field, and the absolute value $|-|$ extends to $\hat K$ by taking limits.
+
+\begin{theorem}[Ostrowski]
+  If $K$ is complete with respect to an archemedean absolute value, then $K \cong \Cbb$ or $\Rbb$ (compatibly with the usual absolute value, up-to equivalence).
+\end{theorem}
+\begin{proof}
+  See Theorem 4.2 in Ch.~II of Neukirch.
+\end{proof}
+
+Let us now focus on the nonarchemean case.
+As we saw above, the absolute value on $K$ arises from a valuation $v$.
+We can thus extend $v$ to $\hat v$ on $\hat K$ by taking limits.
+Suppose that $a = \lim_{n} a_{n}$ is such a limit in $\hat K$, with $a_{n} \in K$.
+Let's note that the sequence $v(a_{n})$ is eventually constant!
+\begin{exercise}
+  This holds for arbitrary valuations $v$ on a field $K$ (not just rank $1$):
+  If $v(a) \neq v(b)$ then $v(a+b) = \min(v(a),v(b))$.
+\end{exercise}
+
+Now note that for some sufficiently large $n$, we have $\hat v(a-a_{n}) > \hat v(a)$ and thus
+\[ v(a_{n}) = \hat v(a_{n}-a+a) = \hat v(a). \]
+From this it also follows that the value groups of $v$ and of $\hat v$ are the same!
+For example, if $v$ is a rank $1$ discrete valuation (so that $\Gamma_{v} = \Zbb$) then the same is true for $\hat v$.
+
+\begin{exercise}
+  Suppose that $K$ is a field with a nonarchemean absolute value.
+  A sequence $a_{n}$ is Cauchy if and only if $a_{n+1}-a_{n}$ is a nullsequence.
+  A series
+  \[ \sum_{n \geq 0} a_{n} \]
+  converges if and only if $a_{n}$ is a nullsequence.
+\end{exercise}
+
+\begin{theorem}
+  Let $\Ocal$ be the valuation ring of $K$ and $\hat \Ocal$ the valuation ring of $\hat K$.
+  The valuation ring $\hat\Ocal$ is the completion of $\Ocal$.
+  Then $\Ocal$ annd $\hat\Ocal$ have (canonically) isomorphic residue fields (cf.~HW3).
+  If furthermore $v$ is discrete, and $\mfrak$ resp.~$\hat\mfrak$ denote the maximal ideal of $\Ocal$ resp.~$\hat\Ocal$, then
+  \[ \Ocal/\mfrak^{n} \cong \hat\Ocal/\hat\mfrak^{n} \]
+  for any $n$.
+  Similarly,
+  \[ \Ocal^{\times}/U^{n} \cong \hat\Ocal^{\times}/\hat U^{n} \]
+\end{theorem}
+\begin{proof}
+  If $a = \lim_{n} a_{n}$ is some element of $\hat\Ocal$, then $\lim_{n} v(a_{n}) \geq 0$.
+  Replacing $a_{n}$ with a subsequence, we may assume that all the $a_{n} \in \Ocal$, and the first assertion follows from this.
+
+  Now if $a$ has positive valuation, then its image in the residue field is trivial, so there is nothing to show.
+  Otherwise, we may as well assume that all the $a_{n}$ have valuation $0$, and are thus units.
+  But the sequence is also Cauchy, and thus eventually we must have that $a_{n+1}-a_{n}$ is contained in the maximal ideal.
+  Assume WLOG that this is always the case, and from this it follows that $a_{0}$ represents the element $a$ in $\hat\Ocal/\hat\mfrak$.
+
+  The assertion for powers of $\mfrak$ in the discrete case is proved similarly.
+\end{proof}
+
+\begin{theorem}
+  Suppose that $K$ is a complete discretely valued field with ring of integers $\Ocal$ and maximal ideal $\mfrak$.
+  Then
+  \[ \Ocal \cong \varprojlim_{n} \Ocal/\mfrak^{n} \]
+  and
+  \[ \Ocal^{\times} \cong \varprojlim_{n} \Ocal^{\times}/U^{(n)}. \]
+\end{theorem}
+\begin{proof}
+  Argue similarly to the theorem above.
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
