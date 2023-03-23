@@ -1,0 +1,161 @@
+\section{Lecture 19}
+
+In today's lecture we will discuss Hensel's lemma and some applications.
+First, let me start with another result which should have been discussed last time.
+Let's consider a complete discretely valued field $K$, with associated absolute value $|-|$, valuation $v$ and valuation ring $\Ocal$ whose maximal ideal is $\mfrak$.
+Recall that $\Ocal$ is a DVR, and is thus a PID.
+Let $\pi$ be a uniformizer of $\Ocal$, which just means that $\mfrak = (\pi)$.
+Let $R \subset \Ocal$ be a system of representatives for $\kappa := \Ocal/\mfrak$, which contains $0$.
+
+\begin{theorem}
+  Every element of $K$ admits a unique representation as a convergent series
+  \[ x = \pi^{m}(a_{0} + a_{1}\pi + \cdots) \]
+  where $a_{i} \in R$, $a_{0} \neq 0$ and $m \in \Zbb$ is the valuation of $x$.
+\end{theorem}
+\begin{proof}
+  Recall that $x$ can be written uniquely as $\pi^{m} u$ for $u$ a unit of $\Ocal$, so we may as well assume that $x = u$ and $m = 0$.
+  The image of $u$ in $\kappa$ has a unique representative $a_{0} \in R$ which is nonzero, hence $u = a_{0} + \pi b_{1}$ for some $b_{1} \in \Ocal$.
+  Assume that $a_{0},\ldots,a_{n-1}$ have been found, satisfying
+  \[ u = a_{0} + a_{1}\pi + \cdots + a_{n-1}\pi^{n-1} + \pi^{n} b_{n} \]
+  for some $b_{n} \in \Ocal$, and that the $a_{i}$ are unique with this property.
+  Then the representative $a_{n} \in R$ of $b_{n}$ modulo $\pi$ is again uniquely determined by $u$, and we have $b_{n} = a_{n} + \pi b_{n+1}$.
+  We can thus continue in the recursion.
+  The series converges because the terms tend to zero.
+\end{proof}
+
+Note that if $\Ocal$  and $K$ are the completion of $\Ocal_{0}$ and $K_{0}$ which are possibly noncomplete discrete valuation ring and its fraction field, then the $R$ can be chosen to be contained in $\Ocal_{0}$, since $\Ocal$ and $\Ocal_{0}$ have isomorphic residue fields as discussed in the last lecture.
+
+For example, we can take the system of representatives
+\[ R := \{0,1,\ldots,p-1\} \]
+for $\Fbb_{p}$, which is the residue field of $\Zbb_{p}$.
+Recall here that $\Qbb_{p}$ is the completion of $\Qbb$ with respect to the $p$-adic valuation, and that $\Zbb_{p}$ is its associated valuation ring.
+This shows that any element of $\Qbb_{p}$ has a unique representation as a \emph{``Laurent''} series in $p$:
+\[ \sum_{n \gg -\infty} a_{n} p^{n} \]
+where $a_{n} \in \{0,1,\ldots,p-1\}$ are $p$-adic digits.
+
+Let me now discuss Hensel's lemma, as promised.
+\begin{theorem}[Hensel's Lemma]
+  Suppose that $K$ is a complete nonarchemedean valued field with valuation ring $\Ocal$ and residue field $\kappa$.
+  Let $f \in \Ocal[X]$ be a polynomial.
+  Assume that $f$ is \emph{primitive}, which means that the image $\bar f$ in $\kappa[X]$ is nonzero (equivalently, at least one of the coefficients of $f$ is a unit).
+  Suppose that
+  \[ \bar f = \bar g \cdot \bar h \]
+  for some \emph{coprime} $\bar g, \bar h \in \kappa[X]$.
+  Then $f$ admits a factorization
+  \[ f = g \cdot h \]
+  where $g,h \in \Ocal[X]$ such that $\deg(g) = \deg(\bar g)$, $\deg(h) = \deg(\bar h)$ and $\bar g$ resp.~$\bar h$ is the image of $g$ resp.~$h$ in $\kappa[X]$
+\end{theorem}
+\begin{proof}
+  Write $d = \deg(f)$, $m = \deg(\bar g)$, so that $d - m \geq \deg(\bar h)$.
+  Choose some polynomials $g_{0}$ and $h_{0}$ mapping to $g$ and $h$ with the same degrees.
+  We will modify these $g_{0}$ and $h_{0}$ iteratively and eventually reach $g$ and $h$ of the form
+  \[ g = g_{0} + p_{1} \pi + p_{2} \pi^{2} + \cdots \]
+  \[ h = h_{0} + q_{1} \pi + q_{2} \pi^{2} + \cdots \]
+  where $\pi$ is some element of the maximal ideal.
+  Setting $g_{n}$ and $h_{n}$ the truncated version, we would like to ensure that $f = g_{n} h_{n}$ modulo $\pi^{n+1}$ and that the degrees match up.
+
+  Since $\bar g$ and $\bar h$ are coprimes, we can find $a,b$ such that $ag_{0} + b h_{0} = 1$ modulo $\mfrak$.
+  Note that the coefficients of $f - g_{0} h_{0}$ and of $ag_{0} + b h_{0} - 1$ all have absoltue value $< 1$; choose one of maximal absolute value call it $\pi$.
+  Note that any other coefficient of these polynomials is \todo{contained}{Why?} in $\pi \cdot \Ocal$.
+
+  So far, we found $g_{0}$ and $h_{0}$.
+  These satsify:
+  \begin{enumerate}
+    \item $f = g_{0} h_{0} \bmod \pi^{1}$.
+    \item $\deg(g_{0}) = \deg(\bar g)$.
+    \item $\deg(h_{0}) = \deg(\bar h)$.
+    \item $\bar g_{0} = \bar g$.
+    \item $\bar h_{0} = \bar h$.
+  \end{enumerate}
+  Suppose that $p_{1},\ldots,p_{n}$ and $q_{1},\ldots,q_{n}$ have been found.
+  Now we are looking for $g_{n+1}$ and $h_{n+1}$ of the form
+  \[ g_{n+1} = g_{n} + p_{n+1}\pi^{n+1}, \ h_{n+1} = h_{n} + q_{n+1} \pi^{n+1}. \]
+  Consider the condition on $g_{n+1}h_{n+1}$.
+  We have
+  \[ g_{n+1} h_{n+1} = g_{n}h_{n} + g_{n} q_{n+1} \pi^{n+1} + h_{n} p_{n+1}\pi^{n+1} + p_{n+1}q_{n+1}\pi^{2n+2}. \]
+  We want this to be congruent to $f$ modulo $\pi^{n+2}$, so we can ignore the last term.
+  The condition thus becomes
+  \[ f - g_{n} h_{n} = \pi^{n+1}(g_{n}q_{n+1}+h_{n}p_{n+1}) \bmod \pi^{n+2}. \]
+  Dividing by $\pi^{n+1}$, this reduces to
+  \[ f_{n+1} := \frac{f-g_{n}h_{n}}{\pi^{n}} = g_{n} q_{n+1} + h_{n} p_{n+1} \bmod \pi. \]
+  Also, note that $g_{n}$ is congruent to $g_{0}$ mod $\pi$ and similarly with the $h$'s, so that the LHS is congruent to $g_{0} q_{n+1} + h_{0} p_{n+1}$ modulo $\pi$.
+  Using that $g_{0}a + h_{0} b = 1 \bmod \pi$, a good initial guess is to take $p_{n+1} = b f_{n+1}$ and $q_{n+1} = a f_{n}$.
+
+  The issue with this is that the degrees might become too large.
+  What we do instead is use the division algorithm the reduce the degrees, as follows.
+  Write
+  \[ b \cdot f_{n+1} := q \cdot g_{0} + p_{n+1} \]
+  with $\deg(p_{n+1}) < \deg(g_{0}) = \deg(\bar g) = m$.
+  Since the degrees of $g$ and $g_{0}$ agree, the leading coefficient of $g_{0}$ is a unit, and thus $q$ is an element of $\Ocal[X]$.
+  We thus have
+  \[ g_{0}(a f_{n+1} + h_{0}q) + h_{0} p_{n+1} = f_{n+1} \bmod \pi. \]
+  Now ignore all terms in the expansion of $a f_{n+1} + h_{0} q$ whose coefficients are divisible by $\pi$ to obtain $q_{n+1}$ such that
+  \[ g_{0} q_{n+1} + h_{0} p_{n+1} = f_{n+1} \bmod \pi. \]
+  Since $\deg(f_{n+1}) \leq d$, $\deg(g_{0}) = m$ and $\deg(h_{0} p_{n+1}) < d$, we see that $q_{n+1}$ has degree $\leq d-m$, as required.
+\end{proof}
+
+There is another variant of Hensel's lemma whose proof I will only sketch.
+\begin{theorem}
+  Let $K$ be a complete nonarchemedean valued field and $f \in \Ocal[X]$.
+  Let $a \in \Ocal$ be an element such that
+  \[ |f(a)| < |f'(a)|^{2}. \]
+  Then there exists a unique $b \in \Ocal$ such that $f(b) = 0$ and $|b-a| < |f'(a)|$.
+  Moreover,
+  \[ |b-a| = |f(a)/f'(a)|, \ |f'(b)| = |f'(a)|. \]
+\end{theorem}
+\begin{proof}[Proof sketch]
+  This is essentialy Newtons method, adapted to this context.
+  Start with $a = a_{0}$ and define iteratively
+  \[ a_{n+1} = a_{n} - f(a_{n})/f'(a_{n}). \]
+  Show by induction on $n$ that:
+  \begin{enumerate}
+    \item $|a_{n}| \leq 1$
+    \item $|f'(a_{n})| = |f'(a_{0})|$.
+    \item $|f(a_{n})| \leq |f'(a_{0})| t^{2^{n-1}}$.
+  \end{enumerate}
+  Here $t = |f(a)/f'(a)| < 1$.
+  Conclude by letting $b$ be the limit of the $a_{n}$.
+\end{proof}
+
+To finish off today, let's discuss some applications.
+
+\begin{example}
+  The polynomial $X^{p-1}-1$ splits completely in $\Zbb_{p}$.
+  To see this, apply Hensel's lemma to $X^{p-1}-1$, using that $\Fbb_{p}$ has $p-1$ distinct solutions to this equation.
+  This shows that $\mu_{p-1}$ is contained in $\Zbb_{p}$.
+  In particular, going back to the beginning of today's lecture, the map
+  \[ \Zbb_{p} \to \Fbb_{p} \]
+  has a \emph{multiplicative} section with image $\mu_{p-1} \cup \{0\}$.
+  In fact, there is in some sense a ``canonical'' choice for such a section, where the image of $t \in \Fbb_{p}$ is called the \emph{Teichmuller lift} of $t$.
+  In any case, if we put $R = \mu_{p-1} \cup \{0\}$, this gives us a system of representatives $R$ to which we can apply the discussion in the beginning of today's lecture.
+  More on this later!
+\end{example}
+
+\begin{corollary}
+  Suppose $K$ is a complete nonarchemedean field.
+  Every irreducible polynomial $f$ with constant coefficient $a_{0}$ and leading coefficient $a_{n}$ such that $a_{n} a_{0} \neq 0$ has
+  \[ |f| = \max_{i}\{|a_{i}|\} = \max(|a_{0}|,|a_{n}|). \]
+  In particular, if $f$ is monic and $a_{0}$ is integral, then $f$ is integral.
+\end{corollary}
+\begin{proof}
+  WLOG assume that $|f| = 1$.
+  Let $a_{r}$ be such that $|a_{r}| = 1$ with $r$ minimal.
+  Thus
+  \[ f = x^{r}(a_{r} + a_{r+1} x + \cdots + a_{n} x^{n-r}) \bmod \mfrak. \]
+  If $\max(|a_{0}|,|a_{n}|) < 1$ then $0 < r < n$ and the congruence above would contradict Hensel's lemma.
+\end{proof}
+
+\begin{theorem}
+  Suppose that $K$ is complete with respect to a nonarchemedean absolute value and let $L$ be a finite extension of $K$.
+  Then $|-|$ has a unique extension to $L$ given by
+  \[ |x| = \sqrt[n]{|N_{L|K}(x)|}. \]
+  Also, $L$ is again complete with respect to this absolute value.
+\end{theorem}
+\begin{remark}
+  Using Ostrowski's theorem discussed in the last lecture, the same holds in the Archemedean case as well.
+\end{remark}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
