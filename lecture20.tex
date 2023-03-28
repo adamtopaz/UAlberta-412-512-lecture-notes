@@ -1,0 +1,203 @@
+\section{Lecture 20}
+
+There is another variant of Hensel's lemma whose proof I will only sketch.
+\begin{theorem}
+  Let $K$ be a complete nonarchemedean valued field and $f \in \Ocal[X]$.
+  Let $a \in \Ocal$ be an element such that
+  \[ |f(a)| < |f'(a)|^{2}. \]
+  Then there exists a unique $b \in \Ocal$ such that $f(b) = 0$ and $|b-a| < |f'(a)|$.
+  Moreover,
+  \[ |b-a| = |f(a)/f'(a)|, \ |f'(b)| = |f'(a)|. \]
+\end{theorem}
+\begin{proof}[Proof sketch]
+  This is essentialy Newtons method, adapted to this context.
+  Start with $a = a_{0}$ and define iteratively
+  \[ a_{n+1} = a_{n} - f(a_{n})/f'(a_{n}). \]
+  Show by induction on $n$ that:
+  \begin{enumerate}
+    \item $|a_{n}| \leq 1$
+    \item $|f'(a_{n})| = |f'(a_{0})|$.
+    \item $|f(a_{n})| \leq |f'(a_{0})| t^{2^{n-1}}$.
+  \end{enumerate}
+  Here $t = |f(a)/f'(a)| < 1$.
+  Conclude by letting $b$ be the limit of the $a_{n}$.
+\end{proof}
+
+To finish off today, let's discuss some applications.
+
+\begin{example}
+  The polynomial $X^{p-1}-1$ splits completely in $\Zbb_{p}$.
+  To see this, apply Hensel's lemma to $X^{p-1}-1$, using that $\Fbb_{p}$ has $p-1$ distinct solutions to this equation.
+  This shows that $\mu_{p-1}$ is contained in $\Zbb_{p}$.
+  In particular, going back to the beginning of today's lecture, the map
+  \[ \Zbb_{p} \to \Fbb_{p} \]
+  has a \emph{multiplicative} section with image $\mu_{p-1} \cup \{0\}$.
+  In fact, there is in some sense a ``canonical'' choice for such a section, where the image of $t \in \Fbb_{p}$ is called the \emph{Teichmuller lift} of $t$.
+  In any case, if we put $R = \mu_{p-1} \cup \{0\}$, this gives us a system of representatives $R$ to which we can apply the discussion in the beginning of today's lecture.
+  More on this later!
+\end{example}
+
+\begin{corollary}
+  Suppose $K$ is a complete nonarchemedean field.
+  Every irreducible polynomial $f$ with constant coefficient $a_{0}$ and leading coefficient $a_{n}$ such that $a_{n} a_{0} \neq 0$ has
+  \[ |f| = \max_{i}\{|a_{i}|\} = \max(|a_{0}|,|a_{n}|). \]
+  In particular, if $f$ is monic and $a_{0}$ is integral, then $f$ is integral.
+\end{corollary}
+\begin{proof}
+  WLOG assume that $|f| = 1$.
+  Let $a_{r}$ be such that $|a_{r}| = 1$ with $r$ minimal.
+  Thus
+  \[ f = x^{r}(a_{r} + a_{r+1} x + \cdots + a_{n} x^{n-r}) \bmod \mfrak. \]
+  If $\max(|a_{0}|,|a_{n}|) < 1$ then $0 < r < n$ and the congruence above would contradict Hensel's lemma.
+\end{proof}
+
+\begin{theorem}
+  Suppose that $K$ is complete with respect to a nonarchemedean absolute value and let $L$ be a finite extension of $K$.
+  Then $|-|$ has a unique extension to $L$ given by
+  \[ |x| = \sqrt[n]{|N_{L|K}(x)|}. \]
+  Also, $L$ is again complete with respect to this absolute value.
+\end{theorem}
+\begin{proof}
+  Completeness is a general fact about finite dimensional vector spaces over complete fields, and we omit it (see Proposition 4.9 in Neukirch Ch II).
+
+  Let $\Ocal_{K}$ be the valuation ring of $K$ and write $\Ocal_{L}$ for the integral closure of $\Ocal_{K}$ in $L$.
+  We claim that $\Ocal_{L}$ consists precisely of those elements of $L$ whose norm is integral.
+  This is clearly a necessary condition (why?), but let's see that it's sufficient.
+  Suppose that $x \in L$ is a nonzero element whose norm is integral, and consider the minimal polynomial $f$ of $x$ over $K$.
+  The norm is (upto $\pm 1$) a power of the constant coefficient of $f$, and is thus integral hence of absolute value $\leq 1$.
+  But $\Ocal_{K}$ is normal (why?) and this shows that the constant coefficient of $f$ is contained in $\Ocal_{K}$.
+  It follows from the previous corollary that all the coefficients of $f$ are in $\Ocal_{K}$, hence $x$ is integral.
+
+  Now consider the function $|x| = \sqrt[n]{N_{L|K}(x)}$ in question.
+  It is clear that $|x| = 0$ if and only if $x = 0$ and that this function is multiplicative.
+  We must thus check the ultrametric inequality, and for this it suffices to show that $|x| \leq 1$ implies $|x+1| \leq 1$ (why?).
+  But this is clear from the above, and it is furthermore clear from the argument that $\Ocal_{L}$ is the valuation ring associated to this absolute value.
+
+  Now for the uniqueness, we can proceed in a few ways.
+  First, one can use general results from valuation theory to see that the valuations extending that of $K$ are characterized as localizations at maximal ideals of $\Ocal_{L}$ and since we proved above that this is a valuation ring, hence local, it follows that this is unique (once it's normalized properly).
+  But let's do this in a more hands-on way, as follows.
+
+  Suppose that $|-|_{i}$, $i = 1,2$ are two absolute values extending that of $K$ and write $\Ocal_{i}$ for their valuation rings.
+  Suppose that $x \in \Ocal_{1} \smin \Ocal_{2}$.
+  Write $f$ for the minimal polynomial of $x$.
+  As proved above, the coefficients of $f$ are all in $\Ocal_{K}$, while $x^{-1}$ is in the maximal ideal of $\Ocal_{2}$.
+  This eventually lets us see that $1$ is in the maximal ideal of $\Ocal_{2}$, which is nonsense.
+  Thus $\Ocal_{1} \subset \Ocal_{2}$ and by symmetry the two are equal, so the absolute values are equivalent as their valuation rings are equal.
+  Since the two absolute values agree on $K$, they must be actually \emph{equal}.
+\end{proof}
+\begin{remark}
+  Using Ostrowski's theorem discussed in the last lecture, the same holds in the Archemedean case as well.
+\end{remark}
+
+Let us now turn our attention to a more restrictive class of complete nonarchemedean valued fields, namely, the \emph{local fields}.
+For our purposes, a \emph{local field} is a field which is complete with respect to a nonarchemedean absolute value whose assocaited valuation is discrete, and whose residue field is finite.
+
+\begin{remark}
+  Some authors define a local field to be a field with a nontrivial absolute whose assocaited topology is locally compact.
+  One can prove that all such fields are isomorphic to one of the following:
+  \begin{enumerate}
+    \item $\Rbb$ or $\Cbb$.
+    \item Finite extensions of $\Qbb_{p}$.
+    \item Finite extensions of $\Fbb_{p}((t))$.
+  \end{enumerate}
+  In our definition of \emph{local field}, we are omitting the archemedean case.
+\end{remark}
+
+\begin{proposition}
+  A local field is locally compact and its valuation ring is compact.
+\end{proposition}
+\begin{proof}
+  It sufffices to show that the valuation ring is compact.
+  We know that this valuation ring $\Ocal$ has the form
+  \[ \Ocal \cong \varprojlim_{n} \Ocal/\mfrak^{n} \]
+  while multiplication by $\pi^{n}$ ($\pi$ a uniformizer) induces an isomorphism between $\Ocal/\mfrak$ and $\mfrak^{n}/\mfrak^{n+1}$.
+  This shows that $\Ocal/\mfrak^{n}$ is finite hence compact.
+  By general topology, the same thus holds for the inverse limit and thus also for $\Ocal$.
+\end{proof}
+
+\begin{theorem}
+  The local fields are the finite extensions of $\Qbb_{p}$ or of $\Fbb_{p}((t))$.
+\end{theorem}
+\begin{proof}[Proof Sketch]
+  It is easy to see from what we have already done that such finite extensions are local, so we only focus on the forward direction.
+  We will have to use Ostrowski's theorem, which we recall (without proof) during lecture.
+
+  Let $K$ be a local field with absolute value $|-|$ and valuation $v$.
+  Assume first that $K$ has characteristic $0$.
+  The restriction of $v$ to $\Qbb$ is thus $v_{p}$ for some prime $p$ (Ostrowski), which must then be the residue characteristic of $K$.
+  Taking the closure of $\Qbb$ in $K$ must therefore give the completion of $\Qbb$ with respect to the $p$-adic valuation, i.e.~$\Qbb_{p} \subset K$.
+  To see that this extension is finite, one uses the local compactness of $K$.
+  If $K$ has positive characteristic then we proceed similarly with $\Fbb_{p}(t)$ instead of $\Qbb$, where $t$ is a uniformizer of $K$.
+\end{proof}
+
+Let $K$ be a local field.
+We consider the following invariants of $K$:
+\begin{enumerate}
+  \item The valuation ring $\Ocal = \Ocal_{K}$ with maximal ideal $\mfrak$.
+  \item The absolute value $|-|$ on $K$.
+  \item The residue field $\kappa := \Ocal/\mfrak$, which is \emph{finite}.
+  \item The \emph{size} of the residue field $\kappa$, denoted by $q$.
+  \item $U^{(n)}$ as before.
+\end{enumerate}
+
+Let us start by studying the multiplicative structure of a local field using these invariants.
+\begin{theorem}
+  Let $K$ be a local field.
+  Suppose that $K$ has characteristic $0$.
+  Then there is a (topological) isomorphism
+  \[ K^{\times} \cong \Zbb \times \Zbb/(q-1) \times \Zbb/p^{a} \times \Zbb_{p}^{d} \]
+  where $p^{a}$ is the (finite) size of $\mu_{p^{\infty}}(K)$ and $d = [K:\Qbb_{p}]$.
+  If $K$ has positive characteristic $p$ then
+  \[ K^{\times} \cong \Zbb \times \Zbb/(q-1) \times \Zbb_{p}^{\Nbb}. \]
+\end{theorem}
+
+We will need to prove some intermediate results and discuss some additional constructions before we can actually prove this.
+Let's start.
+
+\begin{proposition}
+  Let $K$ be a local field and choose a uniformizer $\pi$ of $K$.
+  The canonical map
+  \[ \pi^{\Zbb} \times \mu_{q-1} \times U^{(1)} \to K^{\times}. \]
+  is a (topological) isomorphism.
+\end{proposition}
+\begin{proof}
+  \todo{Use Hensel's lemma plus general nonsense.}{Add proof.}
+\end{proof}
+
+At this point, our task is to describe the structure of $U^{(1)}$.
+We will do this by considering analogues of the exponential and logarithm in the $p$-adic case.
+In the equal characteristic case, we can use the discussion from previous lectures to see that $K \cong \Fbb_{q}((t))$, and do things ``explicitly'' (I won't prove this, see the argument in Neukirch, which follows an argument of Iwasawa).
+
+\begin{proposition}
+  Suppose $K = \Fbb_{q}((t))$.
+  Then $U^{(1)} \cong \Zbb_{p}^{\Nbb}$.
+\end{proposition}
+
+From now on, let's focus on the $p$-adic case and assume $K$ is $p$-adic.
+\begin{lemma}
+  The series
+  \[ \log(1+x) := x - x^{2}/2 + x^{3}/3 - \cdots \]
+  converges in $K$ for $|x| < 1$.
+\end{lemma}
+\begin{proof}
+  Let's compute the valuation of the terms of the series.
+  \[ v(x^{n}/n) = n v(x) - v(n). \]
+  But $v(x) > 0$.
+  Say $\pi$ is a uniformizer and $v(\pi) = c$ so that $v(x) = m \cdot c$ for some positive integer $m$.
+  Renormalize and choose $c$ so that $v(p) = 1$.
+  Thus $p^{v(n)} \le n$, so that $v(n) \le \log(n)/\log(p)$.
+  Put $r := p^{v(x)} > 1$.
+  Thus we have
+  \[ v(x^{n}/n) = n v(x) - v(n) \geq n \log_{p}(r) - \log_{p}(n) = \log_{p}(r^{n}/n). \]
+  But $r^{n}/n$ goes to $\infty$ as $n \to \infty$ since $r > 1$ and so the same holds after taking logs.
+  It follows that $x^{n}/n$ is a nullsequence so the series converges.
+\end{proof}
+
+This defines a function $\log : U^{(1)} \to K$ which is easily seen to satisfy $\log(x y) = \log(x) + \log(y)$ by the formal properties of the series.
+\todo{We can extend this to all of $K^{\times}$ by setting $\log(p) = 0$.}{Explain how.}
+In fact, $\log$ is uniquely determined by these properties and is a continuous homomorphism.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
