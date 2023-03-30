@@ -1,0 +1,170 @@
+\section{Lecture 21}
+
+\begin{proposition}
+  A local field is locally compact and its valuation ring is compact.
+\end{proposition}
+\begin{proof}
+  It sufffices to show that the valuation ring is compact.
+  We know that this valuation ring $\Ocal$ has the form
+  \[ \Ocal \cong \varprojlim_{n} \Ocal/\mfrak^{n} \]
+  while multiplication by $\pi^{n}$ ($\pi$ a uniformizer) induces an isomorphism between $\Ocal/\mfrak$ and $\mfrak^{n}/\mfrak^{n+1}$.
+  This shows that $\Ocal/\mfrak^{n}$ is finite hence compact.
+  By general topology, the same thus holds for the inverse limit and thus also for $\Ocal$.
+\end{proof}
+
+\begin{theorem}
+  The local fields are the finite extensions of $\Qbb_{p}$ or of $\Fbb_{p}((t))$.
+\end{theorem}
+\begin{proof}[Proof Sketch]
+  It is easy to see from what we have already done that such finite extensions are local, so we only focus on the forward direction.
+  We will have to use Ostrowski's theorem, which we recall (without proof) during lecture.
+
+  Let $K$ be a local field with absolute value $|-|$ and valuation $v$.
+  Assume first that $K$ has characteristic $0$.
+  The restriction of $v$ to $\Qbb$ is thus $v_{p}$ for some prime $p$ (Ostrowski), which must then be the residue characteristic of $K$.
+  Taking the closure of $\Qbb$ in $K$ must therefore give the completion of $\Qbb$ with respect to the $p$-adic valuation, i.e.~$\Qbb_{p} \subset K$.
+  To see that this extension is finite, one uses the local compactness of $K$.
+  If $K$ has positive characteristic then we proceed similarly with $\Fbb_{p}(t)$ instead of $\Qbb$, where $t$ is a uniformizer of $K$.
+\end{proof}
+
+Let $K$ be a local field.
+We consider the following invariants of $K$:
+\begin{enumerate}
+  \item The valuation ring $\Ocal = \Ocal_{K}$ with maximal ideal $\mfrak$.
+  \item The absolute value $|-|$ on $K$.
+  \item The residue field $\kappa := \Ocal/\mfrak$, which is \emph{finite}.
+  \item The \emph{size} of the residue field $\kappa$, denoted by $q$.
+  \item $U^{(n)}$ as before.
+\end{enumerate}
+
+Let us start by studying the multiplicative structure of a local field using these invariants.
+\begin{theorem}
+  Let $K$ be a local field.
+  Suppose that $K$ has characteristic $0$.
+  Then there is a (topological) isomorphism
+  \[ K^{\times} \cong \Zbb \times \Zbb/(q-1) \times \Zbb/p^{a} \times \Zbb_{p}^{d} \]
+  where $p^{a}$ is the (finite) size of $\mu_{p^{\infty}}(K)$ and $d = [K:\Qbb_{p}]$.
+  If $K$ has positive characteristic $p$ then
+  \[ K^{\times} \cong \Zbb \times \Zbb/(q-1) \times \Zbb_{p}^{\Nbb}. \]
+\end{theorem}
+
+We will need to prove some intermediate results and discuss some additional constructions before we can actually prove this.
+Let's start.
+
+\begin{proposition}
+  Let $K$ be a local field and choose a uniformizer $\pi$ of $K$.
+  The canonical map
+  \[ \pi^{\Zbb} \times \mu_{q-1} \times U^{(1)} \to K^{\times}. \]
+  is a (topological) isomorphism.
+\end{proposition}
+\begin{proof}
+  \todo{Use Hensel's lemma plus general nonsense.}{Add proof.}
+\end{proof}
+
+At this point, our task is to describe the structure of $U^{(1)}$.
+We will do this by considering analogues of the exponential and logarithm in the $p$-adic case.
+In the equal characteristic case, we can use the discussion from previous lectures to see that $K \cong \Fbb_{q}((t))$, and do things ``explicitly'' (I won't prove this, see the argument in Neukirch, which follows an argument of Iwasawa).
+
+\begin{proposition}
+  Suppose $K = \Fbb_{q}((t))$.
+  Then $U^{(1)} \cong \Zbb_{p}^{\Nbb}$.
+\end{proposition}
+
+From now on, let's focus on the $p$-adic case and assume $K$ is $p$-adic.
+\begin{lemma}
+  The series
+  \[ \log(1+x) := x - x^{2}/2 + x^{3}/3 - \cdots \]
+  converges in $K$ for $|x| < 1$.
+\end{lemma}
+\begin{proof}
+  Let's compute the valuation of the terms of the series.
+  \[ v(x^{n}/n) = n v(x) - v(n). \]
+  But $v(x) > 0$.
+  Say $\pi$ is a uniformizer and $v(\pi) = c$ so that $v(x) = m \cdot c$ for some positive integer $m$.
+  Renormalize and choose $c$ so that $v(p) = 1$.
+  Thus $p^{v(n)} \le n$, so that $v(n) \le \log(n)/\log(p)$.
+  Put $r := p^{v(x)} > 1$.
+  Thus we have
+  \[ v(x^{n}/n) = n v(x) - v(n) \geq n \log_{p}(r) - \log_{p}(n) = \log_{p}(r^{n}/n). \]
+  But $r^{n}/n$ goes to $\infty$ as $n \to \infty$ since $r > 1$ and so the same holds after taking logs.
+  It follows that $x^{n}/n$ is a nullsequence so the series converges.
+\end{proof}
+
+This defines a function $\log : U^{(1)} \to K$ which is easily seen to satisfy $\log(x y) = \log(x) + \log(y)$ by the formal properties of the series.
+\todo{We can extend this to all of $K^{\times}$ by setting $\log(p) = 0$.}{Explain how.}
+In fact, $\log$ is uniquely determined by these properties and is a continuous homomorphism.
+
+What about the exponential?
+Consider the usual series definition of the exponential:
+\[ \exp(x) = 1 + x + x^{2}/2 + x^{3}/3! + \cdots \]
+For this to make sense, the series should converge, so we need to understand the region on which it does indeed converge.
+The situation is more subtle in this context, since the denominators have absolute value which gets smaller and smaller in the $p$-adic context (why?).
+We thus need $x$ to be sufficiently close to zero.
+Let's unravel precisely when this happens.
+
+\begin{proposition}
+  Let $e$ denote the \emph{absolute} ramification degree of $K$.
+  Then for all $n > e/(p-1)$, the series
+  \[ \exp(x) = \sum_{i} x^{i}/i! \]
+  converges for $x \in \mfrak^{n}$.
+  Its image lands in $U^{(n)}$, and $\exp$ resp.~$\log$ induce topological isomorphisms $\mfrak^{n} \cong U^{(n)}$.
+\end{proposition}
+
+The proof essentially boils down to understanding the $p$-adic valuation of a natural number of the form $n!$, unsurprisingly.
+
+\begin{lemma}
+  Let $n$ be a natural number and write
+  \[ n = \sum_{i = 0}^{r} a_{i} p^{i}, \ \ 0 \le a_{i} < p \]
+  for its $p$-adic expansion.
+  Then
+  \[ v_{p}(n!) = \frac{1}{p-1} \sum_{i = 0}^{r} a_{i}(p^{i}-1). \]
+\end{lemma}
+\begin{proof}
+  See Neukirch Ch.~II Lemma 5.6.
+\end{proof}
+
+\begin{proof}[Proof of proposition]
+  Consider the valuation $v$ as extending the $p$-adic valuation.
+  In particular, if $\pi$ is a uniformizer then $v(\pi) = 1/e$ (not $1$).
+  Let's estimate $v_{p}(a)$ for a natural number $a > 1$.
+  Write $a = p^{b}a_{0}$ with $p$ not dividing $a_{0}$ and $b$ positive (otherwise the valuation is zero).
+  Then
+  \[ \frac{v_{p}(a)}{a-1} = \frac{b}{p^{b}a_{0}-1} \le \frac{b}{p^{b}-1} \le \frac{1}{p-1}. \]
+  For $v(z) > 1/(p-1)$ (this is the inequality in the statement for the normalized valuation), we have
+  \[ v(z^{a}/a) - v(z) = (a-1)v(z) - v(a) > (a-1) (1/(p-1)-v(a)/(a-1)) \geq 0. \]
+  Thus $v(\log(1+z)) = v(z)$.
+  Thus $\log$ maps $U^{(n)}$ into $\mfrak^{n}$.
+
+  Now consider the exponential series $\sum_{a} x^{a}/a!$, and compute the valuations of the terms.
+  If $a = \sum_{i} a_{i} p^{i}$ is the $p$-adic expansion, then the lemma above shows
+  \[ v(a!) = (1/(p-1)) \sum_{i} a_{i}(p^{i}-1) = (1/(p-1)) (a-(a_{0} + a_{1} + \cdots + a_{r})). \]
+  Let $s_{a} = a_{0} + \cdots + a_{r}$ so that
+
+  \[ v(x^{a}/a!) = a v(x) - (a-s_{a})/(p-1) = a(v(x)-(1/(p-1))) + s_{a}/(p-1). \]
+  For $x$ satisfying the bounds in question, this implies convergence for the exponential series as the terms above would go to $\infty$.
+
+  Furthermore, if $x$ is nonzero and $a > 1$, then
+  \[ v(x^{a}/a!) - v(x) = (a-1)v(x) - (a-1)/(p-1) + (s_{a}-1)/(p-1) \geq (s_{a}-1)/(p-1) \geq 0. \]
+  It follows that $\exp$ indeed maps $\mfrak^{n}$ into $U^{(n)}$.
+  The formal properties of $\exp$ and $\log$ show that they are inverses to eachother, and provide isomorphisms as stated.
+\end{proof}
+
+Now let's go back to the task at hand regarding the multiplicative structure of $K$.
+For $n$ sufficiently large, we have $U^{(n)} \cong \mfrak^{n} \cong \pi^{n} \cdot \Ocal \cong \Ocal$.
+As $\Zbb_{p}$ is a DVR and $\Ocal$ is its integral closure in $K$, it follows that $\Ocal \cong \Zbb_{p}$.
+Also, the index $[U^{(1)}:U^{(n)}]$ is finite of the form $q^{n}$.
+
+The torsion subgroup of $U^{(1)}$ is the group $\mu_{p^{\infty}}(K)$.
+Indeed, $U^{(1)}$ is a $\Zbb_{p}$-module with respect to the operation $(1+x) \mapsto (1+x)^{z}$ for $z \in \Zbb_{p}$ and the above considerations show that it is finitely-generated as such.
+Its torsion is thus a finite $p$-subgroup of $K^{\times}$ and since the other torsion parts of $K^{\times}$ have order prime to $p$, the claim follows.
+It follows therefore that, indeed $U^{(1)} = \mu_{p^{\infty}}(K) \times \Zbb_{p}^{d}$.
+
+\begin{example}
+  The square classes of $\Qbb_{2}$ are generated by $2$, $-1$ and $5$.
+  The square classes of $\Qbb_{p}$ for odd $p$ are...
+\end{example}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
