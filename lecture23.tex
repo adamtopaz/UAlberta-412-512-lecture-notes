@@ -1,0 +1,84 @@
+\section{Lecture 23}
+
+Last time we discussed the main statements of local class field theory.
+One of these statements is the existence of the \emph{local reciprocity map}
+\[ K^{\times} \to \Gal_{K}^{\ab} \]
+which induces an isomorphism after profinite completion on the domain.
+We also saw how $K^{\times} = \Zbb \times U_{K}$, where $U_{K}$ corresponds to the inertia group with respect to the reciprocity map.
+In particular, if $\pi$ is a uniformizer, and $K^{\ab}$ denotes the maximal abelian extension of $K$, then we have two subfields of $K^{\ab}$, defined by taking invariants with respect to the action of $\pi$, or with respect to the action of $U_{K}$, via the reciprocity map.
+
+The second, $K^{U_{K}}$ is the maximal unramified extension of $K$ (which is abelian, since the absolute Galois group of the residue field is abelian).
+It is denoted $K^{ur}$.
+The second, must be \emph{totally ramified} since it is disjoint from $K^{ur}$ (in the field-theoretic sense).
+This extension depends on $\pi$, and we denote it by $K_{\pi}$.
+By Galois theory, we have
+\[ K^{\ab} = K^{ur} \cdot K_{\pi}. \]
+
+Let's first discuss the structure of $K^{ur}$.
+Any unramified extension of $K$ arises from an extension of the residue field.
+We can thus obtain such extensions by adjoining roots of unity of the appropriate (prime-to-$p$) order.
+See the end of the last lecture for details.
+
+Understanding $K_{\pi}$ is much more complicated (and interesting!).
+To do this, we need to discuss Lubin-Tate formal groups.
+A \emph{formal group law} (the one-dimensional, commutative case) over a ring $A$ is a power series $F(X,Y) \in A[[X,Y]]$ in two variables, which satisfies the following conditions:
+\begin{enumerate}
+  \item $F$ has the form $F(X,Y) = X + Y + \ldots$ where the $\ldots$ involve only higher order terms.
+  \item $F(F(X,Y),Z) = F(X,F(Y,Z))$.
+  \item $F(X,Y) = F(Y,X)$.
+\end{enumerate}
+Formal group laws form a category where morphisms $F \to G$ are power series $f \in TA[[T]]$ such that $f(F(X,Y)) = G(f(X),f(Y))$.
+Composition of morphisms is given by composition of \emph{power series} with no constant term (which makes sense).
+
+Now let's focus on $K$ with uniformizer $\pi$ and ring of integers $\Ocal_{K}$.
+Let $\Fcal_{\pi}$ denote the set of all elements $f$ of $\Ocal_{K}[[T]]$ such that
+\begin{enumerate}
+  \item $f = \pi X + \ldots$ where $\ldots$ only involves higher order terms.
+  \item $f \equiv X^{q} \bmod \pi$.
+\end{enumerate}
+
+\begin{theorem}
+  Let $f \in \Fcal_{\pi}$ be given.
+  There exists a unique formal group law $F_{f}$ with coefficients in $\Ocal_{K}$ for which $f$ is an endomorphism.
+\end{theorem}
+\begin{proof}[Proof Idea]
+  Construct $F_{f} \bmod (X,Y)^{n}$ by induction on $n$.
+\end{proof}
+
+\begin{proposition}
+  For $f,g \in \Fcal_{\pi}$ and $a \in \Ocal_{K}$, there is a unique element of $\Ocal_{K}[[T]]$, denoted $[a]_{g,f}$, such that
+  \begin{enumerate}
+    \item $[a]_{g,f}(T) = aT + \ldots$.
+    \item $g \circ [a]_{g,f} = [a]_{g,f} \circ f$.
+  \end{enumerate}
+  This $[a]_{g,f}$ is a morphism $F_{f} \to F_{g}$.
+  Also, one has $[a+b]_{g,f} = [a]_{g,f} + [b]_{g,f}$ and $[ab]_{h,f} = [a]_{h,g}[b]_{g,f}$.
+  In particular, $[1]_{g,f}$ is the unique isomorphism $F_{f} \cong F_{g}$ where $[1]_{g,f} = X + \ldots$, while $[u]_{g,f}$ is another isomorphism for any $u \in U_{K}$.
+\end{proposition}
+
+Now let's discuss how to construct $K_{\pi}$.
+First, choose some $f \in \Fcal_{\pi}$, for example $f = \pi X + X^{q}$, and put $F := F_{f}$.
+Let $\bar\mfrak$ denote the maximal ideal of the integral closure of $\Ocal_{K}$ in $\bar K$.
+Endow $\bar\mfrak$ with the structure of an abelian group, written $+_{F}$, where
+\[ x +_{F} y = F(x,y). \]
+This is well-defined since $x,y$ are in the open unit ball, so that $F(x,y)$ converges, while the axioms of a formal group show that this is indeed an abelian group structure.
+
+We have a natural action of $\Ocal_{K}$ on $(\bar\mfrak,+_{F})$, defined by
+\[ \Ocal_{K} \to End(F), \ \ a \mapsto [a]_{f,f} =: [a]_{f}. \]
+In particular, we may consider the \emph{$\pi$-torsion} of $\bar\mfrak$ with respect to this action.
+Note that we have $[\pi]_{f} = f$, and that $\pi \cdot a = f(a)$ for $a \in \bar \mfrak$.
+The $\pi^{n}$-torsion of this action is thus just the roots of $f^{(n)} = f \circ \cdots \circ f$, whose absolute value is $< 1$.
+Write $\Lambda_{n}$ for this set, and put $K_{\pi,n} := K(\Lambda_{n})$.
+
+\begin{theorem}
+  As an $\Ocal_{K}$-module, $\Lambda_{n}$ is isomorphic to $\Ocal_{K}/\mfrak^{n}$.
+  Thus $End_{\Ocal_{K}}(\Lambda_{n}) = \Ocal/\mfrak^{n}$ and $Aut_{\Ocal_{K}}(\Lambda_{n}) = U_{K}/U_{K}^{(n)}$.
+  This action of $U_{K}/U_{K}^{(n)}$ on $\Lambda_{n}$ induces an isomorphism
+  \[ U_{K}/U_{K}^{(n)} \cong \Gal(K(\Lambda_{n})|K). \]
+  Also, one has $K_{\pi} = \bigcup_{n} K_{\pi,n}$.
+\end{theorem}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
