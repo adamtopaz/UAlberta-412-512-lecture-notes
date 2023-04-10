@@ -1,0 +1,50 @@
+\section{Extra Lecture 1}
+
+In these extra lectures, I will discuss a proof of the \emph{Neukirch-Uchida theorem}.
+First, let's set up the general context.
+Suppose that $K_{i}$, $i = 1,2$ are fields with fixed algebraic closures $\bar K_{i}$.
+We write
+\[ \Isom(\bar K_{1}|K_{1},\bar K_{2}|K_{2}) \]
+for the set of isomorphisms $\sigma : \bar K_{1} \cong \bar K_{2}$ which satisfy $\sigma K_{1} = K_{2}$.
+Any such isomorphism $\sigma$ induces an isomorphism of Galois groups $\Gal(\bar K_{2}|K_{2}) \cong \Gal(\bar K_{1}|K_{1})$ by conjugation.
+Namely, if $\tau \in \Gal(\bar K_{2}|K_{2})$ is some element, then $\sigma^{*} \tau := \sigma^{-1} \circ \tau \circ \sigma \in \Gal(\bar K_{1}|K_{1})$.
+This gives us a natural map
+\[ \Isom(\bar K_{1}|K_{1},\bar K_{2}|K_{2}) \to \Isom(\Gal(\bar K_{2}|K_{2}),\Gal(\bar K_{1}|K_{1})). \]
+
+\begin{theorem}[Neukirch-Uchida]\label{theorem:NU}
+  In the above context, suppose that $K_{1}$ and $K_{2}$ are two number fields.
+  Then the map
+  \[ \Isom(\bar K_{1}|K_{1},\bar K_{2}|K_{2}) \to \Isom(\Gal(\bar K_{2}|K_{2}),\Gal(\bar K_{1}|K_{1})). \]
+  is a bijection.
+\end{theorem}
+
+In particular, this shows that $K_{1} \cong K_{2}$ if and only if $\Gal_{K_{1}} \cong \Gal_{K_{2}}$.
+One can formulate a functorial statement using outer morphisms, as follows:
+\begin{theorem}[Neukirch-Uchida, variant]
+  In the above context, suppose that $K_{1}$ and $K_{2}$ are two number fields.
+  Let $\Gal_{K_{i}}$ denote the absolute Galois group of $K_{i}$, computed with respect to some choice of algebraic closure.
+  Then the natural map
+  \[ \Isom(K_{1},K_{2}) \to \Isom(\Gal_{K_{2}},\Gal_{K_{1}})/\Inn(\Gal_{K_{1}}) \]
+  is a bijection.
+  Here the inner automorphism group of $\Gal_{K_{1}}$ acts on the set $\Isom(\Gal_{K_{2}},\Gal_{K_{1}})$ by composition.
+\end{theorem}
+\begin{proof}
+  This follows easily from Theorem~\ref{theorem:NU} and basic Galois theory.
+  Details left as an exercise.
+\end{proof}
+
+\begin{remark}
+  This theorem was the start of the subject of \emph{anabelian geometry}.
+  The term ``anabelian'' means ``beyond abelian'' and was coined by Grothendieck in his famous letter to Faltings (the NU theorem came before this letter!).
+  In this letter, he outlines the ``anabelian conjectures'', one of which is a generalization of the NU theorem replacing number fields by infinite finitely generated fields.
+  This generalization was eventually proved by Pop and separately my Mochizuki (who also proved several more of Grothendieck's anabelian conjectures).
+\end{remark}
+
+The proof involves two main steps: A \emph{local theory} and a \emph{global theory}.
+I'll split up the discussion of this proof into two lectures, one on the local theory and one on the global theory.
+In this lecture, we'll discuss the local theory.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
