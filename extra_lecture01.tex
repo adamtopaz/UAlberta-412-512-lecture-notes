@@ -44,6 +44,35 @@ The proof involves two main steps: A \emph{local theory} and a \emph{global theo
 I'll split up the discussion of this proof into two lectures, one on the local theory and one on the global theory.
 In this lecture, we'll discuss the local theory.
 
+Let's recal some notation from our course.
+Let $K$ be a number field and $\pfrak$ a prime of $K$.
+Choose some prolongation $\bar \pfrak$ of $\pfrak$ to the algebraic closure (equivalently, choose a prolongation of the absolute value $|-|_{\pfrak}$ to $\bar K$).
+The \emph{decomposition group} $Z_{\bar\pfrak|\pfrak}$ of $\bar\pfrak|\pfrak$ is the stabilizer of $\bar \pfrak$ with respect to the action of $\Gal_{K} = \Gal(\bar K|K)$ on the (profinite) set of prolongations of $\pfrak$.
+We also saw that $Z_{\bar\pfrak|\pfrak}$ is isomorphic to $\Gal_{K_{\pfrak}}$, the absolute Galois group of the completion of $K$ with respect to $|-|_{\pfrak}$.
+The conjugacy class of $Z_{\bar\pfrak|\pfrak}$ only depends on $\pfrak$, and we write $Z_{\pfrak}$ for this conjugacy class.
+
+\begin{lemma}
+  Suppose that $\pfrak_{i}$, $i = 1,2$ are two primes of $K$.
+  Then $Z_{\pfrak_{1}} = Z_{\pfrak_{2}}$ if and only if $\pfrak_{1} = \pfrak_{2}$.
+\end{lemma}
+\begin{proof}
+  Exercise.
+  This can be done in several ways (for example, using the approximation theorem for independent valuations, or using the main statements of CFT, etc.).
+\end{proof}
+
+By the above, we see that in order to characterize the set of primes of $K$, it suffices to characterize the collection of all decomposition groups in $\Gal_{K}$.
+Furthermore, if $Z_{\pfrak}$ is a conjugacy class of such a decomposition group as above, we can obtain several invariants about $\pfrak$ using the fact that $Z_{\pfrak} \cong \Gal_{K_{\pfrak}}$, essentially as a consequence of local class field theory.
+These invariants are:
+\begin{enumerate}
+  \item The residue characteristic $p$.
+  \item The absolute ramification degree $e$ of $\pfrak|p$.
+  \item The absolute inertia degree $f$ of $\pfrak|p$.
+\end{enumerate}
+Using (2), we can also determine the inertia group $T_{\bar\pfrak|\pfrak}$ in $Z_{\bar\pfrak|\pfrak}$ and thus also the conjugacy class of inertia groups $T_{\pfrak}$ as well.
+
+If we have an isomorphism $\Gal_{K_{2}} \cong \Gal_{K_{1}}$, the first goal is thus to show that this isomorphism respect decomposition groups, and this is precisely what the local theory accomplishes.
+
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "main"
