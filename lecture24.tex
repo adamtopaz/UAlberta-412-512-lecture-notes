@@ -1,0 +1,133 @@
+\section{Lecture 24}
+
+In this lecture we will discuss the main statements from global class field theory for number fields.
+First, let's talk about the relationship between number fields and their completion from the point of view of ramification theory.
+
+Let $K$ be a number field, and let $|-|$ be an absolute value on $K$.
+Ostrowski's theorem tells us that $|-|$ is either Archemedean arising from some complex embedding, or it arises from some nonzero prime ideal of the ring of integers of $K$.
+In any case, we know that for any finite extension $L$ of $K$, there are finitely many extensions of $|-|$ to $L$.
+
+\begin{proposition}
+  Let $|-|_{i}$, $i = 1,\ldots,g$ denote the extensions of $|-|$ to $L$.
+  Let $\hat K$ denote the completion of $K$ and $\hat L_{i}$ the completion of $L$ with respect to $|-|_{i}$.
+  Then $L \otimes_{K} \hat K = \prod_{i} L_{i}$.
+\end{proposition}
+
+Now let's focus on the nonarchemedean case.
+Let $L|K$ be a finite extension of number fields, and $|-|$ compatible nonarchemedean absolute values on $L$ and $K$.
+Since these arise from primes, say $\Pfrak|\pfrak$, we can talk about the decompositoin group $Z_{\Pfrak|\pfrak}$.
+This is also the stabilizer of the action of $\Gal(L|K)$ on the absolute value chosen for $L$ (why?).
+It follows that $Z_{\Pfrak|\pfrak}$ acts on $L$ continuously with respect to the chosen absolute value, and thus we have a natural map
+\[ Z_{\Pfrak|\pfrak} \to \Gal(\hat L|\hat K). \]
+\begin{proposition}
+  This map is an isomorphism.
+\end{proposition}
+\begin{proof}[Proof sketch]
+  This map is clearly injective since $L$ is dense in $\hat L$.
+  For $\sigma \in \Gal(L|K)$, the absolute value $|\sigma(-)|$ has decomposition group $\sigma Z_{\Pfrak|\pfrak} \sigma^{-1}$, which has the same size as $Z_{\Pfrak|\pfrak}$, so that its size is bounded above by the degree of $\hat L_{\sigma}|\hat K$, for all such $\sigma$.
+  thus we have
+  \[ \# \Gal(L|K) = [G:Z] \cdot \# Z \leq \sum_{\sigma \in \Gal(L|K)/Z} [\hat L_{\sigma}:\hat K] \leq [L:K] \]
+  So equality must hold everywhere, and the claim follows.
+\end{proof}
+
+\begin{proposition}
+  This isomorphism is compatible with inertia groups.
+\end{proposition}
+\begin{proof}
+  Exercise.
+\end{proof}
+
+The discussion above shows that the ramification behavior of a finite extension of number fields $L|K$ can be checked ``locally'' in the completion.
+Explicitly, suppose that $\pfrak$ is a prime of $K$ with associated completion $K_{\pfrak}$.
+Let $\Pfrak_{1},\ldots,\Pfrak_{g}$ be the prolongations to $L$, and write $L_{\Pfrak_{i}}$ for the associated completions.
+For the extension of local fields $L_{\Pfrak_{i}}|K_{\pfrak}$, we have well-defined invariants $e$ and $f$, and similarly in the global case for the fixed $\Pfrak_{i}|\pfrak$.
+The two notions coincide.
+
+Even better, consider the map $K \to \hat K$, and choose an algebraic closure $\Omega$ of $\hat K$, and let $\bar K$ denote the algebraic closure of $K$ inside of $\Omega$.
+The proposition above then shows that the map
+\[ \Gal(\Omega|\hat K) \to \Gal(\bar K|K) \]
+obtained by restriction, is \emph{injective}.
+Also, recall that there is a unique extension of $|-|$ to $\Omega$, and thus $\bar K$ inherits an absolute value extending that of $K$ via the inclusion.
+This corresponds to a prolongation $\bar \pfrak$ of $\pfrak$, and the iamge of the inclusion above is precisely $Z_{\bar\pfrak|\pfrak}$ (compatibly also with inertia subgroups).
+
+Let me now introduce one of the main players in global class field theory, the \emph{ring of Adeles}:
+\[ \Abb_{K} := \prod_{\pfrak}{}^{'} K_{\pfrak}. \]
+Here $\prod'$ is a \emph{restricted product} (explained during lecture) and $K_{\pfrak}$ is the completion of $K$ with respect to the place $\pfrak$, which varies over all primes including the $\pfrak|\infty$.
+This is a \emph{topological ring}.
+We also consider the \emph{ideles} $\Ibb_{K} := \Abb_{K}^{\times}$, topologized by identifying $\Ibb_{K}$ with the set of elements $(u,v)$ in $\Abb_{K}^{2}$ where $u \cdot v = 1$.
+
+As a group, $\Ibb_{K}$ has a similar description as a restricted product
+\[ \prod_{\pfrak} {}^{'} K_{\pfrak}^{\times}. \]
+There is a canonical map
+\[ K^{\times} \to \Ibb_{K} \]
+defined as the diagonal inclusion associated with $K^{\times} \to K_{\pfrak}^{\times}$.
+The group $\Ibb_{K}$ is locally compact (but not compact) and $K^{\times}$ embeds discretely in $\Ibb_{K}$.
+The cokernel of this map is called the \emph{idele class group}, $\Cfrak_{K} := \Ibb_{K}/K^{\times}$.
+
+If $L|K$ is a finite extension, and $\Pfrak|\pfrak$ is an extension of primes in $L|K$, then the norm induces a morphism $L_{\Pfrak}^{\times} \to K_{\pfrak}^{\times}$.
+Collecting these, we obtain a \emph{norm map}
+\[ N_{L|K} : \Ibb_{L} \to \Ibb_{K}, \]
+whose $\pfrak$-component is $\prod_{\Pfrak|\pfrak}N_{L_{\Pfrak}|K_{\pfrak}}((-)_{\Pfrak})$.
+The norm is clearly compatible with the field norm, and thus induces a norm on idele class groups as well.
+
+Now let me discuss the global reciprocity law.
+Let $L|K$ be an abelian Galois extension.
+For $\Pfrak|\pfrak$ in $L|K$, we have a natural isomorphism
+\[ \Gal(L_{\Pfrak}|K_{\pfrak}) \cong Z_{\Pfrak|\pfrak} \subset \Gal(K|L). \]
+The local reciprocity law gives us a map
+\[ (-/L|K)_{\pfrak} : K_{\pfrak}^{\times} \to \Gal(L_{\Pfrak}|K_{\pfrak}) \hookrightarrow \Gal(K|L). \]
+\begin{lemma}
+  The maps above induce a map
+  \[ \Ibb_{K} \to \Gal(L|K) \]
+\end{lemma}
+\begin{proof}
+  Since almost all primes are unramified and almost all components of $\Ibb_{K}$ are units, the map
+  \[ (x_{\pfrak})_{\pfrak} \mapsto \prod_{\pfrak}(x_{\pfrak}/L|K)_{\pfrak} \]
+  is well-defined as the product is actually \emph{finite}.
+\end{proof}
+
+\begin{theorem}
+  The map
+  \[ \Ibb_{K} \to \Gal(L|K) \]
+  descends to a surjective map
+  \[ \Cfrak_{K} \to \Gal(L|K) \]
+  whose kernel is $N_{L|K}(\Cfrak_{L})$.
+  Furthermore, the subgroups of $\Cfrak_{K}$ of the form $N_{L|K}(\Cfrak_{L})$ are precisely the closed subgroups of finite index.
+\end{theorem}
+
+The \emph{product formula} for a number field states that for $a \in K$, one has
+\[ \prod_{\pfrak}|x|_{\pfrak} = 1 \]
+where $|x|_{\pfrak}$ is normalized as $\#\kappa(\pfrak)^{-v_{\pfrak}(x)}$.
+This has an analogue for \emph{Hilbert Symbols}, which we did not discuss in detail (although it essentially comes from the cup-product in Galois cohomology, details explained in lecture).
+\begin{theorem}
+  For $a,b \in K^{\times}$ and an integer $n$ such that $\mu_{n} \subset K$, write $(a,b)_{\pfrak} \in \mu_{n}$ for the Hilbert symbol at $K_{\pfrak}$.
+  Then one has
+  \[ \prod_{\pfrak}(a,b)_{\pfrak} = 1. \]
+\end{theorem}
+\begin{proof}
+  The formula for the Hibert symbol shows that
+  \[ (a,K_{\pfrak}(\sqrt[n]{b})|K_{\pfrak}))_{\pfrak} \cdot \sqrt[n]{b} = (a,b)_{\pfrak} \sqrt[n]{b}. \]
+  Now let's calculate:
+  \[ (\prod_{\pfrak}(a,b)_{\pfrak}) \cdot \sqrt[n]{b} = (\prod_{\pfrak}(a,K_{\pfrak}(\sqrt[n]{b})|K_{\pfrak})) \cdot \sqrt[n]{b} = (a,K(\sqrt[n]{b})|K)\sqrt[n]{b} = \sqrt[n]{b}. \]
+  The key identity here follows from the fact that $a$ is a \emph{global element} and that the reciprocity map from global class field theory factors through the idele \emph{class} group.
+\end{proof}
+
+Define $(a/\pfrak) := (\pi,a)_{\pfrak}$ where $a \in U_{\pfrak}$ and $\pi$ is a uniformizer at $\pfrak$, whenever $\pfrak$ doesn't divide $n$.
+It follows from local class field theory that $(a/\pfrak) = 1$ if and only if $a \equiv b^{n} \bmod p$ for some $b$.
+More generally, $(a/\pfrak) = a^{(q-1)/n} \bmod \pfrak$.
+
+For an ideal $\bfrak$ of $K$ coprime to $n$ whose $\pfrak$-component has exponent $v_{\pfrak}$, write $(a/\bfrak) = \prod_{\pfrak} (a/\pfrak)^{v_{\pfrak}}$ where the product runs over the primes coprime to $n$.
+
+\begin{theorem}
+  For $a,b \in K^{\times}$ coprime to eachother and to $n$, one has
+  \[ (a/b)(b/a)^{-1} = \prod_{\pfrak|n\infty}(a,b)_{\pfrak}. \]
+\end{theorem}
+\begin{proof}
+  A calculation using the above theorem.
+\end{proof}
+Gauss' quadratic reciprocity law follows from this by taking $n = 2$ and $K = \Qbb$.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

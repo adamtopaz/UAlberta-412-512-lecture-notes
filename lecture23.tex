@@ -78,53 +78,6 @@ Write $\Lambda_{n}$ for this set, and put $K_{\pi,n} := K(\Lambda_{n})$.
   Also, one has $K_{\pi} = \bigcup_{n} K_{\pi,n}$.
 \end{theorem}
 
-I would now like to explain the relationship between global and local fields, particularly with respect to ramification behavior.
-Let $K$ be a number field, and let $|-|$ be an absolute value on $K$.
-Ostrowski's theorem tells us that $|-|$ is either Archemedean arising from some complex embedding, or it arises from some nonzero prime ideal of the ring of integers of $K$.
-In any case, we know that for any finite extension $L$ of $K$, there are finitely many extensions of $|-|$ to $L$.
-
-\begin{proposition}
-  Let $|-|_{i}$, $i = 1,\ldots,g$ denote the extensions of $|-|$ to $L$.
-  Let $\hat K$ denote the completion of $K$ and $\hat L_{i}$ the completion of $L$ with respect to $|-|_{i}$.
-  Then $L \otimes_{K} \hat K = \prod_{i} L_{i}$.
-\end{proposition}
-
-Now let's focus on the nonarchemedean case.
-Let $L|K$ be a finite extension of number fields, and $|-|$ compatible nonarchemedean absolute values on $L$ and $K$.
-Since these arise from primes, say $\Pfrak|\pfrak$, we can talk about the decompositoin group $Z_{\Pfrak|\pfrak}$.
-This is also the stabilizer of the action of $\Gal(L|K)$ on the absolute value chosen for $L$ (why?).
-It follows that $Z_{\Pfrak|\pfrak}$ acts on $L$ continuously with respect to the chosen absolute value, and thus we have a natural map
-\[ Z_{\Pfrak|\pfrak} \to \Gal(\hat L|\hat K). \]
-\begin{proposition}
-  This map is an isomorphism.
-\end{proposition}
-\begin{proof}[Proof sketch]
-  This map is clearly injective since $L$ is dense in $\hat L$.
-  For $\sigma \in \Gal(L|K)$, the absolute value $|\sigma(-)|$ has decomposition group $\sigma Z_{\Pfrak|\pfrak} \sigma^{-1}$, which has the same size as $Z_{\Pfrak|\pfrak}$, so that its size is bounded above by the degree of $\hat L_{\sigma}|\hat K$, for all such $\sigma$.
-  thus we have
-  \[ \# \Gal(L|K) = [G:Z] \cdot \# Z \leq \sum_{\sigma \in \Gal(L|K)/Z} [\hat L_{\sigma}:\hat K] \leq [L:K] \]
-  So equality must hold everywhere, and the claim follows.
-\end{proof}
-
-\begin{proposition}
-  This isomorphism is compatible with inertia groups.
-\end{proposition}
-\begin{proof}
-  Exercise.
-\end{proof}
-
-The discussion above shows that the ramification behavior of a finite extension of number fields $L|K$ can be checked ``locally'' in the completion.
-Explicitly, suppose that $\pfrak$ is a prime of $K$ with associated completion $K_{\pfrak}$.
-Let $\Pfrak_{1},\ldots,\Pfrak_{g}$ be the prolongations to $L$, and write $L_{\Pfrak_{i}}$ for the associated completions.
-For the extension of local fields $L_{\Pfrak_{i}}|K_{\pfrak}$, we have well-defined invariants $e$ and $f$, and similarly in the global case for the fixed $\Pfrak_{i}|\pfrak$.
-The two notions coincide.
-
-Even better, consider the map $K \to \hat K$, and choose an algebraic closure $\Omega$ of $\hat K$, and let $\bar K$ denote the algebraic closure of $K$ inside of $\Omega$.
-The proposition above then shows that the map
-\[ \Gal(\Omega|\hat K) \to \Gal(\bar K|K) \]
-obtained by restriction, is \emph{injective}.
-Also, recall that there is a unique extension of $|-|$ to $\Omega$, and thus $\bar K$ inherits an absolute value extending that of $K$ via the inclusion.
-This corresponds to a prolongation $\bar \pfrak$ of $\pfrak$, and the iamge of the inclusion above is precisely $Z_{\bar\pfrak|\pfrak}$ (compatibly also with inertia subgroups).
 
 %%% Local Variables:
 %%% mode: latex
