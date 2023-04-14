@@ -71,7 +71,85 @@ These invariants are:
 Using (2), we can also determine the inertia group $T_{\bar\pfrak|\pfrak}$ in $Z_{\bar\pfrak|\pfrak}$ and thus also the conjugacy class of inertia groups $T_{\pfrak}$ as well.
 
 If we have an isomorphism $\Gal_{K_{2}} \cong \Gal_{K_{1}}$, the first goal is thus to show that this isomorphism respect decomposition groups, and this is precisely what the local theory accomplishes.
+This is what we will show in this lecture.
 
+The argument I'll explain is different from Neukirch's original proof (which relies on local-to-global principles from global class field theory).
+Instead, I'll explain a proof which is more elementary and works in greater generality.
+The key theorem is the following.
+\begin{theorem}\label{theorem:localthy}
+  Let $\ell$ be an odd prime and $K$ any field.
+  Let $f,g : K^{\times} \to \Zbb/\ell$ be two homomorphisms.
+  The following are equivalent:
+  \begin{enumerate}
+    \item For all $x,y \in K^{\times}$ such that $x + y = 1$, one has $f(x)g(y) = f(y)g(x)$.
+    \item There exists a valuation $v$ of $K$ such that $f,g$ are both trivial on $1 + \mfrak_{v}$ and some nontrivial $\Zbb/\ell$-linear combination of $f,g$ is trivial on $U_{v}$.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  This uses the theory of \emph{rigid elements}, as developed by Ware, Arason-Elman-Jacob and others.
+  I'll sketch the argument in the recording for this lecture.
+  In fact, this proof has now been formalized in Lean3, see \href{https://github.com/adamtopaz/lean-acl-pairs}{this github repository}.
+\end{proof}
+
+Now suppose that $K$ is a number field which contains $\mu_{\ell}$, and let $v$ be a valuation of $K$.
+By Ostrowski's theorem, this valuation is $v = v_{\pfrak}$ for some prime $\pfrak$ of $K$.
+Assume that $\pfrak$ does \emph{not} lie over $\ell$ (so the residue characteristic of $v$ is different from $\ell$).
+Note that $\Hom(K^{\times}/(1+\mfrak_{v}),\mu_{\ell}) \cong \Hom(K^{\times}/(1+\mfrak_{v}),\Zbb/\ell)$ is $2$-dimensional over $\Zbb/\ell$.
+Indeed, to see this use the (split) exact sequence
+\[ 1 \to \kappa(v)^{\times} \to K^{\times}/(1+\mfrak_{v}) \xrightarrow{v} \Zbb \to 1 \]
+and take $\Zbb/\ell$-duals.
+Then use the fact that $\kappa(v)^{\times}$ is cyclic along with the fact that $\mu_{\ell} \subset \kappa(v)$ (why?) and that $\kappa(v)$ has characteristic different from $\ell$.
+
+On the other hand, if $\kappa(v)$ has residue characteristic $\ell$ then $\ell$ is coprime to the size of $\kappa(v)^{\times}$ and thus $\Hom(K^{\times}/(1+\mfrak_{v}),\Zbb/\ell) \cong \Zbb/\ell$ using a similar argument.
+
+Let's also observe that if $v$ and $w$ are two nonequivalent valuations of $K$, then
+\[ \Hom(K^{\times}/(1 + \mfrak_{v}),\Zbb/\ell) \cap \Hom(K^{\times}/(1+\mfrak_{w}),\Zbb/\ell)) = 0 \]
+where the intersection is taken inside of $\Hom(K^{\times},\Zbb/\ell)$.
+Indeed, this is equivalent to the assertion that $K^{\times\ell} \cdot (1+\mfrak_{v}) \cdot (1+\mfrak_{v}) = K^{\times}$, which follows from the approximation theorem for independent valuations (which $v$ and $w$ are).
+
+Now let's see what we can do with this observations.
+For any $K$ and $\ell$ as above, consider the set $S_{K,\ell}$ consisting of subgroups of $\Gal_{K}^{\ab}/\ell$ of the form $\langle \sigma,\tau \rangle$ which satisfy the following conditions:
+\begin{enumerate}
+  \item First, $\langle \sigma,\tau \rangle \cong (\Zbb/\ell)^{2}$.
+  \item For all $x,y \in \HH^{1}(K,\Zbb/\ell)$ such that $x \cup y = 0$ in $\HH^{2}(K,\Zbb/\ell)$, one has $\sigma(x)\tau(y) = \sigma(y) \tau(x)$.
+\end{enumerate}
+In item (2), we are identifying
+\[ \HH^{1}(K,\Zbb/\ell) = \Hom(\Gal_{K},\Zbb/\ell) = \Hom(\Gal_{K}^{\ab}/\ell,\Zbb/\ell). \]
+Condition (2) turns out to be \emph{equivalent} to the \emph{condition (1)} from Theorem~\ref{theorem:localthy}, as a consequence of the \emph{Merkurjev-Suslin Theorem} (I will not discuss the details here).
+The key observation to make here is that condition (2) can be computed using $\Gal_{K}$ as a profinite group while Theorem~\ref{theorem:localthy} ensures the existence of a valuation $v$ such that $\sigma,\tau$ are trivial on $1 + \mfrak_{v}$.
+By the discussion above, we know that the elements of $S_{K,\ell}$ are precisely the subgroups of the form $\Hom(K^{\times}/(1+\mfrak_{v}),\Zbb/\ell)$ where $v$ is a valuation whose residue characteristic is prime to $\ell$.
+
+Now suppose that $L|K$ is a Galois extension of number fields with $\mu_{\ell} \subset L$ (but maybe not contained in $L$).
+The Galois group $\Gal(L|K)$ acts naturally on $S_{L,\ell}$ by conjugation.
+If $v$ is a valuation of $L$ whose residue characteristic is  different from $\ell$, then $\Hom(K^{\times}/(1+\mfrak_{v},\Zbb/\ell)$ is an element of $S_{L,\ell}$, and an element $\sigma \in \Gal(L|K)$ sends it to $\Hom(K^{\times}/(1+\mfrak_{\sigma^{-1}v},\Zbb/\ell))$.
+This can only agree with $\Hom(K^{\times}/(1+\mfrak_{v},\Zbb/\ell)$ if $\sigma$ fixes $v$ itself, by the discussion above using the approximation theorem.
+Thus, the stabilizer of $\Hom(K^{\times}/(1+\mfrak_{v},\Zbb/\ell)$ in $\Gal(L|K)$ is the decomposition group of $v$ over its restriction of $K$.
+Let's write $T_{L|K,\ell}$ for the collection of stabilizers in $\Gal(L|K)$ of the elements of $S_{L,\ell}$.
+
+We deduce the following theorem.
+\begin{theorem}
+  Let $K$ be any number field and $\ell_{i}$, $i = 1,2$ two distinct primes.
+  Then for all sufficiently large finite Galois extensions $L|K$, the following hold.
+  Let $H$ be a subgroup of $\Gal(L|K)$.
+  The following are equivalent:
+  \begin{enumerate}
+    \item There exists valuations $w|v$ of $L|K$ such that $H = Z_{w|v}$.
+    \item $H \in T_{L|K,\ell_{i}}$ for at least one $i$.
+  \end{enumerate}
+\end{theorem}
+
+This theorem characterizes the decomposition groups of $\Gal(L|K)$ whenever $L$ is sufficiently large (more precisely, we just need $\mu_{\ell_{1}\ell_{2}} \subset L$).
+Now the collection of such $L$ is cofinal in the full system of finite extensions of $K$ (contained in a fixed $\bar K$).
+Since decomposition groups are compatible in projections of Galois groups of towers, we can take limits along such $L$ to obtain a characterization of the \emph{absolute} decomposition groups in $\Gal(\bar K|K)$.
+To summarize, we obtain the following result.
+\begin{theorem}\label{theorem:mainlocalthy}
+  Let $K_{i}$, $i = 1,2$ be two number fields, and let $\phi : \Gal_{K_{1}} \cong \Gal_{K_{2}}$ be an isomorphism of absolute Galois groups.
+  Let $\bar v|v$ be some prolongation of valuations in $\bar K_{1}|K_{1}$.
+  Then there exist a unique extension of valuations $\bar w|w$ of $\bar K_{2}|K_{2}$ such that $\phi Z_{\bar v|v} = Z_{\bar w|w}$.
+\end{theorem}
+
+This is the main result from the so-called \emph{local theory}.
+In the next lecture, I'll explain how this can be used in conjunction with Chebotarev's density theorem to show that $K_{1}\cong K_{2}$ under the assumptions of Theorem~\ref{theorem:mainlocalthy}.
 
 %%% Local Variables:
 %%% mode: latex
