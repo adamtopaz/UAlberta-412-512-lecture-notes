@@ -59,6 +59,41 @@ By restricting the valuation $v$ from $K_{v}$ we see that the isomorphism $K_{1}
 This implies that the unit groups $U_{v}$ are mapped isomorphically onto $U_{\beta v}$ for all $v$.
 Additionally, the principal units $U_{v}^{1}$ are mapped isomorphically to $U_{\beta v}^{1}$ for all $v$, as a consequence of the local picture.
 
+Let $\delta : K_{1} \cong K_{2}$ be the isomorphism above.
+Note that $\delta$ actually restricts to an automorphism of multiplicative monoids on $\Qbb$.
+Indeed, we can characterize $\Qbb$ as the set of elements $x$ of $K_{i}$ such that $x^{p-1} \in U_{v}^{1}$ for all $v$ where $x \in U_{v}$, where $p$ is the residue characteriztic of $v$ (this is an exercise using Chebotarev!).
+Since these invariants are compatible with $\delta$, the claim follows.
+This automorphism of $\Qbb$ (as a multiplicative monoid) is again compatible with all the (analogous) data mentioned above.
+
+The multiplicative group $\Qbb^{\times}$ has the form
+\[ \{\pm 1\} \times \bigoplus_{p} p^{\Zbb}, \]
+and $\delta$ induces an automorphism of this object compatible with the various valuations $v_{p}$, taking value in $\Zbb$.
+This implies that $\delta(-1) = -1$, and $\delta(p) = \pm p$ for all $p$.
+
+If there are two primes $p$ and $\ell$ such that $\delta(p) = -p$ and $\delta(\ell) = -\ell$, then $\delta(p\ell) = p\ell$, and otherwise $\delta(p) = p$ for some prime $p$.
+In any case, we see that there exists a nontorsion element $t \in \Qbb^{\times}$ such that $\delta(t) = t$.
+
+Let $s$ be an arbitrary element of $\Qbb^{\times}$, and let $p$ be a prime where both $s$ and $t$ are $p$-adic units.
+Recall that $\delta$ induces an automorphism $\Fbb_{p}^{\times} \cong \Fbb_{p}^{\times}$.
+The collection $T$ of such $p$ where $s$ is some power of $t$ in the residue field $\Fbb_{p}$ is \emph{infinite} (this is not completely obvious, but it's true, and the argument is elementary -- I may add an explanation later on; see if you can come up with your own argument).
+These observations imply that $\delta(s) \in s \cdot U_{p}^{1}$ for all such $p \in T$, while the intersection of $U_{p}^{1}$ as $p$ varies is the trivial group.
+This shows that $\delta(s) = s$ for all $s \in \Qbb^{\times}$.
+
+Now let's conclude by showing that $\alpha$ is a field isomorphism, i.e.~that it's compatible with addition.
+Let $x,y \in K_{1}$ be given such that $x \neq -y$ (this is something we can test, since $\alpha(-1) = -1$).
+
+Consider the collection $R$ of all primes $\pfrak$ of $K_{1}$ satisfying the following:
+\begin{enumerate}
+  \item $\pfrak$ lies over a rational prime which is totally split in $K_{1}$.
+  \item $x$, $y$ and $x+y$ are all units at $\pfrak$.
+\end{enumerate}
+By Chebotarev, the set $R$ is infinite, and the discussion above shows that $\beta R$ is precisely the set satisfying the analogous conditions for $K_{2}$.
+
+Since $\pfrak \in R$ lies over a totally split prime, there exist $x'$ and $y' \in \Qbb$ such that $x',y',x'+y'$ are units at $\pfrak$ and the images of $x$ and $x'$ agree in the residue field of $\pfrak$ and similarly for $y$ and $y'$.
+But since $\delta(x'+y') = x'+y'$, we deduce that $\alpha(x+y)$ agrees with $\alpha(x) + \alpha(y)$ modulo $U_{\beta\pfrak}^{1}$ for all such $\pfrak$.
+As the set $R$ (hence $\beta R$) is infinite, this shows that $\alpha(x+y) = \alpha(x) + \alpha(y)$.
+This concludes the proof that $\alpha$ is a field isomorphism $K_{1} \cong K_{2}$, as contended.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "main"
