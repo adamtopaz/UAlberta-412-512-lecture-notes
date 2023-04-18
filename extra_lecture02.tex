@@ -1,0 +1,65 @@
+\section{Extra Lecture 2}
+
+In this lecture we will discuss the \emph{global theory}, continuing from the previous lecture.
+I will discuss an argument is again different from Neukirch's original approach, which is due essentially to \emph{Hoshi}.
+
+Recall that we are in the following context.
+We have two number fields $K_{i}$, $i = 1,2$, and an isomorphism
+\[ \alpha : \Gal_{K_{1}} \cong \Gal_{K_{2}} \]
+between their absolute Galois groups.
+In the last lecture we saw that $\alpha$ is compatible with decomposition groups, and that primes are uniquely determined by their decomposition groups.
+
+Let's make this more explicit.
+First, consider the set $\Xfrak_{i}$ of pairs $\bar v|v$ where $v = v_{\pfrak}$ is a valuation associated to a prime $\pfrak$ of $K_{i}$, and $\bar v$ is a a prolongation of $v$ to $\bar K_{i}$.
+Then there is a natural \emph{bijection} $\beta : \Xfrak_{1} \cong \Xfrak_{2}$, which satisfies (and is uniquely determined by) the following property: For all $\bar v|v \in \Xfrak_{1}$, one has
+\[ \alpha(Z_{\bar v|v}) = Z_{\beta(\bar v|v)}. \]
+Furthermore, there is a natural Galois action of $\Gal_{K_{i}}$ on $\Xfrak_{i}$, and this bijection is compatible with these actions.
+Namely, for $\sigma \in \Gal_{K_{1}}$ and $\bar v|v \in \Xfrak_{i}$, one has
+\[ \beta(\sigma(\bar v|v)) = \alpha(\sigma)\beta(\bar v|v). \]
+This follows from the fact that
+\[ \sigma Z_{\bar v|v} \sigma^{-1} = Z_{\sigma(\bar v|v)}, \]
+and the fact that $\beta$ is determined by $\alpha$ as described above.
+By modding out by this action, we obtain a bijection
+\[ \bar\beta : P_{1} \cong P_{2} \]
+where $P_{i}$ is the collection of primes of $K_{i}$, and $\bar \beta$ is induced by $\beta$.
+
+Let's see what else we can do with this information.
+First, let's fix some $\bar v|v \in \Xfrak_{i}$.
+The decomposition group $Z_{\bar v|v}$ is isomorphic to the absolute Galois group of $K_{v}$, as discussed in class, where $K_{v}$ is the completion of $K$ with respect to the absolute value assocaited with $v$.
+This absolute Galois group therefore determines the following invariants:
+\begin{enumerate}
+  \item The residue characteristic, and the size of the residue field of $v$.
+  \item The absolute ramification degree of $v$ and the degree of $K_{v}$ over $\Qbb_{p}$ where $p$ is the residue characteristic of $\kappa(v)$.
+\end{enumerate}
+This also determines the inertia subgroup of $Z_{\bar v|v}$ purely group-theoretically, by taking the intersection of all open subgroups whose assocaited absolute ramification degree is the same as that of $K_{v}$.
+
+The prime-to-$p$ part of the inertia group of $\Gal_{K_{v}}$ is isomorphic to the prime to $p$-part of $\hat\Zbb$, and the conjugation action of the absolute Galois group of the residue field factors through the cyclotomic character.
+This allows us to determine the Frobenius element in the quotient of $Z_{\bar v|v}$ modulo the inertia group, simply as the unique element which acts on this prime-to-$p$ part by raising to the $q$-th powers.
+This therefore determines the Weil group in $\Gal_{K_{v}}$ in a group-theoretic way, and by local class field theory its abelianization is isomorphic to $K_{v}^{\times}$.
+Recall that the inertia group corresponds to the unit group and that the the Sylow $p$-subgroup of the unit group is the group of principal units.
+Additionally, we obtain the natural map
+\[ v : K_{v}^{\times} \to \Zbb \]
+since the frobenius element maps to $1$ with respect to $v$ (and the local reciprocity map).
+
+By working in the abelianization of $\Gal_{K_{i}}$, and looking at the images of $Z_{\bar v|v}$ in there, we obtain the decomposition groups in the abelianization of the Galois group of the number field.
+By the discussion above, we thus obtain the \emph{global reciprocity map}
+\[ \Ibb_{K} = \prod_{v}{}^{'}K_{v} \to \Gal_{K}^{\ab}. \]
+The kernel of this map is the multiplicative group $K^{\times}$ of the number field itself, embedded diagonally in the ideles.
+At the same time, we also obtain the natural maps
+\[ K^{\times} \to K_{v}^{\times} \]
+for every $v$.
+
+To summarize, we see that $\alpha$ induces an isomorphism of multiplicative groups
+\[ K_{1}^{\times} \cong K_{2}^{\times} \]
+as well as isomorphisms
+\[ K_{1,v}^{\times} \cong K_{2,\beta v}^{\times} \]
+for every $v$, compatible with the isomorphism $K_{1}^{\times} \cong K_{2}^{\times}$ via the natural inclusions.
+By formally adding a ``zero'' which is a multiplicative absorbing element, we get an isomorphism $K_{1} \cong K_{2}$ of multiplicative monoids compatible with isomorphisms of multiplicative monoids $K_{1,v} \cong K_{2,\beta v}$ for all $v$.
+By restricting the valuation $v$ from $K_{v}$ we see that the isomorphism $K_{1} \cong K_{2}$ of monoids is compatible with $v$ in the sense that $v : K_{1} \to \Zbb$ agrees with $K_{1} \cong K_{2} \xrightarrow{\beta v} \Zbb$.
+This implies that the unit groups $U_{v}$ are mapped isomorphically onto $U_{\beta v}$ for all $v$.
+Additionally, the principal units $U_{v}^{1}$ are mapped isomorphically to $U_{\beta v}^{1}$ for all $v$, as a consequence of the local picture.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
