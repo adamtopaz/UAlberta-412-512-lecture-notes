@@ -43,8 +43,20 @@ since the frobenius element maps to $1$ with respect to $v$ (and the local recip
 
 By working in the abelianization of $\Gal_{K_{i}}$, and looking at the images of $Z_{\bar v|v}$ in there, we obtain the decomposition groups in the abelianization of the Galois group of the number field.
 By the discussion above, we thus obtain the \emph{global reciprocity map}
-\[ \Ibb_{K} = \prod_{v}{}^{'}K_{v} \to \Gal_{K}^{\ab}. \]
-The kernel of this map is the multiplicative group $K^{\times}$ of the number field itself, embedded diagonally in the ideles.
+\[ \Ibb^{f}_{K} = \prod_{v}{}^{'}K_{v} \to \Gal_{K}^{\ab}, \]
+restricted to the \emph{finite ideles} (the restricted product over the nonarchemedean places).
+By GCFT, the kernel of this map is \emph{contained} in $K^{\times}$ (it's not the whole thing since we're missing the archemedean part).
+One can check using global class field theory that if $K$ is sufficiently large (for example $\sqrt{-1} \in K$ suffices), then the torsion of this kernel agrees with the torsion of $K$.
+Passing to the colimit over $L|K$ finite (equivalently, over open subgroups of $\Gal_{K}$), we thus obtain $\mu_{\infty}$ as a subgroup of $\bar K^{\times}$, compatibly with the Galois action.
+Let $\hat\Zbb(1)$ denote the $\Gal_{K}$-module isomorphic to $\hat\Zbb$ as an abelian group, where the action is cyclotomic.
+Then compute $\HH^{1}(K,\hat\Zbb(1))$, and use Kummer theory to identify this with $\hat{K^{\times}}$, the \emph{adic} completion of $K^{\times}$.
+We can restrict to decomposition groups to obtain $\hat{K_{v}^{\times}}$ in a similar way.
+
+The map $K^{\times} \to \hat{K^{\times}}$ is injective.
+Now use the fact that $x \in \hat{K^{\times}}$ is contained in $K^{\times}$ if and only if its image in $\hat{K_{v}^{\times}}$ is contained in $K_{v}^{\times}$ for all $v$ to characterize $K^{\times}$.
+(There is a subtlety here that we characterized $K_{v}^{\times}$ using local class field theory, whereas the above characterizes it using Kummer theory, but this isn't an issue due to the definition of the local reciprocity map using cup-products and Kummer theory, as discussed in class.)
+
+In any case, we deduce that $K^{\times}$ can be characterized using $\Gal_{K}$.
 At the same time, we also obtain the natural maps
 \[ K^{\times} \to K_{v}^{\times} \]
 for every $v$.
