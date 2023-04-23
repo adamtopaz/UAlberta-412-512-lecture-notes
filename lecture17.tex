@@ -19,6 +19,12 @@ If we let $K$ denote the fraction field of $A$, then this is equivalent to the c
 \end{lemma}
 \begin{proof}
   \todo{Start by reducing to the case of principal ideals, which follows from the definition.}{Add details.}
+  In fact it holds that the ideals of a valuation ring are totally ordered.
+  Given $I,J$ ideals such that $I \not\subseteq J$, then we have $a \in I$ such that $a \notin J$.
+  But the divisibility order is total in a valuation ring. Thus we see that $a$ divdes every element of $J$. 
+  So we have that $J \subset I$.
+
+  Thus the inclusion order on ideals is total, and in particular the spectrum is totally ordered.
 \end{proof}
 
 Also recall that a valuation on a field $K$ is a surjective homomorphism

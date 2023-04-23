@@ -49,6 +49,39 @@ We will need the following fundamental result. First, we begin with some definit
   Let $\pfrak$ be a prime ideal of $A$, and $\Pfrak$ a prime ideal of $B$ lying above $\pfrak$.
   The inertial degree of $\Pfrak$ above $\pfrak$, denoted $f(\Pfrak|\pfrak)$ is defined to be the dimension of $B/\Pfrak$ over the field $A/\pfrak$.
 \end{definition}
+\begin{theorem}\label{Chinese Remainder Theorem}
+  Let A a ring $I_{1},\ldots,I_{k}$ ideals of R such that $I_i + I_j = R$ for all $i\neq j$.
+  Then the natural homomorphism
+  \[ \phi:R \rightarrow \prod_i R/I_i \]
+  Induces an isomorphism
+  \[ \hat{\phi}:\frac{R}{I_1\cdots I_k} \rightarrow \oplus_i R/I_i \]
+\end{theorem}
+\begin{proof}
+  First claim, 
+  \[ I_1\cdots I_{k-1} + I_k = R \]
+  To simplify things we will look at the case $k=3$.
+  Then $\exists a,b \in I_3, \ x \in I_1, \ y \in I_2$ such that $a + x = 1$ and $b + y = 1$.
+  Then we have $ab + ay + bx \in I_3$ and $xy \in I_1\cdot I_2$ with $ab + ay + bx + xy$.
+  Thus we have $I_1\cdot I_2 + I_3 = R$. The general case follows easily.
+  
+  Now to prove our theorem we may apply induction and reduce to the case of two ideals $I,J$.
+  First we show our morphism is a surjection.
+
+  Let $x,y \in R$ representatives for an element of $R/I \times R/J$.
+  Now take $a \in I, \ b \in J$ such that $a + b = 1$.
+  Then we have $x*a + x*b = x$ and similarly for y.
+  But then it is clear that $y*a + x*b$ is congruent to $x,y$ mod $I,J$ respectively.
+  Thus our map is a sujection.
+
+  Now we prove that the kernel is $I\cdot J$.
+  $I\cdot J \subset ker(\phi)$ is clear.
+  Conversely let $r \in ker(\phi)$, $a,b$ as before.
+  Then $r \in I,J$ so we have $ra,rb \in I\cdot J$.
+  But $ra + rb = r$, thus $r \in I\cdot$.
+  So $I\cdot J = ker(\phi)$.
+  
+  Thus the first isomorphism theorem completes the proof
+\end{proof}
 \begin{lemma}\label{lemma:fundamental_equality}
   Let $\pfrak$ be a prime ideal of $A$ and let $\Pfrak_{1},\ldots,\Pfrak_{k}$ be all the primes of $B$ lying above $\pfrak$.
   Then

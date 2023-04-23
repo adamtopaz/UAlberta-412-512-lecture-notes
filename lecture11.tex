@@ -108,6 +108,22 @@ As an abelian group, it is simply
 \[ \Ocal_{K}^{\times} \cong \mu(K) \times \Zbb^{r + s - 1}, \]
 while $\mu(K)$ is a finite subgroup of $K^{\times}$, hence $\mu_{K}$ \todo{is cyclic.}{Exercise.}
 
+\begin{proof}
+  $\mu_{K}$ is a finite abelian group, let $a \in \mu{K}$ an element of maximal order.
+  Now let $b \in \mu{K}$, we claim that the order of $a$ divides that of $b$.
+  Assume not, then there is an prime $p$ such that for some natural number $d$, $p^d \ | \ ord(b)$, but such power of $p$ does not divide $ord(a)$.
+  Take $d$ to be minimal such this occurs, so that $p^{d-1} \ | \ ord(a)$
+  Now let $m = p^{d-1}$ and $n = ord(b)/p^d$, consider $h = n \cdot a + m \cdot b$.
+  Then as $gcd(ord(n\cdot a), ord(m \cdot b)) = 1$ and our group is abelian, we have this new element has order $ord(n\cdot a) \cdot ord(m \cdot b) = p*ord(a)$.
+  
+  This contradicts the maximality of the order of $a$. Thus the order of all elements divides the order of $a$.
+
+  We now claim that $a$ generates our group $\mu{K}$. Note that the polynomial $x^{ord(a)} - 1$ has a zero for every element of $\mu{K}$. 
+  But a polynomial has at most its degree solutions. Thus $|\mu{K}| = ord(a)$, so $a$ generates $\mu{K}$.
+
+  Thus, $\mu{K}$ is indeed cyclic, infact an finite subgroup of the group of units of any field is.
+\end{proof}
+
 We can also extract an important invariant of the number field $K$ from this discussion, called the \emph{regulator} of $K$.
 Indeed, as $H$ is a codimension $1$ subspace of $\Rbb^{r+s}$, it inherits an inner product (where $\Rbb^{r+s}$ is endowed with the usual dot product).
 
