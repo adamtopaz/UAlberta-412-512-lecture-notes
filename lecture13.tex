@@ -33,6 +33,16 @@ where $e = e(\Pfrak|\pfrak)$.
 \begin{proof}
   These assertions all follow essentially from the fundamental identity and the fact that $\Gal(L|M) = Z_{\Pfrak|\pfrak}$, along with the observations above.
   \todo{Details left as an exercise.}{Add argument.}
+  For the first point note that Galois groups act transitively on the primes of an extension and $\Gal(L|M) = Z_{\Pfrak|\pfrak}$, 
+  thus $\Pfrak$ must be the only prime above $\Pfrak_{Z}$.
+  
+  For the second point note that $[L:K] = r\cdot e(\Pfrak|\pfrak)\cdot f(\Pfrak|\pfrak)$ where r is the number of primes above 
+  $\pfrak$ as the extension is Galois. Likewise we have $[L:M] = e(\Pfrak|\Pfrak_{Z})\cdot f(\Pfrak|\Pfrak_{Z})$.
+  But as we have a bijection $Gal(L|K)/Z_{\Pfrak|\pfrak}$ with the primes above $\pfrak$.
+  We have that $e(\Pfrak|\pfrak)\cdot f(\Pfrak|\pfrak) = [L:M] = e(\Pfrak|\Pfrak_{Z})\cdot f(\Pfrak|\Pfrak_{Z})$ and
+  $e(\Pfrak|\Pfrak_{Z}) \le e(\Pfrak|\pfrak)$ (in fact the first divides the second), likewise for inertia degrees, so we must have equality of both.
+
+  Then the third point follows as a corollary of the second.
 \end{proof}
 
 The decomposition group as we see above ``understands'' how many primes are above $\pfrak$.
