@@ -98,6 +98,23 @@ We say that $\Pfrak$ \emph{lies over} $\pfrak$, and write $\Pfrak | \pfrak$, pro
 In this case, we have an inclusion
 \[ A/\pfrak \to B/\Pfrak. \]
 
+
+\begin{lemma}\label{lemma:nakayama}
+  Let $R$ a ring, $M$ a finitely generated $R$ module, $J$ an ideal of $R$ contained in the Jacobson radical. Then $JM = M \implies M = 0$. 
+  Note that in particular if $R$ is a local ring, then this holds for any ideal of $R$.
+\end{lemma}
+\begin{proof}
+  Let $m_1\ldots m_k$ generators for $M$. Note that as $JM = M$ we have elements $a_{i,j} \in J$ such that $\sum_j a_{i,j}\cdot m_j = m_i$.
+  Denote the matrix with such elements as its entries $A$. Then if we write $m = (m_1,\ldots ,m_k)$ we have $Am = I_km$.
+  Thus we have $(A-I_k)m = 0$. multiplication by the adjugate matrix gives us that $det(A-I_k)\cdot m_i = 0 \ \forall i$.
+
+  Now we note that $x \in R$ is an element of the Jacobson radical iff $1 + r\cdot x$ is a unit $\forall \, x \in R$. 
+  Thus we can check that as $J$ is contained in the Jacobson radical and thus $A$ has entries in it, $det(I_k-A)$ is of the form $1 + x$, with $x$ and element of the Jacobson radical.
+  But then $x$ is a unit. so we find that $m_i = 0 \ \forall i$, thus $M = 0$.
+  
+\end{proof}
+
+
 \begin{proposition}\label{proposition:exists_prime_above}
   Let $\pfrak$ be a prime of $A$.
   Then $\pfrak \cdot B \neq B$ and there exists a prime ideal $\Pfrak$ of $B$ lying above $\pfrak$.
